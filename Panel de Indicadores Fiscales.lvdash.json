@@ -133,6 +133,11 @@
         "GROUP BY fecha, tipo_acto, sector_contribuyente\n",
         "ORDER BY fecha"
       ]
+    },
+    {
+      "name": "cb66982b",
+      "displayName": "Recaudacin_Mensual",
+      "asset_name": "stable_classic_fvsir3.default.Recaudacin_Mensual"
     }
   ],
   "pages": [
@@ -1547,6 +1552,217 @@
         }
       ],
       "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "cce19377",
+      "displayName": "Información sobre tributación",
+      "layout": [
+        {
+          "widget": {
+            "name": "monthly-isr-total",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "cb66982b",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "isr_total",
+                      "expression": "`isr_total`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Monthly ISR Total",
+                "showTitle": true
+              },
+              "widgetType": "histogram",
+              "encodings": {
+                "x": {
+                  "fieldName": "fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "isr_total",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "iva-total-by-month",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "cb66982b",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "nombre_mes",
+                      "expression": "`nombre_mes`"
+                    },
+                    {
+                      "name": "iva_total",
+                      "expression": "`iva_total`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "fecha"
+                  },
+                  {
+                    "fieldName": "nombre_mes"
+                  },
+                  {
+                    "fieldName": "iva_total"
+                  }
+                ]
+              },
+              "frame": {
+                "title": "IVA Total by Month",
+                "showTitle": true
+              },
+              "rowsPerPage": 25,
+              "displayRowNumbers": false
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ieps-total-by-month",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "cb66982b",
+                  "fields": [
+                    {
+                      "name": "nombre_mes",
+                      "expression": "`nombre_mes`"
+                    },
+                    {
+                      "name": "sum(ieps_total)",
+                      "expression": "SUM(`ieps_total`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "IEPS Total by Month",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "nombre_mes",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(ieps_total)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-tributario",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "cb66982b",
+                  "fields": [
+                    {
+                      "name": "sum(total_tributario)",
+                      "expression": "SUM(`total_tributario`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Total Tributario",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_tributario)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
     }
   ],
   "uiSettings": {
