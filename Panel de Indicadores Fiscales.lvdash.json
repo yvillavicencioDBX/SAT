@@ -145,7 +145,7 @@
             "name": "titulo_dashboard",
             "multilineTextboxSpec": {
               "lines": [
-                "# Servicio de Administración Tributaria (SAT) <br><span style=\"font-size: 12px;font-family: Arial;\">Panel de Indicadores Fiscales </span>"
+                "# <span style=\"text-align:center;display:block;\">Servicio de Administración Tributaria (SAT) <br><span style=\"font-size:12px;font-family:Arial\">Panel de Indicadores Fiscales </span></span>"
               ]
             }
           },
