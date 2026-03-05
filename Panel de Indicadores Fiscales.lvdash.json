@@ -197,6 +197,7 @@
             "width": 12,
             "height": 2
           }
+<<<<<<< Updated upstream
         },
         {
           "widget": {
@@ -348,6 +349,8 @@
             "width": 6,
             "height": 6
           }
+=======
+>>>>>>> Stashed changes
         },
         {
           "widget": {
@@ -375,7 +378,11 @@
               "version": 2,
               "frame": {
                 "showTitle": true,
+<<<<<<< Updated upstream
                 "title": "Año"
+=======
+                "title": "📅 Año"
+>>>>>>> Stashed changes
               },
               "widgetType": "filter-single-select",
               "encodings": {
@@ -405,8 +412,17 @@
                   "datasetName": "ds_recaudacion_mensual",
                   "fields": [
                     {
+<<<<<<< Updated upstream
                       "name": "sum(ieps_total)",
                       "expression": "SUM(`ieps_total`)"
+=======
+                      "name": "sum(total_tributario)",
+                      "expression": "SUM(`total_tributario`)"
+                    },
+                    {
+                      "name": "sum(meta_lif)",
+                      "expression": "SUM(`meta_lif`)"
+>>>>>>> Stashed changes
                     }
                   ],
                   "disaggregated": false
@@ -422,7 +438,124 @@
               "widgetType": "counter",
               "encodings": {
                 "value": {
+<<<<<<< Updated upstream
                   "fieldName": "sum(ieps_total)"
+=======
+                  "fieldName": "sum(total_tributario)"
+                },
+                "target": {
+                  "fieldName": "sum(meta_lif)",
+                  "change": {
+                    "type": "percent"
+                  }
+>>>>>>> Stashed changes
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+<<<<<<< Updated upstream
+            "y": 6,
+            "width": 3,
+            "height": 1
+=======
+            "y": 3,
+            "width": 4,
+            "height": 3
+>>>>>>> Stashed changes
+          }
+        },
+        {
+          "widget": {
+            "name": "iva",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+<<<<<<< Updated upstream
+                      "name": "sum(iva_total)",
+                      "expression": "SUM(`iva_total`)"
+=======
+                      "name": "sum(total_activos)",
+                      "expression": "SUM(`total_activos`)"
+>>>>>>> Stashed changes
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "IVA"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+<<<<<<< Updated upstream
+                  "fieldName": "sum(iva_total)"
+=======
+                  "fieldName": "sum(total_activos)"
+>>>>>>> Stashed changes
+                }
+              }
+            }
+          },
+          "position": {
+<<<<<<< Updated upstream
+            "x": 0,
+            "y": 7,
+            "width": 3,
+            "height": 1
+=======
+            "x": 4,
+            "y": 3,
+            "width": 2,
+            "height": 3
+>>>>>>> Stashed changes
+          }
+        },
+        {
+          "widget": {
+            "name": "otros",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+<<<<<<< Updated upstream
+                      "name": "sum(otros_impuestos)",
+                      "expression": "SUM(`otros_impuestos`)"
+=======
+                      "name": "sum(isr_total)",
+                      "expression": "SUM(`isr_total`)"
+>>>>>>> Stashed changes
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+<<<<<<< Updated upstream
+=======
+              "frame": {
+                "showTitle": true,
+                "title": "ISR"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(isr_total)"
                 }
               }
             }
@@ -436,7 +569,7 @@
         },
         {
           "widget": {
-            "name": "iva",
+            "name": "kpi_iva",
             "queries": [
               {
                 "name": "main_query",
@@ -467,6 +600,45 @@
             }
           },
           "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_ieps",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "sum(ieps_total)",
+                      "expression": "SUM(`ieps_total`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "IEPS"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(ieps_total)"
+                }
+              }
+            }
+          },
+          "position": {
             "x": 0,
             "y": 7,
             "width": 3,
@@ -475,7 +647,7 @@
         },
         {
           "widget": {
-            "name": "otros",
+            "name": "kpi_otros",
             "queries": [
               {
                 "name": "main_query",
@@ -510,6 +682,337 @@
             "y": 7,
             "width": 3,
             "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_recaudacion_mensual",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "isr_total",
+                      "expression": "`isr_total`"
+                    },
+                    {
+                      "name": "iva_total",
+                      "expression": "`iva_total`"
+                    },
+                    {
+                      "name": "ieps_total",
+                      "expression": "`ieps_total`"
+                    },
+                    {
+                      "name": "otros_impuestos",
+                      "expression": "`otros_impuestos`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+>>>>>>> Stashed changes
+              "frame": {
+                "showTitle": true,
+                "title": "Otros"
+              },
+              "widgetType": "counter",
+              "encodings": {
+<<<<<<< Updated upstream
+                "value": {
+                  "fieldName": "sum(otros_impuestos)"
+=======
+                "x": {
+                  "fieldName": "fecha",
+                  "displayName": "Mes",
+                  "format": {
+                    "type": "date",
+                    "date": "locale-short-month"
+                  },
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "axis": {
+                    "hideTitle": true
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "isr_total",
+                        "displayName": "ISR"
+                      },
+                      {
+                        "fieldName": "iva_total",
+                        "displayName": "IVA"
+                      },
+                      {
+                        "fieldName": "ieps_total",
+                        "displayName": "IEPS"
+                      },
+                      {
+                        "fieldName": "otros_impuestos",
+                        "displayName": "Otros"
+                      }
+                    ],
+                    "scale": {
+                      "type": "quantitative"
+                    },
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact"
+                    },
+                    "axis": {
+                      "hideTitle": false
+                    }
+                  }
+                },
+                "color": {
+                  "legend": {
+                    "hide": false,
+                    "position": "bottom"
+                  }
+>>>>>>> Stashed changes
+                }
+              }
+            }
+          },
+          "position": {
+<<<<<<< Updated upstream
+            "x": 3,
+            "y": 7,
+            "width": 3,
+            "height": 1
+=======
+            "x": 6,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_mix_impuestos_anual",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_anual",
+                  "fields": [
+                    {
+                      "name": "anio",
+                      "expression": "CAST(`anio` AS STRING)"
+                    },
+                    {
+                      "name": "isr_total",
+                      "expression": "`isr_total`"
+                    },
+                    {
+                      "name": "iva_total",
+                      "expression": "`iva_total`"
+                    },
+                    {
+                      "name": "ieps_total",
+                      "expression": "`ieps_total`"
+                    },
+                    {
+                      "name": "otros_impuestos",
+                      "expression": "`otros_impuestos`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "frame": {
+                "showTitle": true,
+                "title": "Mix de Impuestos por Año (Apilado)",
+                "description": "Composición anual — ISR / IVA / IEPS / Otros",
+                "showDescription": true
+              },
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "anio",
+                  "displayName": "Año",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "isr_total",
+                        "displayName": "ISR"
+                      },
+                      {
+                        "fieldName": "iva_total",
+                        "displayName": "IVA"
+                      },
+                      {
+                        "fieldName": "ieps_total",
+                        "displayName": "IEPS"
+                      },
+                      {
+                        "fieldName": "otros_impuestos",
+                        "displayName": "Otros"
+                      }
+                    ],
+                    "scale": {
+                      "type": "quantitative"
+                    },
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact"
+                    }
+                  }
+                },
+                "color": {
+                  "legend": {
+                    "hide": false,
+                    "position": "bottom"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_crecimiento_yoy",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crecimiento_anual",
+                  "fields": [
+                    {
+                      "name": "anio",
+                      "expression": "CAST(`anio` AS STRING)"
+                    },
+                    {
+                      "name": "crecimiento_pct",
+                      "expression": "`crecimiento_pct`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "📈 Crecimiento Anual YoY (%)",
+                "description": "Tasa de variación interanual de la recaudación total",
+                "showDescription": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "displayName": "Año",
+                  "fieldName": "anio",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "displayName": "Crecimiento (%)",
+                  "fieldName": "crecimiento_pct",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 8,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_cumplimiento_mensual",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "cumplimiento_pct",
+                      "expression": "`cumplimiento_pct`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "% Cumplimiento vs Meta LIF por Mes",
+                "description": "Ratio recaudación / meta mensual (factor estrés 1.2×)",
+                "showDescription": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "displayName": "Mes",
+                  "fieldName": "fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "displayName": "Cumplimiento (%)",
+                  "fieldName": "cumplimiento_pct",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 12,
+            "height": 4
+>>>>>>> Stashed changes
           }
         }
       ],
@@ -579,7 +1082,11 @@
           "position": {
             "x": 0,
             "y": 2,
+<<<<<<< Updated upstream
             "width": 6,
+=======
+            "width": 3,
+>>>>>>> Stashed changes
             "height": 1
           }
         },
@@ -624,10 +1131,17 @@
             }
           },
           "position": {
+<<<<<<< Updated upstream
             "x": 6,
             "y": 2,
             "width": 2,
             "height": 2
+=======
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 1
+>>>>>>> Stashed changes
           }
         },
         {
@@ -666,10 +1180,17 @@
             }
           },
           "position": {
+<<<<<<< Updated upstream
             "x": 8,
             "y": 2,
             "width": 2,
             "height": 2
+=======
+            "x": 6,
+            "y": 2,
+            "width": 2,
+            "height": 1
+>>>>>>> Stashed changes
           }
         },
         {
@@ -708,10 +1229,59 @@
             }
           },
           "position": {
+<<<<<<< Updated upstream
             "x": 10,
             "y": 2,
             "width": 2,
             "height": 2
+=======
+            "x": 8,
+            "y": 2,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_bajas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_contribuyentes",
+                  "fields": [
+                    {
+                      "name": "sum(bajas)",
+                      "expression": "SUM(`bajas`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "value": {
+                  "displayName": "Bajas",
+                  "fieldName": "sum(bajas)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "📉 Bajas",
+                "description": "Cancelaciones del periodo",
+                "showDescription": true
+              },
+              "version": 2,
+              "widgetType": "counter"
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 2,
+            "width": 2,
+            "height": 1
+>>>>>>> Stashed changes
           }
         },
         {
@@ -865,8 +1435,264 @@
           },
           "position": {
             "x": 6,
+<<<<<<< Updated upstream
             "y": 4,
             "width": 6,
+=======
+            "y": 3,
+            "width": 6,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_pf_vs_pm",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_contribuyentes",
+                  "fields": [
+                    {
+                      "name": "tipo_persona",
+                      "expression": "`tipo_persona`"
+                    },
+                    {
+                      "name": "sum(total_activos)",
+                      "expression": "SUM(`total_activos`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "x": {
+                  "displayName": "Tipo de Persona",
+                  "fieldName": "tipo_persona",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "displayName": "Total Activos",
+                  "fieldName": "sum(total_activos)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Distribución PF vs PM",
+                "description": "Personas Físicas vs Personas Morales",
+                "showDescription": true
+              },
+              "version": 3,
+              "widgetType": "pie"
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 6,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "chart_sector_regimen_heatmap",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_contribuyentes",
+                  "fields": [
+                    {
+                      "name": "sector_economico",
+                      "expression": "`sector_economico`"
+                    },
+                    {
+                      "name": "regimen",
+                      "expression": "`regimen`"
+                    },
+                    {
+                      "name": "sum(total_activos)",
+                      "expression": "SUM(`total_activos`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "x": {
+                  "displayName": "Régimen",
+                  "fieldName": "regimen",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "displayName": "Sector Económico",
+                  "fieldName": "sector_economico",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "color": {
+                  "displayName": "Contribuyentes Activos",
+                  "fieldName": "sum(total_activos)",
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "colors": {
+                        "start": "#C8E6FA",
+                        "end": "#1B5E8A"
+                      },
+                      "mode": "custom-sequential"
+                    }
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Activos por Sector y Régimen",
+                "description": "Mapa de calor — concentración de contribuyentes",
+                "showDescription": true
+              },
+              "version": 3,
+              "widgetType": "heatmap"
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 6,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "tabla_detalle_contribuyentes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_contribuyentes",
+                  "fields": [
+                    {
+                      "name": "anio",
+                      "expression": "CAST(`anio` AS STRING)"
+                    },
+                    {
+                      "name": "regimen",
+                      "expression": "`regimen`"
+                    },
+                    {
+                      "name": "tipo_persona",
+                      "expression": "`tipo_persona`"
+                    },
+                    {
+                      "name": "sector_economico",
+                      "expression": "`sector_economico`"
+                    },
+                    {
+                      "name": "sum(total_activos)",
+                      "expression": "SUM(`total_activos`)"
+                    },
+                    {
+                      "name": "sum(nuevos_registros)",
+                      "expression": "SUM(`nuevos_registros`)"
+                    },
+                    {
+                      "name": "sum(bajas)",
+                      "expression": "SUM(`bajas`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "condensed": true,
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "anio",
+                    "displayName": "Año",
+                    "visible": true,
+                    "type": "string",
+                    "order": 1
+                  },
+                  {
+                    "fieldName": "regimen",
+                    "displayName": "Régimen",
+                    "visible": true,
+                    "type": "string",
+                    "order": 2
+                  },
+                  {
+                    "fieldName": "tipo_persona",
+                    "displayName": "Tipo Persona",
+                    "visible": true,
+                    "type": "string",
+                    "order": 3
+                  },
+                  {
+                    "fieldName": "sector_economico",
+                    "displayName": "Sector",
+                    "visible": true,
+                    "type": "string",
+                    "order": 4
+                  },
+                  {
+                    "fieldName": "sum(total_activos)",
+                    "displayName": "Activos",
+                    "visible": true,
+                    "type": "integer",
+                    "order": 5,
+                    "alignContent": "right"
+                  },
+                  {
+                    "fieldName": "sum(nuevos_registros)",
+                    "displayName": "Nuevos",
+                    "visible": true,
+                    "type": "integer",
+                    "order": 6,
+                    "alignContent": "right"
+                  },
+                  {
+                    "fieldName": "sum(bajas)",
+                    "displayName": "Bajas",
+                    "visible": true,
+                    "type": "integer",
+                    "order": 7,
+                    "alignContent": "right"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle del Padrón por Régimen y Sector",
+                "description": "Tabla completa con filtros aplicados",
+                "showDescription": true
+              },
+              "itemsPerPage": 25,
+              "version": 1,
+              "widgetType": "table"
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 12,
+>>>>>>> Stashed changes
             "height": 6
           }
         }
@@ -937,7 +1763,11 @@
           "position": {
             "x": 0,
             "y": 2,
+<<<<<<< Updated upstream
             "width": 4,
+=======
+            "width": 3,
+>>>>>>> Stashed changes
             "height": 1
           }
         },
@@ -982,9 +1812,15 @@
             }
           },
           "position": {
+<<<<<<< Updated upstream
             "x": 4,
             "y": 2,
             "width": 4,
+=======
+            "x": 3,
+            "y": 2,
+            "width": 3,
+>>>>>>> Stashed changes
             "height": 1
           }
         },
@@ -1024,6 +1860,51 @@
             }
           },
           "position": {
+<<<<<<< Updated upstream
+=======
+            "x": 6,
+            "y": 2,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_decl_con_pago",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_declaraciones",
+                  "fields": [
+                    {
+                      "name": "sum(con_pago)",
+                      "expression": "SUM(`con_pago`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "encodings": {
+                "value": {
+                  "displayName": "Con Pago",
+                  "fieldName": "sum(con_pago)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "💰 Con Pago",
+                "description": "Declaraciones con importe",
+                "showDescription": true
+              },
+              "version": 2,
+              "widgetType": "counter"
+            }
+          },
+          "position": {
+>>>>>>> Stashed changes
             "x": 8,
             "y": 2,
             "width": 2,
@@ -2041,7 +2922,11 @@
                     "type": "float",
                     "order": 6,
                     "alignContent": "right",
+<<<<<<< Updated upstream
                     "numberFormat": "#,##0.1"
+=======
+                    "numberFormat": "#,##0.0"
+>>>>>>> Stashed changes
                   },
                   {
                     "fieldName": "avg(efectividad)",
