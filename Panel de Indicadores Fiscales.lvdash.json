@@ -306,6 +306,10 @@
                     {
                       "name": "isr_total",
                       "expression": "`isr_total`"
+                    },
+                    {
+                      "name": "meta_lif",
+                      "expression": "`meta_lif`"
                     }
                   ],
                   "disaggregated": true
@@ -313,14 +317,58 @@
               }
             ],
             "spec": {
+              "version": 1,
               "frame": {
                 "showTitle": true,
                 "title": "Recaudación Mensual por Impuesto",
                 "description": "ISR / IVA / IEPS / Otros — Millones de pesos",
                 "showDescription": true
               },
-              "version": 3,
-              "widgetType": "bar",
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "combo",
               "encodings": {
                 "x": {
                   "fieldName": "fecha",
@@ -330,14 +378,28 @@
                   }
                 },
                 "y": {
-                  "fieldName": "isr_total",
-                  "displayName": "Millones de pesos",
-                  "scale": {
-                    "type": "quantitative"
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "isr_total",
+                        "displayName": "Millones de pesos"
+                      }
+                    ],
+                    "scale": {
+                      "type": "quantitative"
+                    }
+                  },
+                  "secondary": {
+                    "fields": [
+                      {
+                        "fieldName": "meta_lif",
+                        "displayName": "Meta"
+                      }
+                    ],
+                    "scale": {
+                      "type": "quantitative"
+                    }
                   }
-                },
-                "label": {
-                  "show": true
                 }
               }
             }
@@ -510,6 +572,160 @@
             "y": 7,
             "width": 3,
             "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "monthly-isr-total",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "isr_total",
+                      "expression": "`isr_total`"
+                    },
+                    {
+                      "name": "ieps_total",
+                      "expression": "`ieps_total`"
+                    },
+                    {
+                      "name": "iva_total",
+                      "expression": "`iva_total`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "TIpo de Tributación",
+                "showTitle": true,
+                "showDescription": true,
+                "description": "Incidencia por tipo de impuesto"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "isr_total",
+                      "displayName": "ISR"
+                    },
+                    {
+                      "fieldName": "ieps_total",
+                      "displayName": "IEPS"
+                    },
+                    {
+                      "fieldName": "isr_total",
+                      "displayName": "ISR"
+                    },
+                    {
+                      "fieldName": "iva_total",
+                      "displayName": "IVA"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "monthly-isr-total-1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "isr_total",
+                      "expression": "`isr_total`"
+                    },
+                    {
+                      "name": "ieps_total",
+                      "expression": "`ieps_total`"
+                    },
+                    {
+                      "name": "iva_total",
+                      "expression": "`iva_total`"
+                    },
+                    {
+                      "name": "otros_impuestos",
+                      "expression": "`otros_impuestos`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "rowsPerPage": 25,
+              "displayRowNumbers": false,
+              "frame": {
+                "title": "Tributación mensual",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "fecha"
+                  },
+                  {
+                    "fieldName": "isr_total",
+                    "displayName": "ISR"
+                  },
+                  {
+                    "fieldName": "ieps_total",
+                    "displayName": "IEPS"
+                  },
+                  {
+                    "fieldName": "iva_total",
+                    "displayName": "IVA"
+                  },
+                  {
+                    "fieldName": "otros_impuestos",
+                    "displayName": "Otros"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 8,
+            "width": 6,
+            "height": 6
           }
         }
       ],
@@ -938,7 +1154,7 @@
             "x": 0,
             "y": 2,
             "width": 4,
-            "height": 1
+            "height": 2
           }
         },
         {
@@ -985,7 +1201,7 @@
             "x": 4,
             "y": 2,
             "width": 4,
-            "height": 1
+            "height": 2
           }
         },
         {
@@ -1190,7 +1406,7 @@
           },
           "position": {
             "x": 0,
-            "y": 3,
+            "y": 4,
             "width": 12,
             "height": 6
           }
@@ -1271,7 +1487,7 @@
           },
           "position": {
             "x": 0,
-            "y": 9,
+            "y": 10,
             "width": 6,
             "height": 9
           }
@@ -1348,7 +1564,7 @@
           },
           "position": {
             "x": 6,
-            "y": 9,
+            "y": 10,
             "width": 6,
             "height": 9
           }
@@ -1366,7 +1582,7 @@
             "name": "titulo_dev",
             "multilineTextboxSpec": {
               "lines": [
-                "## 🔍 Devoluciones, Compensaciones y Fiscalización<span style=\"font-size:12px;color:#666;\">Montos devueltos, tiempos de atención y resultados de auditoría</span>"
+                "## 🔍 Devoluciones, Compensaciones y Fiscalización<br><span style=\"font-size:12px;color:#666\">Montos devueltos, tiempos de atención y resultados de auditoría</span>"
               ]
             }
           },
@@ -1509,50 +1725,8 @@
           "position": {
             "x": 6,
             "y": 2,
-            "width": 3,
-            "height": 1
-          }
-        },
-        {
-          "widget": {
-            "name": "kpi_dias_promedio",
-            "queries": [
-              {
-                "name": "main_query",
-                "query": {
-                  "datasetName": "ds_devoluciones",
-                  "fields": [
-                    {
-                      "name": "avg(dias_promedio)",
-                      "expression": "ROUND(AVG(`dias_promedio`), 1)"
-                    }
-                  ],
-                  "disaggregated": false
-                }
-              }
-            ],
-            "spec": {
-              "encodings": {
-                "value": {
-                  "displayName": "Días Promedio",
-                  "fieldName": "avg(dias_promedio)"
-                }
-              },
-              "frame": {
-                "showTitle": true,
-                "title": "⏱️ Días Prom. de Atención",
-                "description": "Promedio de días para resolver devolución",
-                "showDescription": true
-              },
-              "version": 2,
-              "widgetType": "counter"
-            }
-          },
-          "position": {
-            "x": 9,
-            "y": 2,
-            "width": 3,
-            "height": 1
+            "width": 6,
+            "height": 2
           }
         },
         {
@@ -1690,89 +1864,8 @@
           },
           "position": {
             "x": 6,
-            "y": 3,
-            "width": 3,
-            "height": 5
-          }
-        },
-        {
-          "widget": {
-            "name": "chart_dias_tendencia",
-            "queries": [
-              {
-                "name": "main_query",
-                "query": {
-                  "datasetName": "ds_dias_devolucion",
-                  "fields": [
-                    {
-                      "name": "anio",
-                      "expression": "CAST(`anio` AS STRING)"
-                    },
-                    {
-                      "name": "impuesto",
-                      "expression": "`impuesto`"
-                    },
-                    {
-                      "name": "dias_promedio",
-                      "expression": "`dias_promedio`"
-                    }
-                  ],
-                  "disaggregated": true
-                }
-              }
-            ],
-            "spec": {
-              "encodings": {
-                "x": {
-                  "displayName": "Año",
-                  "fieldName": "anio",
-                  "scale": {
-                    "type": "categorical"
-                  }
-                },
-                "y": {
-                  "displayName": "Días Promedio",
-                  "fieldName": "dias_promedio",
-                  "scale": {
-                    "type": "quantitative"
-                  }
-                },
-                "color": {
-                  "displayName": "Impuesto",
-                  "fieldName": "impuesto",
-                  "scale": {
-                    "type": "categorical",
-                    "mappings": [
-                      {
-                        "value": "ISR",
-                        "color": "#1B5E8A"
-                      },
-                      {
-                        "value": "IVA",
-                        "color": "#1E8C5A"
-                      },
-                      {
-                        "value": "IEPS",
-                        "color": "#C45A1A"
-                      }
-                    ]
-                  }
-                }
-              },
-              "frame": {
-                "showTitle": true,
-                "title": "Tendencia: Días de Atención de Devoluciones",
-                "description": "Reducción anual por digitalización del SAT",
-                "showDescription": true
-              },
-              "version": 3,
-              "widgetType": "line"
-            }
-          },
-          "position": {
-            "x": 9,
-            "y": 3,
-            "width": 3,
+            "y": 4,
+            "width": 6,
             "height": 5
           }
         },
@@ -1945,131 +2038,9 @@
           },
           "position": {
             "x": 5,
-            "y": 8,
+            "y": 9,
             "width": 7,
-            "height": 5
-          }
-        },
-        {
-          "widget": {
-            "name": "chart_fiscalizacion_tabla",
-            "queries": [
-              {
-                "name": "main_query",
-                "query": {
-                  "datasetName": "ds_fiscalizacion",
-                  "fields": [
-                    {
-                      "name": "anio",
-                      "expression": "CAST(`anio` AS STRING)"
-                    },
-                    {
-                      "name": "tipo_acto",
-                      "expression": "`tipo_acto`"
-                    },
-                    {
-                      "name": "sector_contribuyente",
-                      "expression": "`sector_contribuyente`"
-                    },
-                    {
-                      "name": "sum(actos)",
-                      "expression": "SUM(`actos`)"
-                    },
-                    {
-                      "name": "sum(recaudacion)",
-                      "expression": "SUM(`recaudacion`)"
-                    },
-                    {
-                      "name": "avg(rentabilidad)",
-                      "expression": "AVG(`rentabilidad`)"
-                    },
-                    {
-                      "name": "avg(efectividad)",
-                      "expression": "AVG(`efectividad`)"
-                    }
-                  ],
-                  "disaggregated": false
-                }
-              }
-            ],
-            "spec": {
-              "condensed": true,
-              "encodings": {
-                "columns": [
-                  {
-                    "fieldName": "anio",
-                    "displayName": "Año",
-                    "visible": true,
-                    "type": "string",
-                    "order": 1
-                  },
-                  {
-                    "fieldName": "tipo_acto",
-                    "displayName": "Programa",
-                    "visible": true,
-                    "type": "string",
-                    "order": 2
-                  },
-                  {
-                    "fieldName": "sector_contribuyente",
-                    "displayName": "Sector",
-                    "visible": true,
-                    "type": "string",
-                    "order": 3
-                  },
-                  {
-                    "fieldName": "sum(actos)",
-                    "displayName": "Actos",
-                    "visible": true,
-                    "type": "integer",
-                    "order": 4,
-                    "alignContent": "right"
-                  },
-                  {
-                    "fieldName": "sum(recaudacion)",
-                    "displayName": "Recaudación (mdp)",
-                    "visible": true,
-                    "type": "float",
-                    "order": 5,
-                    "alignContent": "right",
-                    "numberFormat": "#,##0.0"
-                  },
-                  {
-                    "fieldName": "avg(rentabilidad)",
-                    "displayName": "Rentabilidad ($/$ invertido)",
-                    "visible": true,
-                    "type": "float",
-                    "order": 6,
-                    "alignContent": "right",
-                    "numberFormat": "#,##0.1"
-                  },
-                  {
-                    "fieldName": "avg(efectividad)",
-                    "displayName": "Efectividad (%)",
-                    "visible": true,
-                    "type": "float",
-                    "order": 7,
-                    "alignContent": "right",
-                    "numberFormat": "#0.0"
-                  }
-                ]
-              },
-              "frame": {
-                "showTitle": true,
-                "title": "Resultados de Fiscalización por Programa y Año",
-                "description": "Fuente: ITG SAT — Indicadores de Fiscalización",
-                "showDescription": true
-              },
-              "itemsPerPage": 25,
-              "version": 1,
-              "widgetType": "table"
-            }
-          },
-          "position": {
-            "x": 0,
-            "y": 13,
-            "width": 12,
-            "height": 6
+            "height": 4
           }
         }
       ],
