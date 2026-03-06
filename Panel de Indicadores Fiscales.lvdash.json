@@ -1115,16 +1115,16 @@
             "name": "filtro_anio_decl",
             "queries": [
               {
-                "name": "q_anio_d",
+                "name": "dashboards/01f1177085d617fdaab0023a35ac6436/datasets/01f118e3b25a1f50955d91c459bd7d17_fecha",
                 "query": {
                   "datasetName": "ds_declaraciones",
                   "fields": [
                     {
-                      "name": "anio",
-                      "expression": "`anio`"
+                      "name": "fecha",
+                      "expression": "`fecha`"
                     },
                     {
-                      "name": "anio_assoc",
+                      "name": "fecha_associativity",
                       "expression": "COUNT_IF(`associative_filter_predicate_group`)"
                     }
                   ],
@@ -1133,21 +1133,20 @@
               }
             ],
             "spec": {
-              "encodings": {
-                "fields": [
-                  {
-                    "displayName": "Año",
-                    "fieldName": "anio",
-                    "queryName": "q_anio_d"
-                  }
-                ]
-              },
               "frame": {
                 "showTitle": true,
                 "title": "📅 Año"
               },
               "version": 2,
-              "widgetType": "filter-multi-select"
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "fecha",
+                    "queryName": "dashboards/01f1177085d617fdaab0023a35ac6436/datasets/01f118e3b25a1f50955d91c459bd7d17_fecha"
+                  }
+                ]
+              }
             }
           },
           "position": {
@@ -1162,7 +1161,7 @@
             "name": "filtro_tipo_decl",
             "queries": [
               {
-                "name": "q_tipo_d",
+                "name": "dashboards/01f1177085d617fdaab0023a35ac6436/datasets/01f118e3b25a1f50955d91c459bd7d17_tipo_declaracion",
                 "query": {
                   "datasetName": "ds_declaraciones",
                   "fields": [
@@ -1171,7 +1170,7 @@
                       "expression": "`tipo_declaracion`"
                     },
                     {
-                      "name": "tipo_assoc",
+                      "name": "tipo_declaracion_associativity",
                       "expression": "COUNT_IF(`associative_filter_predicate_group`)"
                     }
                   ],
@@ -1180,21 +1179,20 @@
               }
             ],
             "spec": {
-              "encodings": {
-                "fields": [
-                  {
-                    "displayName": "Tipo",
-                    "fieldName": "tipo_declaracion",
-                    "queryName": "q_tipo_d"
-                  }
-                ]
-              },
               "frame": {
                 "showTitle": true,
                 "title": "📄 Tipo de Declaración"
               },
               "version": 2,
-              "widgetType": "filter-multi-select"
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "tipo_declaracion",
+                    "queryName": "dashboards/01f1177085d617fdaab0023a35ac6436/datasets/01f118e3b25a1f50955d91c459bd7d17_tipo_declaracion"
+                  }
+                ]
+              }
             }
           },
           "position": {
@@ -1243,7 +1241,7 @@
             "x": 8,
             "y": 2,
             "width": 2,
-            "height": 1
+            "height": 2
           }
         },
         {
@@ -1285,7 +1283,7 @@
             "x": 10,
             "y": 2,
             "width": 2,
-            "height": 1
+            "height": 2
           }
         },
         {
