@@ -16,7 +16,7 @@
         "  meta_lif *1.2 as meta_lif,\n",
         "  total_tributario / (meta_lif  *1.2) as cumplimiento_pct\n",
         "FROM sat_demo.recaudacion_mensual\n",
-        "ORDER BY fecha"
+        "ORDER BY fecha desc"
       ]
     },
     {
@@ -370,13 +370,6 @@
               },
               "widgetType": "combo",
               "encodings": {
-                "x": {
-                  "fieldName": "fecha",
-                  "displayName": "Mes",
-                  "scale": {
-                    "type": "temporal"
-                  }
-                },
                 "y": {
                   "primary": {
                     "fields": [
@@ -386,7 +379,10 @@
                       }
                     ],
                     "scale": {
-                      "type": "quantitative"
+                      "type": "quantitative",
+                      "domain": {
+                        "min": 0
+                      }
                     }
                   },
                   "secondary": {
@@ -399,6 +395,12 @@
                     "scale": {
                       "type": "quantitative"
                     }
+                  }
+                },
+                "x": {
+                  "fieldName": "fecha",
+                  "scale": {
+                    "type": "temporal"
                   }
                 }
               }
@@ -2039,6 +2041,151 @@
             "y": 9,
             "width": 7,
             "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "5e5caff2",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "monthly-isr-total",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "isr_total",
+                      "expression": "`isr_total`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "fecha"
+                  },
+                  {
+                    "fieldName": "isr_total"
+                  }
+                ]
+              },
+              "frame": {
+                "title": "Monthly ISR Total",
+                "showTitle": true
+              },
+              "rowsPerPage": 25,
+              "displayRowNumbers": false
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "iva-total-by-month",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "sum(iva_total)",
+                      "expression": "SUM(`iva_total`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "IVA Total by Month",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(iva_total)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "5a3c77ff",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_recaudacion_mensual",
+                  "fields": [
+                    {
+                      "name": "sum(meta_lif)",
+                      "expression": "SUM(`meta_lif`)"
+                    },
+                    {
+                      "name": "anio",
+                      "expression": "`anio`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(meta_lif)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "anio",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 6,
+            "height": 6
           }
         }
       ],

@@ -1,0 +1,265 @@
+{
+  "datasets": [
+    {
+      "name": "kpi_summary",
+      "displayName": "KPI summary",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  COUNT(DISTINCT order_id) AS total_orders,\n",
+        "                  ROUND(SUM(total_amount), 0) AS total_revenue,\n",
+        "                  ROUND(AVG(total_amount), 2) AS avg_order_value,\n",
+        "                  COUNT(DISTINCT customer_id) AS active_customers,\n",
+        "                  ROUND(SUM(total_amount) / COUNT(DISTINCT customer_id), 2) AS revenue_per_customer\n",
+        "                FROM megacorp.silver.orders\n",
+        "                WHERE _is_valid = true AND status = 'completed'\n",
+        "            "
+      ]
+    },
+    {
+      "name": "revenue_quarterly",
+      "displayName": "Revenue by quarter",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  CONCAT(order_year, '-Q', order_quarter) AS quarter,\n",
+        "                  order_year,\n",
+        "                  order_quarter,\n",
+        "                  region,\n",
+        "                  SUM(total_revenue) AS revenue,\n",
+        "                  SUM(order_count) AS orders,\n",
+        "                  ROUND(SUM(total_revenue) / SUM(order_count), 2) AS avg_order_value\n",
+        "                FROM megacorp.gold.revenue_monthly\n",
+        "                GROUP BY order_year, order_quarter, region\n",
+        "                ORDER BY order_year, order_quarter\n",
+        "            "
+      ]
+    },
+    {
+      "name": "revenue_by_region",
+      "displayName": "Revenue by region",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  region,\n",
+        "                  SUM(total_revenue) AS total_revenue,\n",
+        "                  SUM(order_count) AS total_orders,\n",
+        "                  SUM(unique_customers) AS unique_customers\n",
+        "                FROM megacorp.gold.revenue_monthly\n",
+        "                GROUP BY region\n",
+        "                ORDER BY total_revenue DESC\n",
+        "            "
+      ]
+    },
+    {
+      "name": "top_products",
+      "displayName": "Top 15 products",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  product_name,\n",
+        "                  category,\n",
+        "                  total_revenue,\n",
+        "                  total_units_sold,\n",
+        "                  ROUND(margin_pct, 1) AS margin_pct,\n",
+        "                  revenue_rank\n",
+        "                FROM megacorp.gold.product_performance\n",
+        "                WHERE revenue_rank <= 15\n",
+        "                ORDER BY revenue_rank\n",
+        "            "
+      ]
+    },
+    {
+      "name": "customer_segments",
+      "displayName": "Customer segments",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  clv_segment,\n",
+        "                  COUNT(*) AS customer_count,\n",
+        "                  ROUND(AVG(lifetime_revenue), 0) AS avg_lifetime_revenue,\n",
+        "                  ROUND(AVG(total_orders), 1) AS avg_orders,\n",
+        "                  ROUND(AVG(avg_order_value), 0) AS avg_order_value\n",
+        "                FROM megacorp.gold.customer_lifetime_value\n",
+        "                GROUP BY clv_segment\n",
+        "                ORDER BY avg_lifetime_revenue DESC\n",
+        "            "
+      ]
+    },
+    {
+      "name": "equipment_health",
+      "displayName": "Equipment health",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  equipment_id,\n",
+        "                  location,\n",
+        "                  sensor_type,\n",
+        "                  reading_date,\n",
+        "                  anomaly_rate,\n",
+        "                  avg_value,\n",
+        "                  avg_battery,\n",
+        "                  health_status\n",
+        "                FROM megacorp.gold.equipment_health_daily\n",
+        "                WHERE reading_date >= DATEADD(DAY, -30, CURRENT_DATE())\n",
+        "                ORDER BY anomaly_rate DESC\n",
+        "                LIMIT 100\n",
+        "            "
+      ]
+    },
+    {
+      "name": "equipment_summary",
+      "displayName": "Equipment status summary",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  health_status,\n",
+        "                  COUNT(DISTINCT equipment_id) AS equipment_count,\n",
+        "                  ROUND(AVG(anomaly_rate), 2) AS avg_anomaly_rate\n",
+        "                FROM megacorp.gold.equipment_health_daily\n",
+        "                WHERE reading_date >= DATEADD(DAY, -7, CURRENT_DATE())\n",
+        "                GROUP BY health_status\n",
+        "            "
+      ]
+    },
+    {
+      "name": "critical_equipment",
+      "displayName": "Critical equipment alerts",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  equipment_id,\n",
+        "                  location,\n",
+        "                  COUNT(*) AS critical_days,\n",
+        "                  ROUND(AVG(anomaly_rate), 2) AS avg_anomaly_rate,\n",
+        "                  MAX(reading_date) AS last_critical_date\n",
+        "                FROM megacorp.gold.equipment_health_daily\n",
+        "                WHERE health_status = 'CRITICAL'\n",
+        "                GROUP BY equipment_id, location\n",
+        "                ORDER BY critical_days DESC\n",
+        "                LIMIT 20\n",
+        "            "
+      ]
+    },
+    {
+      "name": "funnel_by_device",
+      "displayName": "Funnel by device",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  device,\n",
+        "                  SUM(total_sessions) AS sessions,\n",
+        "                  SUM(product_views) AS product_views,\n",
+        "                  SUM(cart_sessions) AS cart_sessions,\n",
+        "                  SUM(checkout_sessions) AS checkout_sessions,\n",
+        "                  SUM(purchase_sessions) AS purchases,\n",
+        "                  ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate_pct\n",
+        "                FROM megacorp.gold.conversion_funnel_daily\n",
+        "                GROUP BY device\n",
+        "                ORDER BY sessions DESC\n",
+        "            "
+      ]
+    },
+    {
+      "name": "funnel_daily",
+      "displayName": "Daily conversion trend",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  event_date,\n",
+        "                  SUM(total_sessions) AS sessions,\n",
+        "                  SUM(purchase_sessions) AS purchases,\n",
+        "                  ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate\n",
+        "                FROM megacorp.gold.conversion_funnel_daily\n",
+        "                GROUP BY event_date\n",
+        "                ORDER BY event_date\n",
+        "            "
+      ]
+    },
+    {
+      "name": "funnel_by_country",
+      "displayName": "Conversion by country",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  country,\n",
+        "                  SUM(total_sessions) AS sessions,\n",
+        "                  SUM(purchase_sessions) AS purchases,\n",
+        "                  ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate\n",
+        "                FROM megacorp.gold.conversion_funnel_daily\n",
+        "                GROUP BY country\n",
+        "                ORDER BY sessions DESC\n",
+        "            "
+      ]
+    },
+    {
+      "name": "data_freshness",
+      "displayName": "Data freshness",
+      "queryLines": [
+        "\n",
+        "                SELECT 'Bronze - Orders' AS layer, MAX(_ingested_at) AS last_refresh FROM megacorp.bronze.raw_orders\n",
+        "                UNION ALL SELECT 'Bronze - Clickstream', MAX(_ingested_at) FROM megacorp.bronze.raw_clickstream\n",
+        "                UNION ALL SELECT 'Bronze - Sensors', MAX(_ingested_at) FROM megacorp.bronze.raw_sensor_readings\n",
+        "                UNION ALL SELECT 'Silver - Orders', MAX(_silver_processed_at) FROM megacorp.silver.orders\n",
+        "                UNION ALL SELECT 'Silver - Sensors', MAX(_silver_processed_at) FROM megacorp.silver.sensor_readings\n",
+        "                UNION ALL SELECT 'Gold - Revenue', MAX(_gold_processed_at) FROM megacorp.gold.revenue_monthly\n",
+        "                UNION ALL SELECT 'Gold - Equipment', MAX(_gold_processed_at) FROM megacorp.gold.equipment_health_daily\n",
+        "                ORDER BY last_refresh DESC\n",
+        "            "
+      ]
+    },
+    {
+      "name": "inventory_alerts",
+      "displayName": "Inventory alerts",
+      "queryLines": [
+        "\n",
+        "                SELECT\n",
+        "                  p.product_id,\n",
+        "                  p.product_name,\n",
+        "                  p.category,\n",
+        "                  p.stock_quantity,\n",
+        "                  p.reorder_point,\n",
+        "                  p.warehouse,\n",
+        "                  pp.total_revenue,\n",
+        "                  CASE\n",
+        "                    WHEN p.stock_quantity = 0 THEN 'OUT OF STOCK'\n",
+        "                    WHEN p.stock_quantity < p.reorder_point * 0.5 THEN 'CRITICAL'\n",
+        "                    ELSE 'LOW'\n",
+        "                  END AS urgency\n",
+        "                FROM megacorp.silver.products p\n",
+        "                LEFT JOIN megacorp.gold.product_performance pp ON p.product_id = pp.product_id\n",
+        "                WHERE p.needs_reorder = true AND p.status = 'active'\n",
+        "                ORDER BY pp.total_revenue DESC NULLS LAST\n",
+        "            "
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "overview",
+      "displayName": "Executive overview",
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "revenue",
+      "displayName": "Revenue & customers",
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "equipment",
+      "displayName": "Equipment health",
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "funnel",
+      "displayName": "App conversion funnel",
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
