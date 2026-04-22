@@ -14,6 +14,11 @@
 
 # COMMAND ----------
 
+# MAGIC %pip install pbixray
+# MAGIC dbutils.library.restartPython()
+
+# COMMAND ----------
+
 import json, io, zipfile, random, string
 from datetime import datetime, timedelta
 import pandas as pd
