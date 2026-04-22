@@ -12,12 +12,12 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("pbix_path", "/Volumes/migracion_pbix/default/pbix/KPI_coach_digital.pbix", "Path del archivo .pbix")
-dbutils.widgets.text("catalog", "migracion_pbix", "Catálogo destino en Unity Catalog")
-dbutils.widgets.text("schema", "couch", "Schema destino")
-dbutils.widgets.text("dashboard_path", "/Users/yolanda.villavicencioibanez@databricks.com/SAT/Dashboard.lvdash.json", "Path del dashboard .lvdash.json")
+dbutils.widgets.text("pbix_path", "/Volumes/pemex/default/powerbi_files/dashboard_fatca_crs.pbix", "Path del archivo .pbix")
+dbutils.widgets.text("catalog", "sar_reportes", "Catálogo destino en Unity Catalog")
+dbutils.widgets.text("schema", "default", "Schema destino")
+dbutils.widgets.text("dashboard_path", "/Users/yolanda.villavicencioibanez@databricks.com/SAT/DashboardFACT.lvdash.json", "Path del dashboard .lvdash.json")
 dbutils.widgets.text("llm_endpoint", "databricks-claude-sonnet-4", "Endpoint del LLM")
-dbutils.widgets.text("module_path", "/Workspace/Users/yolanda.villavicencioibanez@databricks.com/powerbi-model-analyzer", "Path de módulos Python")
+#dbutils.widgets.text("module_path", "/Workspace/Users/yolanda.villavicencioibanez@databricks.com/powerbi-model-analyzer", "Path de módulos Python")
 
 PBIX_PATH = dbutils.widgets.get("pbix_path")
 CATALOG = dbutils.widgets.get("catalog")
