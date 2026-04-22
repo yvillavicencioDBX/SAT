@@ -96,7 +96,7 @@ dbutils.notebook.run(
 # COMMAND ----------
 
 dbutils.notebook.run(
-    f"{BASE}/2. create_dashboard_views",
+    f"{BASE}/2.1 create_dashboard_views",
     timeout_seconds=1800,
     arguments={
         "catalog": CATALOG,
