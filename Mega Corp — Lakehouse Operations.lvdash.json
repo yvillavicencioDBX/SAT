@@ -3,67 +3,93 @@
     {
       "name": "ds_kpi",
       "displayName": "KPI summary",
-      "query": "SELECT COUNT(DISTINCT order_id) AS total_orders, ROUND(SUM(total_amount), 0) AS total_revenue, ROUND(AVG(total_amount), 2) AS avg_order_value, COUNT(DISTINCT customer_id) AS active_customers, ROUND(SUM(total_amount) / COUNT(DISTINCT customer_id), 2) AS revenue_per_customer FROM megacorp.silver.orders WHERE _is_valid = true AND status = 'completed'"
+      "queryLines": [
+        "SELECT COUNT(DISTINCT order_id) AS total_orders, ROUND(SUM(total_amount), 0) AS total_revenue, ROUND(AVG(total_amount), 2) AS avg_order_value, COUNT(DISTINCT customer_id) AS active_customers, ROUND(SUM(total_amount) / COUNT(DISTINCT customer_id), 2) AS revenue_per_customer FROM megacorp.silver.orders WHERE _is_valid = true AND status = 'completed'"
+      ]
     },
     {
       "name": "ds_rev_qtr",
       "displayName": "Revenue quarterly",
-      "query": "SELECT CONCAT(order_year, '-Q', order_quarter) AS quarter, region, SUM(total_revenue) AS revenue, SUM(order_count) AS orders FROM megacorp.gold.revenue_monthly GROUP BY order_year, order_quarter, region ORDER BY quarter"
+      "queryLines": [
+        "SELECT CONCAT(order_year, '-Q', order_quarter) AS quarter, region, SUM(total_revenue) AS revenue, SUM(order_count) AS orders FROM megacorp.gold.revenue_monthly GROUP BY order_year, order_quarter, region ORDER BY quarter"
+      ]
     },
     {
       "name": "ds_rev_region",
       "displayName": "Revenue by region",
-      "query": "SELECT region, ROUND(SUM(total_revenue), 0) AS total_revenue, SUM(order_count) AS total_orders, SUM(unique_customers) AS unique_customers FROM megacorp.gold.revenue_monthly GROUP BY region ORDER BY total_revenue DESC"
+      "queryLines": [
+        "SELECT region, ROUND(SUM(total_revenue), 0) AS total_revenue, SUM(order_count) AS total_orders, SUM(unique_customers) AS unique_customers FROM megacorp.gold.revenue_monthly GROUP BY region ORDER BY total_revenue DESC"
+      ]
     },
     {
       "name": "ds_top_prod",
       "displayName": "Top 15 products",
-      "query": "SELECT product_name, category, ROUND(total_revenue, 0) AS total_revenue, total_units_sold, ROUND(margin_pct, 1) AS margin_pct, revenue_rank FROM megacorp.gold.product_performance WHERE revenue_rank <= 15 ORDER BY revenue_rank"
+      "queryLines": [
+        "SELECT product_name, category, ROUND(total_revenue, 0) AS total_revenue, total_units_sold, ROUND(margin_pct, 1) AS margin_pct, revenue_rank FROM megacorp.gold.product_performance WHERE revenue_rank <= 15 ORDER BY revenue_rank"
+      ]
     },
     {
       "name": "ds_clv",
       "displayName": "Customer segments",
-      "query": "SELECT clv_segment, COUNT(*) AS customer_count, ROUND(AVG(lifetime_revenue), 0) AS avg_lifetime_revenue, ROUND(AVG(total_orders), 1) AS avg_orders FROM megacorp.gold.customer_lifetime_value GROUP BY clv_segment ORDER BY avg_lifetime_revenue DESC"
+      "queryLines": [
+        "SELECT clv_segment, COUNT(*) AS customer_count, ROUND(AVG(lifetime_revenue), 0) AS avg_lifetime_revenue, ROUND(AVG(total_orders), 1) AS avg_orders FROM megacorp.gold.customer_lifetime_value GROUP BY clv_segment ORDER BY avg_lifetime_revenue DESC"
+      ]
     },
     {
       "name": "ds_eq_summary",
       "displayName": "Equipment status",
-      "query": "SELECT health_status, COUNT(DISTINCT equipment_id) AS equipment_count, ROUND(AVG(anomaly_rate), 2) AS avg_anomaly_rate FROM megacorp.gold.equipment_health_daily WHERE reading_date >= DATEADD(DAY, -7, CURRENT_DATE()) GROUP BY health_status"
+      "queryLines": [
+        "SELECT health_status, COUNT(DISTINCT equipment_id) AS equipment_count, ROUND(AVG(anomaly_rate), 2) AS avg_anomaly_rate FROM megacorp.gold.equipment_health_daily WHERE reading_date >= DATEADD(DAY, -7, CURRENT_DATE()) GROUP BY health_status"
+      ]
     },
     {
       "name": "ds_eq_critical",
       "displayName": "Critical equipment",
-      "query": "SELECT equipment_id, location, COUNT(*) AS critical_days, ROUND(AVG(anomaly_rate), 2) AS avg_anomaly_rate, MAX(reading_date) AS last_critical FROM megacorp.gold.equipment_health_daily WHERE health_status = 'CRITICAL' GROUP BY equipment_id, location ORDER BY critical_days DESC LIMIT 15"
+      "queryLines": [
+        "SELECT equipment_id, location, COUNT(*) AS critical_days, ROUND(AVG(anomaly_rate), 2) AS avg_anomaly_rate, MAX(reading_date) AS last_critical FROM megacorp.gold.equipment_health_daily WHERE health_status = 'CRITICAL' GROUP BY equipment_id, location ORDER BY critical_days DESC LIMIT 15"
+      ]
     },
     {
       "name": "ds_eq_trend",
       "displayName": "Anomaly trend",
-      "query": "SELECT reading_date, health_status, COUNT(DISTINCT equipment_id) AS equipment_count FROM megacorp.gold.equipment_health_daily WHERE reading_date >= DATEADD(DAY, -30, CURRENT_DATE()) GROUP BY reading_date, health_status ORDER BY reading_date"
+      "queryLines": [
+        "SELECT reading_date, health_status, COUNT(DISTINCT equipment_id) AS equipment_count FROM megacorp.gold.equipment_health_daily WHERE reading_date >= DATEADD(DAY, -30, CURRENT_DATE()) GROUP BY reading_date, health_status ORDER BY reading_date"
+      ]
     },
     {
       "name": "ds_funnel_dev",
       "displayName": "Funnel by device",
-      "query": "SELECT device, SUM(total_sessions) AS sessions, SUM(product_views) AS product_views, SUM(cart_sessions) AS cart_sessions, SUM(purchase_sessions) AS purchases, ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate FROM megacorp.gold.conversion_funnel_daily GROUP BY device ORDER BY sessions DESC"
+      "queryLines": [
+        "SELECT device, SUM(total_sessions) AS sessions, SUM(product_views) AS product_views, SUM(cart_sessions) AS cart_sessions, SUM(purchase_sessions) AS purchases, ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate FROM megacorp.gold.conversion_funnel_daily GROUP BY device ORDER BY sessions DESC"
+      ]
     },
     {
       "name": "ds_funnel_daily",
       "displayName": "Daily conversion",
-      "query": "SELECT event_date, SUM(total_sessions) AS sessions, SUM(purchase_sessions) AS purchases, ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate FROM megacorp.gold.conversion_funnel_daily GROUP BY event_date ORDER BY event_date"
+      "queryLines": [
+        "SELECT event_date, SUM(total_sessions) AS sessions, SUM(purchase_sessions) AS purchases, ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate FROM megacorp.gold.conversion_funnel_daily GROUP BY event_date ORDER BY event_date"
+      ]
     },
     {
       "name": "ds_funnel_country",
       "displayName": "Conversion by country",
-      "query": "SELECT country, SUM(total_sessions) AS sessions, SUM(purchase_sessions) AS purchases, ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate FROM megacorp.gold.conversion_funnel_daily GROUP BY country ORDER BY sessions DESC LIMIT 10"
+      "queryLines": [
+        "SELECT country, SUM(total_sessions) AS sessions, SUM(purchase_sessions) AS purchases, ROUND(SUM(purchase_sessions) / SUM(total_sessions) * 100, 2) AS conversion_rate FROM megacorp.gold.conversion_funnel_daily GROUP BY country ORDER BY sessions DESC LIMIT 10"
+      ]
     },
     {
       "name": "ds_inventory",
       "displayName": "Inventory alerts",
-      "query": "SELECT p.product_name, p.category, p.stock_quantity, p.reorder_point, p.warehouse, COALESCE(pp.total_revenue, 0) AS total_revenue, CASE WHEN p.stock_quantity = 0 THEN 'OUT OF STOCK' WHEN p.stock_quantity < p.reorder_point * 0.5 THEN 'CRITICAL' ELSE 'LOW' END AS urgency FROM megacorp.silver.products p LEFT JOIN megacorp.gold.product_performance pp ON p.product_id = pp.product_id WHERE p.needs_reorder = true AND p.status = 'active' ORDER BY total_revenue DESC LIMIT 20"
+      "queryLines": [
+        "SELECT p.product_name, p.category, p.stock_quantity, p.reorder_point, p.warehouse, COALESCE(pp.total_revenue, 0) AS total_revenue, CASE WHEN p.stock_quantity = 0 THEN 'OUT OF STOCK' WHEN p.stock_quantity < p.reorder_point * 0.5 THEN 'CRITICAL' ELSE 'LOW' END AS urgency FROM megacorp.silver.products p LEFT JOIN megacorp.gold.product_performance pp ON p.product_id = pp.product_id WHERE p.needs_reorder = true AND p.status = 'active' ORDER BY total_revenue DESC LIMIT 20"
+      ]
     },
     {
       "name": "ds_freshness",
       "displayName": "Data freshness",
-      "query": "SELECT 'Bronze - Orders' AS layer, MAX(_ingested_at) AS last_refresh FROM megacorp.bronze.raw_orders UNION ALL SELECT 'Bronze - Sensors', MAX(_ingested_at) FROM megacorp.bronze.raw_sensor_readings UNION ALL SELECT 'Silver - Orders', MAX(_silver_processed_at) FROM megacorp.silver.orders UNION ALL SELECT 'Gold - Revenue', MAX(_gold_processed_at) FROM megacorp.gold.revenue_monthly UNION ALL SELECT 'Gold - Equipment', MAX(_gold_processed_at) FROM megacorp.gold.equipment_health_daily ORDER BY last_refresh DESC"
+      "queryLines": [
+        "SELECT 'Bronze - Orders' AS layer, MAX(_ingested_at) AS last_refresh FROM megacorp.bronze.raw_orders UNION ALL SELECT 'Bronze - Sensors', MAX(_ingested_at) FROM megacorp.bronze.raw_sensor_readings UNION ALL SELECT 'Silver - Orders', MAX(_silver_processed_at) FROM megacorp.silver.orders UNION ALL SELECT 'Gold - Revenue', MAX(_gold_processed_at) FROM megacorp.gold.revenue_monthly UNION ALL SELECT 'Gold - Equipment', MAX(_gold_processed_at) FROM megacorp.gold.equipment_health_daily ORDER BY last_refresh DESC"
+      ]
     }
   ],
   "pages": [
@@ -72,26 +98,23 @@
       "displayName": "Executive overview",
       "layout": [
         {
-          "name": "p1_t",
+          "widget": {
+            "name": "p1_t",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Executive overview\n",
+                "Real-time KPIs across revenue, customers, equipment, and app analytics"
+              ]
+            }
+          },
           "position": {
             "x": 0,
             "y": 0,
             "width": 6,
             "height": 1
-          },
-          "widget": {
-            "name": "p1_t",
-            "textbox_spec": "# Executive overview\nReal-time KPIs across revenue, customers, equipment, and app analytics"
           }
         },
         {
-          "name": "p1_rev",
-          "position": {
-            "x": 0,
-            "y": 1,
-            "width": 1,
-            "height": 1
-          },
           "widget": {
             "name": "p1_rev",
             "queries": [
@@ -99,13 +122,13 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_kpi",
-                  "disaggregated": false,
                   "fields": [
                     {
-                      "expression": "SUM(`total_revenue`)",
-                      "name": "sum(total_revenue)"
+                      "name": "sum(total_revenue)",
+                      "expression": "SUM(`total_revenue`)"
                     }
-                  ]
+                  ],
+                  "disaggregated": false
                 }
               }
             ],
@@ -123,16 +146,15 @@
               "version": 3,
               "widgetType": "counter"
             }
-          }
-        },
-        {
-          "name": "p1_ord",
+          },
           "position": {
-            "x": 1,
+            "x": 0,
             "y": 1,
             "width": 1,
             "height": 1
-          },
+          }
+        },
+        {
           "widget": {
             "name": "p1_ord",
             "queries": [
@@ -140,13 +162,13 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_kpi",
-                  "disaggregated": false,
                   "fields": [
                     {
-                      "expression": "SUM(`total_orders`)",
-                      "name": "sum(total_orders)"
+                      "name": "sum(total_orders)",
+                      "expression": "SUM(`total_orders`)"
                     }
-                  ]
+                  ],
+                  "disaggregated": false
                 }
               }
             ],
@@ -164,16 +186,15 @@
               "version": 3,
               "widgetType": "counter"
             }
-          }
-        },
-        {
-          "name": "p1_cust",
+          },
           "position": {
-            "x": 2,
+            "x": 1,
             "y": 1,
             "width": 1,
             "height": 1
-          },
+          }
+        },
+        {
           "widget": {
             "name": "p1_cust",
             "queries": [
@@ -181,13 +202,13 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_kpi",
-                  "disaggregated": false,
                   "fields": [
                     {
-                      "expression": "SUM(`active_customers`)",
-                      "name": "sum(active_customers)"
+                      "name": "sum(active_customers)",
+                      "expression": "SUM(`active_customers`)"
                     }
-                  ]
+                  ],
+                  "disaggregated": false
                 }
               }
             ],
@@ -205,16 +226,15 @@
               "version": 3,
               "widgetType": "counter"
             }
-          }
-        },
-        {
-          "name": "p1_aov",
+          },
           "position": {
-            "x": 3,
+            "x": 2,
             "y": 1,
             "width": 1,
             "height": 1
-          },
+          }
+        },
+        {
           "widget": {
             "name": "p1_aov",
             "queries": [
@@ -222,13 +242,13 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_kpi",
-                  "disaggregated": false,
                   "fields": [
                     {
-                      "expression": "SUM(`avg_order_value`)",
-                      "name": "sum(avg_order_value)"
+                      "name": "sum(avg_order_value)",
+                      "expression": "SUM(`avg_order_value`)"
                     }
-                  ]
+                  ],
+                  "disaggregated": false
                 }
               }
             ],
@@ -246,16 +266,15 @@
               "version": 3,
               "widgetType": "counter"
             }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 1,
+            "height": 1
           }
         },
         {
-          "name": "p1_rpc",
-          "position": {
-            "x": 4,
-            "y": 1,
-            "width": 2,
-            "height": 1
-          },
           "widget": {
             "name": "p1_rpc",
             "queries": [
@@ -263,13 +282,13 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_kpi",
-                  "disaggregated": false,
                   "fields": [
                     {
-                      "expression": "SUM(`revenue_per_customer`)",
-                      "name": "sum(revenue_per_customer)"
+                      "name": "sum(revenue_per_customer)",
+                      "expression": "SUM(`revenue_per_customer`)"
                     }
-                  ]
+                  ],
+                  "disaggregated": false
                 }
               }
             ],
@@ -287,16 +306,15 @@
               "version": 3,
               "widgetType": "counter"
             }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 1
           }
         },
         {
-          "name": "p1_bar_reg",
-          "position": {
-            "x": 0,
-            "y": 2,
-            "width": 3,
-            "height": 3
-          },
           "widget": {
             "name": "p1_bar_reg",
             "queries": [
@@ -304,17 +322,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_rev_region",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`region`",
-                      "name": "region"
+                      "name": "region",
+                      "expression": "`region`"
                     },
                     {
-                      "expression": "`total_revenue`",
-                      "name": "total_revenue"
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -342,16 +360,15 @@
               "version": 3,
               "widgetType": "bar"
             }
-          }
-        },
-        {
-          "name": "p1_pie_clv",
+          },
           "position": {
-            "x": 3,
+            "x": 0,
             "y": 2,
             "width": 3,
             "height": 3
-          },
+          }
+        },
+        {
           "widget": {
             "name": "p1_pie_clv",
             "queries": [
@@ -359,17 +376,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_clv",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`clv_segment`",
-                      "name": "clv_segment"
+                      "name": "clv_segment",
+                      "expression": "`clv_segment`"
                     },
                     {
-                      "expression": "`customer_count`",
-                      "name": "customer_count"
+                      "name": "customer_count",
+                      "expression": "`customer_count`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -394,16 +411,15 @@
               "version": 3,
               "widgetType": "pie"
             }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 3
           }
         },
         {
-          "name": "p1_fresh",
-          "position": {
-            "x": 0,
-            "y": 5,
-            "width": 3,
-            "height": 2
-          },
           "widget": {
             "name": "p1_fresh",
             "queries": [
@@ -411,17 +427,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_freshness",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`layer`",
-                      "name": "layer"
+                      "name": "layer",
+                      "expression": "`layer`"
                     },
                     {
-                      "expression": "`last_refresh`",
-                      "name": "last_refresh"
+                      "name": "last_refresh",
+                      "expression": "`last_refresh`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -445,16 +461,15 @@
               "version": 3,
               "widgetType": "table"
             }
-          }
-        },
-        {
-          "name": "p1_inv",
+          },
           "position": {
-            "x": 3,
+            "x": 0,
             "y": 5,
             "width": 3,
             "height": 2
-          },
+          }
+        },
+        {
           "widget": {
             "name": "p1_inv",
             "queries": [
@@ -462,25 +477,25 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_inventory",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`product_name`",
-                      "name": "product_name"
+                      "name": "product_name",
+                      "expression": "`product_name`"
                     },
                     {
-                      "expression": "`urgency`",
-                      "name": "urgency"
+                      "name": "urgency",
+                      "expression": "`urgency`"
                     },
                     {
-                      "expression": "`stock_quantity`",
-                      "name": "stock_quantity"
+                      "name": "stock_quantity",
+                      "expression": "`stock_quantity`"
                     },
                     {
-                      "expression": "`total_revenue`",
-                      "name": "total_revenue"
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -512,35 +527,39 @@
               "version": 3,
               "widgetType": "table"
             }
+          },
+          "position": {
+            "x": 3,
+            "y": 5,
+            "width": 3,
+            "height": 2
           }
         }
-      ]
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
     },
     {
       "name": "pg_revenue",
       "displayName": "Revenue & customers",
       "layout": [
         {
-          "name": "p2_t",
+          "widget": {
+            "name": "p2_t",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Revenue & customers\n",
+                "Quarterly trends, product performance, and customer value analysis"
+              ]
+            }
+          },
           "position": {
             "x": 0,
             "y": 0,
             "width": 6,
             "height": 1
-          },
-          "widget": {
-            "name": "p2_t",
-            "textbox_spec": "# Revenue & customers\nQuarterly trends, product performance, and customer value analysis"
           }
         },
         {
-          "name": "p2_line_rev",
-          "position": {
-            "x": 0,
-            "y": 1,
-            "width": 6,
-            "height": 3
-          },
           "widget": {
             "name": "p2_line_rev",
             "queries": [
@@ -548,21 +567,21 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_rev_qtr",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`quarter`",
-                      "name": "quarter"
+                      "name": "quarter",
+                      "expression": "`quarter`"
                     },
                     {
-                      "expression": "`revenue`",
-                      "name": "revenue"
+                      "name": "revenue",
+                      "expression": "`revenue`"
                     },
                     {
-                      "expression": "`region`",
-                      "name": "region"
+                      "name": "region",
+                      "expression": "`region`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -597,16 +616,15 @@
               "version": 3,
               "widgetType": "line"
             }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 6,
+            "height": 3
           }
         },
         {
-          "name": "p2_tbl_prod",
-          "position": {
-            "x": 0,
-            "y": 4,
-            "width": 4,
-            "height": 3
-          },
           "widget": {
             "name": "p2_tbl_prod",
             "queries": [
@@ -614,33 +632,33 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_top_prod",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`revenue_rank`",
-                      "name": "revenue_rank"
+                      "name": "revenue_rank",
+                      "expression": "`revenue_rank`"
                     },
                     {
-                      "expression": "`product_name`",
-                      "name": "product_name"
+                      "name": "product_name",
+                      "expression": "`product_name`"
                     },
                     {
-                      "expression": "`category`",
-                      "name": "category"
+                      "name": "category",
+                      "expression": "`category`"
                     },
                     {
-                      "expression": "`total_revenue`",
-                      "name": "total_revenue"
+                      "name": "total_revenue",
+                      "expression": "`total_revenue`"
                     },
                     {
-                      "expression": "`total_units_sold`",
-                      "name": "total_units_sold"
+                      "name": "total_units_sold",
+                      "expression": "`total_units_sold`"
                     },
                     {
-                      "expression": "`margin_pct`",
-                      "name": "margin_pct"
+                      "name": "margin_pct",
+                      "expression": "`margin_pct`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -680,16 +698,15 @@
               "version": 3,
               "widgetType": "table"
             }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 4,
+            "height": 3
           }
         },
         {
-          "name": "p2_bar_clv",
-          "position": {
-            "x": 4,
-            "y": 4,
-            "width": 2,
-            "height": 3
-          },
           "widget": {
             "name": "p2_bar_clv",
             "queries": [
@@ -697,17 +714,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_clv",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`clv_segment`",
-                      "name": "clv_segment"
+                      "name": "clv_segment",
+                      "expression": "`clv_segment`"
                     },
                     {
-                      "expression": "`avg_lifetime_revenue`",
-                      "name": "avg_lifetime_revenue"
+                      "name": "avg_lifetime_revenue",
+                      "expression": "`avg_lifetime_revenue`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -735,35 +752,39 @@
               "version": 3,
               "widgetType": "bar"
             }
+          },
+          "position": {
+            "x": 4,
+            "y": 4,
+            "width": 2,
+            "height": 3
           }
         }
-      ]
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
     },
     {
       "name": "pg_equipment",
       "displayName": "Equipment health",
       "layout": [
         {
-          "name": "p3_t",
+          "widget": {
+            "name": "p3_t",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Equipment health\n",
+                "IoT sensor monitoring, anomaly detection, and predictive maintenance alerts"
+              ]
+            }
+          },
           "position": {
             "x": 0,
             "y": 0,
             "width": 6,
             "height": 1
-          },
-          "widget": {
-            "name": "p3_t",
-            "textbox_spec": "# Equipment health\nIoT sensor monitoring, anomaly detection, and predictive maintenance alerts"
           }
         },
         {
-          "name": "p3_pie_status",
-          "position": {
-            "x": 0,
-            "y": 1,
-            "width": 2,
-            "height": 3
-          },
           "widget": {
             "name": "p3_pie_status",
             "queries": [
@@ -771,17 +792,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_eq_summary",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`health_status`",
-                      "name": "health_status"
+                      "name": "health_status",
+                      "expression": "`health_status`"
                     },
                     {
-                      "expression": "`equipment_count`",
-                      "name": "equipment_count"
+                      "name": "equipment_count",
+                      "expression": "`equipment_count`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -806,16 +827,15 @@
               "version": 3,
               "widgetType": "pie"
             }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 3
           }
         },
         {
-          "name": "p3_line_trend",
-          "position": {
-            "x": 2,
-            "y": 1,
-            "width": 4,
-            "height": 3
-          },
           "widget": {
             "name": "p3_line_trend",
             "queries": [
@@ -823,21 +843,21 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_eq_trend",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`reading_date`",
-                      "name": "reading_date"
+                      "name": "reading_date",
+                      "expression": "`reading_date`"
                     },
                     {
-                      "expression": "`equipment_count`",
-                      "name": "equipment_count"
+                      "name": "equipment_count",
+                      "expression": "`equipment_count`"
                     },
                     {
-                      "expression": "`health_status`",
-                      "name": "health_status"
+                      "name": "health_status",
+                      "expression": "`health_status`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -872,16 +892,15 @@
               "version": 3,
               "widgetType": "line"
             }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 4,
+            "height": 3
           }
         },
         {
-          "name": "p3_tbl_crit",
-          "position": {
-            "x": 0,
-            "y": 4,
-            "width": 6,
-            "height": 3
-          },
           "widget": {
             "name": "p3_tbl_crit",
             "queries": [
@@ -889,29 +908,29 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_eq_critical",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`equipment_id`",
-                      "name": "equipment_id"
+                      "name": "equipment_id",
+                      "expression": "`equipment_id`"
                     },
                     {
-                      "expression": "`location`",
-                      "name": "location"
+                      "name": "location",
+                      "expression": "`location`"
                     },
                     {
-                      "expression": "`critical_days`",
-                      "name": "critical_days"
+                      "name": "critical_days",
+                      "expression": "`critical_days`"
                     },
                     {
-                      "expression": "`avg_anomaly_rate`",
-                      "name": "avg_anomaly_rate"
+                      "name": "avg_anomaly_rate",
+                      "expression": "`avg_anomaly_rate`"
                     },
                     {
-                      "expression": "`last_critical`",
-                      "name": "last_critical"
+                      "name": "last_critical",
+                      "expression": "`last_critical`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -942,40 +961,44 @@
               },
               "frame": {
                 "showTitle": true,
-                "title": "Critical equipment \u2014 action required"
+                "title": "Critical equipment — action required"
               },
               "version": 3,
               "widgetType": "table"
             }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 6,
+            "height": 3
           }
         }
-      ]
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
     },
     {
       "name": "pg_funnel",
       "displayName": "App conversion funnel",
       "layout": [
         {
-          "name": "p4_t",
+          "widget": {
+            "name": "p4_t",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# App conversion funnel\n",
+                "User behavior, session analytics, and conversion rates by device and country"
+              ]
+            }
+          },
           "position": {
             "x": 0,
             "y": 0,
             "width": 6,
             "height": 1
-          },
-          "widget": {
-            "name": "p4_t",
-            "textbox_spec": "# App conversion funnel\nUser behavior, session analytics, and conversion rates by device and country"
           }
         },
         {
-          "name": "p4_bar_sess",
-          "position": {
-            "x": 0,
-            "y": 1,
-            "width": 3,
-            "height": 3
-          },
           "widget": {
             "name": "p4_bar_sess",
             "queries": [
@@ -983,21 +1006,21 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_funnel_dev",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`device`",
-                      "name": "device"
+                      "name": "device",
+                      "expression": "`device`"
                     },
                     {
-                      "expression": "`sessions`",
-                      "name": "sessions"
+                      "name": "sessions",
+                      "expression": "`sessions`"
                     },
                     {
-                      "expression": "`purchases`",
-                      "name": "purchases"
+                      "name": "purchases",
+                      "expression": "`purchases`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -1025,16 +1048,15 @@
               "version": 3,
               "widgetType": "bar"
             }
-          }
-        },
-        {
-          "name": "p4_bar_conv",
+          },
           "position": {
-            "x": 3,
+            "x": 0,
             "y": 1,
             "width": 3,
             "height": 3
-          },
+          }
+        },
+        {
           "widget": {
             "name": "p4_bar_conv",
             "queries": [
@@ -1042,17 +1064,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_funnel_dev",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`device`",
-                      "name": "device"
+                      "name": "device",
+                      "expression": "`device`"
                     },
                     {
-                      "expression": "`conversion_rate`",
-                      "name": "conversion_rate"
+                      "name": "conversion_rate",
+                      "expression": "`conversion_rate`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -1080,16 +1102,15 @@
               "version": 3,
               "widgetType": "bar"
             }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 3
           }
         },
         {
-          "name": "p4_line_daily",
-          "position": {
-            "x": 0,
-            "y": 4,
-            "width": 4,
-            "height": 3
-          },
           "widget": {
             "name": "p4_line_daily",
             "queries": [
@@ -1097,17 +1118,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_funnel_daily",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`event_date`",
-                      "name": "event_date"
+                      "name": "event_date",
+                      "expression": "`event_date`"
                     },
                     {
-                      "expression": "`conversion_rate`",
-                      "name": "conversion_rate"
+                      "name": "conversion_rate",
+                      "expression": "`conversion_rate`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -1135,16 +1156,15 @@
               "version": 3,
               "widgetType": "line"
             }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 4,
+            "height": 3
           }
         },
         {
-          "name": "p4_bar_country",
-          "position": {
-            "x": 4,
-            "y": 4,
-            "width": 2,
-            "height": 3
-          },
           "widget": {
             "name": "p4_bar_country",
             "queries": [
@@ -1152,17 +1172,17 @@
                 "name": "main_query",
                 "query": {
                   "datasetName": "ds_funnel_country",
-                  "disaggregated": true,
                   "fields": [
                     {
-                      "expression": "`country`",
-                      "name": "country"
+                      "name": "country",
+                      "expression": "`country`"
                     },
                     {
-                      "expression": "`conversion_rate`",
-                      "name": "conversion_rate"
+                      "name": "conversion_rate",
+                      "expression": "`conversion_rate`"
                     }
-                  ]
+                  ],
+                  "disaggregated": true
                 }
               }
             ],
@@ -1190,9 +1210,22 @@
               "version": 3,
               "widgetType": "bar"
             }
+          },
+          "position": {
+            "x": 4,
+            "y": 4,
+            "width": 2,
+            "height": 3
           }
         }
-      ]
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
     }
-  ]
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
 }

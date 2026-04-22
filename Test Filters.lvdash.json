@@ -1,0 +1,73 @@
+{
+  "datasets": [
+    {
+      "name": "ds_test",
+      "displayName": "Test",
+      "queryLines": [
+        "SELECT receiving_country, MEASURE(registros_crs_sabana) as registros_crs_sabana FROM sat_reportes.default.mv_crs_sabana GROUP BY ALL"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "test_page",
+      "displayName": "Test Filters",
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1",
+      "layout": [
+        {
+          "widget": {
+            "name": "counter_test",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_test",
+                  "fields": [
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "filterFields": [
+                    {
+                      "name": "receiving_country",
+                      "expression": "`receiving_country`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "displayName": "Registros",
+                  "fieldName": "sum(registros_crs_sabana)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Test Counter"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ]
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

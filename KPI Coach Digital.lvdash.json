@@ -1,0 +1,2408 @@
+{
+  "datasets": [
+    {
+      "name": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+      "displayName": "Compensacion Ventas Seguimientos Kpi 6Meses",
+      "queryLines": [
+        "SELECT\n",
+        "    `clave_bodega`,\n",
+        "    `clave_ruta`,\n",
+        "    `grupo`,\n",
+        "    `orden`,\n",
+        "    `segmento`,\n",
+        "    `real_cajas_fisicas`,\n",
+        "    `actual_cajas_fisicas`,\n",
+        "    `objetivo_cajas_fisicas`,\n",
+        "    `porcentaje_cumplimiento`,\n",
+        "    `compensacion_lograda`,\n",
+        "    `diferencia_compensacion`,\n",
+        "    `objetivo_compensacion`,\n",
+        "    `fecha_ejecucion`,\n",
+        "    `fecha_ejecucion_month`,\n",
+        "    `campo_llave`,\n",
+        "    `fecha`,\n",
+        "    `fecha_month`,\n",
+        "    TRY_CAST(`año` AS STRING) as `año`,\n",
+        "    TRY_CAST(`mes` AS STRING) as `mes`,\n",
+        "    `route_desc_ruta`,\n",
+        "    `route_ruta_activa`,\n",
+        "    `route_clasificacion_ruta`,\n",
+        "    `route_tipo_ruta`,\n",
+        "    `route_categoria_ruta`,\n",
+        "    `warehouse_bodega`,\n",
+        "    `warehouse_territorio`,\n",
+        "    `warehouse_region`,\n",
+        "    `warehouse_grupo_bodega`,\n",
+        "    `warehouse_tipo_cedis`,\n",
+        "    `warehouse_estado`,\n",
+        "    `cumplimiento_cuotas_mes_anterior_pct`,\n",
+        "    `compensacion_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_actual_pct`,\n",
+        "    `compensacion_ps_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_ps_actual_pct`,\n",
+        "    `cumplimiento_alpura_mes_anterior_pct`,\n",
+        "    `compensacion_alpura_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_alpura_actual_pct`,\n",
+        "    `cumplimiento_actual_por_seg_pct`,\n",
+        "    `diferencia_cumplimiento_seg_pct`,\n",
+        "    `cumplimiento_mes_anterior_ruta_dynamic`,\n",
+        "    `variacion_pct_mes_vs_mes_anterior_ruta`,\n",
+        "    `cumplimiento_actual_cuotas_por_seg_pct`,\n",
+        "    `m_diferencia_cumplimiento_seg_pct`,\n",
+        "    `cumplimiento_actual_ps_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_ps_por_seg_pct`,\n",
+        "    `diferencia_cumplimiento_ps_seg_pct`,\n",
+        "    `cumplimiento_seg_pct`,\n",
+        "    `cumplimiento_grafica_pct`,\n",
+        "    `cumplimiento_actual_alpura_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_alpura_por_seg_pct`,\n",
+        "    `diferencia_cumplimiento_alpura_seg_pct`,\n",
+        "    `diferencia_actual_vs_mes_anterior`,\n",
+        "    `delta_vs_alcance_mes_anterior`,\n",
+        "    `variacion_y_diferencia_nominal`,\n",
+        "    `color_diferencia`,\n",
+        "    `color_cuota_pct`,\n",
+        "    `icono_segun_variacion`,\n",
+        "    `icono_rojo`,\n",
+        "    `icono_verde`,\n",
+        "    `cumplimiento_mes_act_para_tarjeta`,\n",
+        "    `delta_vs_alcance_comp_mes_anterior`,\n",
+        "    `compen_mes_act_para_tarjeta`,\n",
+        "    `diferencia_comp_actual_vs_obj`,\n",
+        "    `variacion_y_diferencia_comp`,\n",
+        "    `color_compensacion_pct`,\n",
+        "    `color_diferencia_comp_cuotas`,\n",
+        "    `icono_segun_comp_variacion`,\n",
+        "    `cumplimiento_ps_mes_act_para_tarjeta`,\n",
+        "    `diferencia_ps_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_ps`,\n",
+        "    `icono_segun_ps_variacion`,\n",
+        "    `diferencia_comp_ps_actual_vs_obj`,\n",
+        "    `variacion_y_diferencia_comp_ps`,\n",
+        "    `compen_mes_act_ps_para_tarjeta`,\n",
+        "    `delta_vs_alcance_comp_ps_mes_anterior`,\n",
+        "    `color_compensacion_ps_pct`,\n",
+        "    `icono_segun_comp_ps_variacion`,\n",
+        "    `diferencia_alpura_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_alpura`,\n",
+        "    `cumplimiento_mes_act_alpura_para_tarjeta`,\n",
+        "    `color_diferencia_alpura`,\n",
+        "    `color_alpura_pct`,\n",
+        "    `color_diferencia_ps`,\n",
+        "    `icono_segun_alpura_variacion`,\n",
+        "    `diferencia_comp_alpura_actual_vs_obj`,\n",
+        "    `variacion_y_diferencia_comp_alpura`,\n",
+        "    `compen_mes_act_alpura_para_tarjeta`,\n",
+        "    `delta_vs_alcance_comp_alpura_mes_anterior`,\n",
+        "    `color_compensacion_alpura_pct`,\n",
+        "    `color_diferencia_comp_alpura`,\n",
+        "    `icono_segun_comp_alpura_variacion`,\n",
+        "    `color_ps_pct`,\n",
+        "    `diferencia_otras_cat_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_otras_cat`,\n",
+        "    `cumplimiento_mes_act_otras_cat_para_tarjeta`,\n",
+        "    `color_diferencia_otras_cat`,\n",
+        "    `color_diferencia_comp_otras_cat`,\n",
+        "    `diferencia_comp_otras_cat_actual_vs_obj`,\n",
+        "    `compensacion_otras_cat_mes_actual_pct`,\n",
+        "    `variacion_y_diferencia_comp_otras_cat`,\n",
+        "    `color_otras_cat_pct`,\n",
+        "    `icono_segun_otras_cat_variacion`,\n",
+        "    `objetivo_compensacion_otras_cat_actual_pct`,\n",
+        "    `compen_mes_act_otras_cat_para_tarjeta`,\n",
+        "    `delta_vs_alcance_comp_otras_cat_mes_anterior`,\n",
+        "    `color_compensacion_otras_cat_pct`,\n",
+        "    `icono_segun_comp_otras_cat_variacion`,\n",
+        "    `cumplimiento_actual_otras_cat_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_otras_cat_por_seg_pct`,\n",
+        "    `diferencia_cumplimiento_otras_cat_seg_pct`,\n",
+        "    `cumplimiento_anterior_cuotas_por_seg_pct`,\n",
+        "    `cumplimiento_otras_cat_mes_anterior_pct`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `grupo`,\n",
+        "      `orden`,\n",
+        "      `segmento`,\n",
+        "      `real_cajas_fisicas`,\n",
+        "      `actual_cajas_fisicas`,\n",
+        "      `objetivo_cajas_fisicas`,\n",
+        "      `porcentaje_cumplimiento`,\n",
+        "      `compensacion_lograda`,\n",
+        "      `diferencia_compensacion`,\n",
+        "      `objetivo_compensacion`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `fecha_ejecucion_month`,\n",
+        "      `campo_llave`,\n",
+        "      `fecha`,\n",
+        "      `fecha_month`,\n",
+        "      `año`,\n",
+        "      `mes`,\n",
+        "      `route_desc_ruta`,\n",
+        "      `route_ruta_activa`,\n",
+        "      `route_clasificacion_ruta`,\n",
+        "      `route_tipo_ruta`,\n",
+        "      `route_categoria_ruta`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_estado`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_cuotas_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_cuotas_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_mes_actual_pct`) AS DOUBLE) as `compensacion_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_actual_pct`) AS DOUBLE) as `objetivo_compensacion_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_ps_mes_actual_pct`) AS DOUBLE) as `compensacion_ps_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_ps_actual_pct`) AS DOUBLE) as `objetivo_compensacion_ps_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_alpura_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_alpura_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_alpura_mes_actual_pct`) AS DOUBLE) as `compensacion_alpura_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_alpura_actual_pct`) AS DOUBLE) as `objetivo_compensacion_alpura_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_anterior_ruta_dynamic`) AS DOUBLE) as `cumplimiento_mes_anterior_ruta_dynamic`,\n",
+        "      TRY_CAST(MEASURE(`variacion_pct_mes_vs_mes_anterior_ruta`) AS DOUBLE) as `variacion_pct_mes_vs_mes_anterior_ruta`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_cuotas_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_cuotas_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`m_diferencia_cumplimiento_seg_pct`) AS DOUBLE) as `m_diferencia_cumplimiento_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_ps_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_ps_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_ps_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_ps_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_ps_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_ps_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_seg_pct`) AS DOUBLE) as `cumplimiento_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_grafica_pct`) AS DOUBLE) as `cumplimiento_grafica_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_alpura_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_alpura_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_alpura_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_alpura_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_alpura_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_alpura_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_nominal`) AS DOUBLE) as `variacion_y_diferencia_nominal`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia`) AS DOUBLE) as `color_diferencia`,\n",
+        "      TRY_CAST(MEASURE(`color_cuota_pct`) AS DOUBLE) as `color_cuota_pct`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_variacion`) AS DOUBLE) as `icono_segun_variacion`,\n",
+        "      TRY_CAST(MEASURE(`icono_rojo`) AS DOUBLE) as `icono_rojo`,\n",
+        "      TRY_CAST(MEASURE(`icono_verde`) AS DOUBLE) as `icono_verde`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_act_para_tarjeta`) AS DOUBLE) as `cumplimiento_mes_act_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_para_tarjeta`) AS DOUBLE) as `compen_mes_act_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp`) AS DOUBLE) as `variacion_y_diferencia_comp`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_pct`) AS DOUBLE) as `color_compensacion_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_comp_cuotas`) AS DOUBLE) as `color_diferencia_comp_cuotas`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_variacion`) AS DOUBLE) as `icono_segun_comp_variacion`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_ps_mes_act_para_tarjeta`) AS DOUBLE) as `cumplimiento_ps_mes_act_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_ps_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_ps_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_ps`) AS DOUBLE) as `variacion_y_diferencia_ps`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_ps_variacion`) AS DOUBLE) as `icono_segun_ps_variacion`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_ps_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_ps_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp_ps`) AS DOUBLE) as `variacion_y_diferencia_comp_ps`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_ps_para_tarjeta`) AS DOUBLE) as `compen_mes_act_ps_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_ps_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_ps_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_ps_pct`) AS DOUBLE) as `color_compensacion_ps_pct`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_ps_variacion`) AS DOUBLE) as `icono_segun_comp_ps_variacion`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_alpura_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_alpura_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_alpura`) AS DOUBLE) as `variacion_y_diferencia_alpura`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_act_alpura_para_tarjeta`) AS DOUBLE) as `cumplimiento_mes_act_alpura_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_alpura`) AS DOUBLE) as `color_diferencia_alpura`,\n",
+        "      TRY_CAST(MEASURE(`color_alpura_pct`) AS DOUBLE) as `color_alpura_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_ps`) AS DOUBLE) as `color_diferencia_ps`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_alpura_variacion`) AS DOUBLE) as `icono_segun_alpura_variacion`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_alpura_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_alpura_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp_alpura`) AS DOUBLE) as `variacion_y_diferencia_comp_alpura`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_alpura_para_tarjeta`) AS DOUBLE) as `compen_mes_act_alpura_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_alpura_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_alpura_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_alpura_pct`) AS DOUBLE) as `color_compensacion_alpura_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_comp_alpura`) AS DOUBLE) as `color_diferencia_comp_alpura`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_alpura_variacion`) AS DOUBLE) as `icono_segun_comp_alpura_variacion`,\n",
+        "      TRY_CAST(MEASURE(`color_ps_pct`) AS DOUBLE) as `color_ps_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_otras_cat_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_otras_cat_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_otras_cat`) AS DOUBLE) as `variacion_y_diferencia_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_act_otras_cat_para_tarjeta`) AS DOUBLE) as `cumplimiento_mes_act_otras_cat_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_otras_cat`) AS DOUBLE) as `color_diferencia_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_comp_otras_cat`) AS DOUBLE) as `color_diferencia_comp_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_otras_cat_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_otras_cat_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_otras_cat_mes_actual_pct`) AS DOUBLE) as `compensacion_otras_cat_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp_otras_cat`) AS DOUBLE) as `variacion_y_diferencia_comp_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`color_otras_cat_pct`) AS DOUBLE) as `color_otras_cat_pct`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_otras_cat_variacion`) AS DOUBLE) as `icono_segun_otras_cat_variacion`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_otras_cat_actual_pct`) AS DOUBLE) as `objetivo_compensacion_otras_cat_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_otras_cat_para_tarjeta`) AS DOUBLE) as `compen_mes_act_otras_cat_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_otras_cat_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_otras_cat_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_otras_cat_pct`) AS DOUBLE) as `color_compensacion_otras_cat_pct`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_otras_cat_variacion`) AS DOUBLE) as `icono_segun_comp_otras_cat_variacion`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_otras_cat_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_otras_cat_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_otras_cat_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_otras_cat_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_otras_cat_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_otras_cat_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_cuotas_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_cuotas_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_otras_cat_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_otras_cat_mes_anterior_pct`\n",
+        "    FROM migracion_pbix.couch.mv_compensacion_ventas_seguimientos_kpi_6meses\n",
+        "    GROUP BY\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `grupo`,\n",
+        "      `orden`,\n",
+        "      `segmento`,\n",
+        "      `real_cajas_fisicas`,\n",
+        "      `actual_cajas_fisicas`,\n",
+        "      `objetivo_cajas_fisicas`,\n",
+        "      `porcentaje_cumplimiento`,\n",
+        "      `compensacion_lograda`,\n",
+        "      `diferencia_compensacion`,\n",
+        "      `objetivo_compensacion`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `fecha_ejecucion_month`,\n",
+        "      `campo_llave`,\n",
+        "      `fecha`,\n",
+        "      `fecha_month`,\n",
+        "      `año`,\n",
+        "      `mes`,\n",
+        "      `route_desc_ruta`,\n",
+        "      `route_ruta_activa`,\n",
+        "      `route_clasificacion_ruta`,\n",
+        "      `route_tipo_ruta`,\n",
+        "      `route_categoria_ruta`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_estado`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_dimrutabodega",
+      "displayName": "Dimrutabodega",
+      "queryLines": [
+        "SELECT\n",
+        "      `idrutabodega`,\n",
+        "      `clave_bodega`,\n",
+        "      `ruta`,\n",
+        "      TRY_CAST(MEASURE(`uso_herramienta`) AS DOUBLE) as `uso_herramienta`,\n",
+        "      TRY_CAST(MEASURE(`pct_uso_semanal_bodega`) AS DOUBLE) as `pct_uso_semanal_bodega`,\n",
+        "      TRY_CAST(MEASURE(`pct_uso_semanal_cierre_bodega`) AS DOUBLE) as `pct_uso_semanal_cierre_bodega`\n",
+        "  FROM migracion_pbix.couch.mv_dimrutabodega\n",
+        "  GROUP BY\n",
+        "      `idrutabodega`,\n",
+        "      `clave_bodega`,\n",
+        "      `ruta`"
+      ]
+    },
+    {
+      "name": "ds_dimrutabodega_test",
+      "displayName": "Dimrutabodega Test",
+      "queryLines": [
+        "SELECT\n",
+        "      `idrutabodega`,\n",
+        "      `clave_bodega`,\n",
+        "      `ruta`,\n",
+        "      `uso_cody_bodega`,\n",
+        "      TRY_CAST(MEASURE(`total_rutas`) AS DOUBLE) as `total_rutas`\n",
+        "  FROM migracion_pbix.couch.mv_dimrutabodega_test\n",
+        "  GROUP BY\n",
+        "      `idrutabodega`,\n",
+        "      `clave_bodega`,\n",
+        "      `ruta`,\n",
+        "      `uso_cody_bodega`"
+      ]
+    },
+    {
+      "name": "ds_incentivos_seguimientos_kpi",
+      "displayName": "Incentivos Seguimientos Kpi",
+      "queryLines": [
+        "SELECT\n",
+        "    TRY_CAST(`id_incentivo` AS STRING) as `id_incentivo`,\n",
+        "    TRY_CAST(`clave_bodega` AS STRING) as `clave_bodega`,\n",
+        "    TRY_CAST(`clave_ruta` AS STRING) as `clave_ruta`,\n",
+        "    TRY_CAST(`anio` AS STRING) as `anio`,\n",
+        "    TRY_CAST(`mes` AS STRING) as `mes`,\n",
+        "    `nombre`,\n",
+        "    TRY_CAST(`grupo` AS STRING) as `grupo`,\n",
+        "    `incentivo`,\n",
+        "    `objetivo`,\n",
+        "    TRY_CAST(`avance` AS STRING) as `avance`,\n",
+        "    `logrado_volumen`,\n",
+        "    TRY_CAST(`monto_obtenido` AS STRING) as `monto_obtenido`,\n",
+        "    TRY_CAST(`vigencia_dias` AS STRING) as `vigencia_dias`,\n",
+        "    `premio`,\n",
+        "    TRY_CAST(`fecha` AS STRING) as `fecha`,\n",
+        "    TRY_CAST(`fecha_ejecucion` AS STRING) as `fecha_ejecucion`,\n",
+        "    `rango_cumplimiento_incentivos`,\n",
+        "    `cumplimiento_ruta_pct`,\n",
+        "    `warehouse_bodega`,\n",
+        "    `warehouse_clave_territorio`,\n",
+        "    `warehouse_clave_planta`,\n",
+        "    `warehouse_clave_compania_of`,\n",
+        "    `warehouse_status`,\n",
+        "    `warehouse_con_venta`,\n",
+        "    `warehouse_tipo_cedis`,\n",
+        "    `warehouse_territorio`,\n",
+        "    `warehouse_clave_region`,\n",
+        "    `warehouse_region`,\n",
+        "    `warehouse_grupo_bodega`,\n",
+        "    `warehouse_codigo_municipio`,\n",
+        "    `warehouse_tipo_operacion`,\n",
+        "    `warehouse_tamano_real_bodega`,\n",
+        "    `warehouse_tamano_template_bodega`,\n",
+        "    `warehouse_tamano_template_territorio`,\n",
+        "    `warehouse_clave_territorio_nvo`,\n",
+        "    `warehouse_territorio_nvo`,\n",
+        "    `warehouse_clave_region_nva`,\n",
+        "    `warehouse_region_nva`,\n",
+        "    `warehouse_iddepo`,\n",
+        "    `warehouse_iddivn`,\n",
+        "    `warehouse_coordenadax`,\n",
+        "    `warehouse_coordenaday`,\n",
+        "    `warehouse_bodega_fisica`,\n",
+        "    `warehouse_clave_opm_anterior`,\n",
+        "    `warehouse_cedex`,\n",
+        "    `warehouse_clave_compania_of_12`,\n",
+        "    `warehouse_compania_origen`,\n",
+        "    `warehouse_h_tipo_cedi`,\n",
+        "    `warehouse_h_segmento_embotellado`,\n",
+        "    `warehouse_h_segmento_garrafon`,\n",
+        "    `warehouse_h_volumen_cf`,\n",
+        "    `warehouse_h_clientes_activos`,\n",
+        "    `warehouse_h_clientes_con_compra`,\n",
+        "    `warehouse_otros`,\n",
+        "    `warehouse_migracion`,\n",
+        "    `warehouse_historico`,\n",
+        "    `warehouse_virtual`,\n",
+        "    `warehouse_nombre_contab`,\n",
+        "    `warehouse_region_contab`,\n",
+        "    `warehouse_direccion`,\n",
+        "    `warehouse_activo_contraloria`,\n",
+        "    `warehouse_desc_cia`,\n",
+        "    `warehouse_coment_contraloria`,\n",
+        "    `warehouse_clasificacion`,\n",
+        "    `warehouse_clave_ip`,\n",
+        "    `warehouse_usado`,\n",
+        "    `warehouse_clave_estado`,\n",
+        "    `warehouse_estado`,\n",
+        "    `warehouse_migracion_cdm`,\n",
+        "    `warehouse_ecom_wsa`,\n",
+        "    `warehouse_ultima_carga_sac`,\n",
+        "    `warehouse_descripc_region_sac`,\n",
+        "    `warehouse_zona_sac`,\n",
+        "    `warehouse_gestion_sac`,\n",
+        "    `warehouse_clave_comerc_garrafon`,\n",
+        "    `warehouse_clave_bodega_opm_sac`,\n",
+        "    `warehouse_clave_territorio_s7`,\n",
+        "    `warehouse_clave_region_s7`,\n",
+        "    `warehouse_territorio_s7`,\n",
+        "    `warehouse_region_s7`,\n",
+        "    `nombre_ruta_seleccincent`,\n",
+        "    `premio_asignado`,\n",
+        "    `pct_cumplimiento_logro`,\n",
+        "    `cumplimiento_mes_actual_pct`,\n",
+        "    `cumplimiento_mes_anterior_pct`,\n",
+        "    `cumplimiento_mes_actual_incentivos_pct`,\n",
+        "    `cumplimiento_mes_anterior_incentivos_dynamic`,\n",
+        "    `variacion_pct_incentivos`,\n",
+        "    `promedio_mes_actual_avance`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `id_incentivo`,\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `anio`,\n",
+        "      `mes`,\n",
+        "      `nombre`,\n",
+        "      `grupo`,\n",
+        "      `incentivo`,\n",
+        "      `objetivo`,\n",
+        "      `avance`,\n",
+        "      `logrado_volumen`,\n",
+        "      `monto_obtenido`,\n",
+        "      `vigencia_dias`,\n",
+        "      `premio`,\n",
+        "      `fecha`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `rango_cumplimiento_incentivos`,\n",
+        "      `cumplimiento_ruta_pct`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_clave_territorio`,\n",
+        "      `warehouse_clave_planta`,\n",
+        "      `warehouse_clave_compania_of`,\n",
+        "      `warehouse_status`,\n",
+        "      `warehouse_con_venta`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_clave_region`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_codigo_municipio`,\n",
+        "      `warehouse_tipo_operacion`,\n",
+        "      `warehouse_tamano_real_bodega`,\n",
+        "      `warehouse_tamano_template_bodega`,\n",
+        "      `warehouse_tamano_template_territorio`,\n",
+        "      `warehouse_clave_territorio_nvo`,\n",
+        "      `warehouse_territorio_nvo`,\n",
+        "      `warehouse_clave_region_nva`,\n",
+        "      `warehouse_region_nva`,\n",
+        "      `warehouse_iddepo`,\n",
+        "      `warehouse_iddivn`,\n",
+        "      `warehouse_coordenadax`,\n",
+        "      `warehouse_coordenaday`,\n",
+        "      `warehouse_bodega_fisica`,\n",
+        "      `warehouse_clave_opm_anterior`,\n",
+        "      `warehouse_cedex`,\n",
+        "      `warehouse_clave_compania_of_12`,\n",
+        "      `warehouse_compania_origen`,\n",
+        "      `warehouse_h_tipo_cedi`,\n",
+        "      `warehouse_h_segmento_embotellado`,\n",
+        "      `warehouse_h_segmento_garrafon`,\n",
+        "      `warehouse_h_volumen_cf`,\n",
+        "      `warehouse_h_clientes_activos`,\n",
+        "      `warehouse_h_clientes_con_compra`,\n",
+        "      `warehouse_otros`,\n",
+        "      `warehouse_migracion`,\n",
+        "      `warehouse_historico`,\n",
+        "      `warehouse_virtual`,\n",
+        "      `warehouse_nombre_contab`,\n",
+        "      `warehouse_region_contab`,\n",
+        "      `warehouse_direccion`,\n",
+        "      `warehouse_activo_contraloria`,\n",
+        "      `warehouse_desc_cia`,\n",
+        "      `warehouse_coment_contraloria`,\n",
+        "      `warehouse_clasificacion`,\n",
+        "      `warehouse_clave_ip`,\n",
+        "      `warehouse_usado`,\n",
+        "      `warehouse_clave_estado`,\n",
+        "      `warehouse_estado`,\n",
+        "      `warehouse_migracion_cdm`,\n",
+        "      `warehouse_ecom_wsa`,\n",
+        "      `warehouse_ultima_carga_sac`,\n",
+        "      `warehouse_descripc_region_sac`,\n",
+        "      `warehouse_zona_sac`,\n",
+        "      `warehouse_gestion_sac`,\n",
+        "      `warehouse_clave_comerc_garrafon`,\n",
+        "      `warehouse_clave_bodega_opm_sac`,\n",
+        "      `warehouse_clave_territorio_s7`,\n",
+        "      `warehouse_clave_region_s7`,\n",
+        "      `warehouse_territorio_s7`,\n",
+        "      `warehouse_region_s7`,\n",
+        "      TRY_CAST(MEASURE(`nombre_ruta_seleccincent`) AS DOUBLE) as `nombre_ruta_seleccincent`,\n",
+        "      TRY_CAST(MEASURE(`premio_asignado`) AS DOUBLE) as `premio_asignado`,\n",
+        "      TRY_CAST(MEASURE(`pct_cumplimiento_logro`) AS DOUBLE) as `pct_cumplimiento_logro`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_actual_pct`) AS DOUBLE) as `cumplimiento_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_actual_incentivos_pct`) AS DOUBLE) as `cumplimiento_mes_actual_incentivos_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_anterior_incentivos_dynamic`) AS DOUBLE) as `cumplimiento_mes_anterior_incentivos_dynamic`,\n",
+        "      TRY_CAST(MEASURE(`variacion_pct_incentivos`) AS DOUBLE) as `variacion_pct_incentivos`,\n",
+        "      TRY_CAST(MEASURE(`promedio_mes_actual_avance`) AS DOUBLE) as `promedio_mes_actual_avance`\n",
+        "    FROM migracion_pbix.couch.mv_incentivos_seguimientos_kpi\n",
+        "    GROUP BY\n",
+        "      `id_incentivo`,\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `anio`,\n",
+        "      `mes`,\n",
+        "      `nombre`,\n",
+        "      `grupo`,\n",
+        "      `incentivo`,\n",
+        "      `objetivo`,\n",
+        "      `avance`,\n",
+        "      `logrado_volumen`,\n",
+        "      `monto_obtenido`,\n",
+        "      `vigencia_dias`,\n",
+        "      `premio`,\n",
+        "      `fecha`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `rango_cumplimiento_incentivos`,\n",
+        "      `cumplimiento_ruta_pct`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_clave_territorio`,\n",
+        "      `warehouse_clave_planta`,\n",
+        "      `warehouse_clave_compania_of`,\n",
+        "      `warehouse_status`,\n",
+        "      `warehouse_con_venta`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_clave_region`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_codigo_municipio`,\n",
+        "      `warehouse_tipo_operacion`,\n",
+        "      `warehouse_tamano_real_bodega`,\n",
+        "      `warehouse_tamano_template_bodega`,\n",
+        "      `warehouse_tamano_template_territorio`,\n",
+        "      `warehouse_clave_territorio_nvo`,\n",
+        "      `warehouse_territorio_nvo`,\n",
+        "      `warehouse_clave_region_nva`,\n",
+        "      `warehouse_region_nva`,\n",
+        "      `warehouse_iddepo`,\n",
+        "      `warehouse_iddivn`,\n",
+        "      `warehouse_coordenadax`,\n",
+        "      `warehouse_coordenaday`,\n",
+        "      `warehouse_bodega_fisica`,\n",
+        "      `warehouse_clave_opm_anterior`,\n",
+        "      `warehouse_cedex`,\n",
+        "      `warehouse_clave_compania_of_12`,\n",
+        "      `warehouse_compania_origen`,\n",
+        "      `warehouse_h_tipo_cedi`,\n",
+        "      `warehouse_h_segmento_embotellado`,\n",
+        "      `warehouse_h_segmento_garrafon`,\n",
+        "      `warehouse_h_volumen_cf`,\n",
+        "      `warehouse_h_clientes_activos`,\n",
+        "      `warehouse_h_clientes_con_compra`,\n",
+        "      `warehouse_otros`,\n",
+        "      `warehouse_migracion`,\n",
+        "      `warehouse_historico`,\n",
+        "      `warehouse_virtual`,\n",
+        "      `warehouse_nombre_contab`,\n",
+        "      `warehouse_region_contab`,\n",
+        "      `warehouse_direccion`,\n",
+        "      `warehouse_activo_contraloria`,\n",
+        "      `warehouse_desc_cia`,\n",
+        "      `warehouse_coment_contraloria`,\n",
+        "      `warehouse_clasificacion`,\n",
+        "      `warehouse_clave_ip`,\n",
+        "      `warehouse_usado`,\n",
+        "      `warehouse_clave_estado`,\n",
+        "      `warehouse_estado`,\n",
+        "      `warehouse_migracion_cdm`,\n",
+        "      `warehouse_ecom_wsa`,\n",
+        "      `warehouse_ultima_carga_sac`,\n",
+        "      `warehouse_descripc_region_sac`,\n",
+        "      `warehouse_zona_sac`,\n",
+        "      `warehouse_gestion_sac`,\n",
+        "      `warehouse_clave_comerc_garrafon`,\n",
+        "      `warehouse_clave_bodega_opm_sac`,\n",
+        "      `warehouse_clave_territorio_s7`,\n",
+        "      `warehouse_clave_region_s7`,\n",
+        "      `warehouse_territorio_s7`,\n",
+        "      `warehouse_region_s7`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_incentivos_test",
+      "displayName": "Incentivos Test",
+      "queryLines": [
+        "SELECT\n",
+        "      `grupo`,\n",
+        "      `clave_ruta`,\n",
+        "      `fecha`,\n",
+        "      `logrado_volumen`,\n",
+        "      TRY_CAST(MEASURE(`total_registros`) AS DOUBLE) as `total_registros`,\n",
+        "      TRY_CAST(MEASURE(`logrados`) AS DOUBLE) as `logrados`,\n",
+        "      TRY_CAST(MEASURE(`suma_avance`) AS DOUBLE) as `suma_avance`,\n",
+        "      TRY_CAST(MEASURE(`suma_objetivo`) AS DOUBLE) as `suma_objetivo`\n",
+        "  FROM migracion_pbix.couch.mv_incentivos_test\n",
+        "  GROUP BY\n",
+        "      `grupo`,\n",
+        "      `clave_ruta`,\n",
+        "      `fecha`,\n",
+        "      `logrado_volumen`"
+      ]
+    },
+    {
+      "name": "ds_uso_cody",
+      "displayName": "Uso Cody",
+      "queryLines": [
+        "SELECT\n",
+        "    `messagetime_local`,\n",
+        "    `messageid`,\n",
+        "    `messagedate`,\n",
+        "    `messagedate_month`,\n",
+        "    `messagetime`,\n",
+        "    `userid`,\n",
+        "    `useremail`,\n",
+        "    `threadid`,\n",
+        "    `message`,\n",
+        "    `topic`,\n",
+        "    `responsetime`,\n",
+        "    `correo2`,\n",
+        "    `ruta`,\n",
+        "    `bodega`,\n",
+        "    `messagetime_local_ubicaciones`,\n",
+        "    `ruta_empleado`,\n",
+        "    `mes_año`,\n",
+        "    `mes_año_month`,\n",
+        "    `mensajesinpreposiciones`,\n",
+        "    `ingestion_date`,\n",
+        "    `ingestion_date_month`,\n",
+        "    `ingestion_timestamp`,\n",
+        "    `ingestion_timestamp_month`,\n",
+        "    `source_file`,\n",
+        "    `campo_llave`,\n",
+        "    `clave_bodega_num`,\n",
+        "    `idrutabodega`,\n",
+        "    `filtro_meses`,\n",
+        "    TRY_CAST(`ruta_usage_rank` AS STRING) as `ruta_usage_rank`,\n",
+        "    `nombre_ruta_selectccody`,\n",
+        "    `cont_preguntas`,\n",
+        "    `ranking_rutas`,\n",
+        "    `sesiones_por_usuario`,\n",
+        "    `sesiones_promedio_por_dia_ultima_semana`,\n",
+        "    `total_interacciones_ultimo_mes`,\n",
+        "    `total_sesiones_ultimo_mes`,\n",
+        "    `promedio_interacciones_por_sesion_semana`,\n",
+        "    `interacciones_cierre_mensual_y_reportes`,\n",
+        "    `pct_interacciones_cierre_mensual_y_reportes`,\n",
+        "    `mes_anterior_pct_interacciones_cierre_mensual_y_reportes`,\n",
+        "    `interacciones_objetivos_y_metas_diarias`,\n",
+        "    `pct_interacciones_objetivos_y_metas_diarias`,\n",
+        "    `mes_anterior_pct_interacciones_objetivos_y_metas_diarias`,\n",
+        "    `uso_herramienta_mes_anterior`,\n",
+        "    `mes_anterior_interacciones_cierre_mensual_y_reportes`,\n",
+        "    `mes_anterior_interacciones_objetivos_y_metas_diarias`,\n",
+        "    `uso_herramienta_general`,\n",
+        "    `filtro_mes_actual`,\n",
+        "    `interacciones_cierre_semanal`,\n",
+        "    `total_sesiones_ultima_semana`,\n",
+        "    `pct_interacciones_cierre_mensual_y_reportes_semanal`,\n",
+        "    `total_interacciones_ultima_semana`,\n",
+        "    `total_rutas_bodega`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `messagetime_local`,\n",
+        "      `messageid`,\n",
+        "      `messagedate`,\n",
+        "      `messagedate_month`,\n",
+        "      `messagetime`,\n",
+        "      `userid`,\n",
+        "      `useremail`,\n",
+        "      `threadid`,\n",
+        "      `message`,\n",
+        "      `topic`,\n",
+        "      `responsetime`,\n",
+        "      `correo2`,\n",
+        "      `ruta`,\n",
+        "      `bodega`,\n",
+        "      `messagetime_local_ubicaciones`,\n",
+        "      `ruta_empleado`,\n",
+        "      `mes_año`,\n",
+        "      `mes_año_month`,\n",
+        "      `mensajesinpreposiciones`,\n",
+        "      `ingestion_date`,\n",
+        "      `ingestion_date_month`,\n",
+        "      `ingestion_timestamp`,\n",
+        "      `ingestion_timestamp_month`,\n",
+        "      `source_file`,\n",
+        "      `campo_llave`,\n",
+        "      `clave_bodega_num`,\n",
+        "      `idrutabodega`,\n",
+        "      `filtro_meses`,\n",
+        "      `ruta_usage_rank`,\n",
+        "      TRY_CAST(MEASURE(`nombre_ruta_selectccody`) AS DOUBLE) as `nombre_ruta_selectccody`,\n",
+        "      TRY_CAST(MEASURE(`cont_preguntas`) AS DOUBLE) as `cont_preguntas`,\n",
+        "      TRY_CAST(MEASURE(`ranking_rutas`) AS DOUBLE) as `ranking_rutas`,\n",
+        "      TRY_CAST(MEASURE(`sesiones_por_usuario`) AS DOUBLE) as `sesiones_por_usuario`,\n",
+        "      TRY_CAST(MEASURE(`sesiones_promedio_por_dia_ultima_semana`) AS DOUBLE) as `sesiones_promedio_por_dia_ultima_semana`,\n",
+        "      TRY_CAST(MEASURE(`total_interacciones_ultimo_mes`) AS DOUBLE) as `total_interacciones_ultimo_mes`,\n",
+        "      TRY_CAST(MEASURE(`total_sesiones_ultimo_mes`) AS DOUBLE) as `total_sesiones_ultimo_mes`,\n",
+        "      TRY_CAST(MEASURE(`promedio_interacciones_por_sesion_semana`) AS DOUBLE) as `promedio_interacciones_por_sesion_semana`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_cierre_mensual_y_reportes`) AS DOUBLE) as `interacciones_cierre_mensual_y_reportes`,\n",
+        "      TRY_CAST(MEASURE(`pct_interacciones_cierre_mensual_y_reportes`) AS DOUBLE) as `pct_interacciones_cierre_mensual_y_reportes`,\n",
+        "      TRY_CAST(MEASURE(`mes_anterior_pct_interacciones_cierre_mensual_y_reportes`) AS DOUBLE) as `mes_anterior_pct_interacciones_cierre_mensual_y_reportes`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_objetivos_y_metas_diarias`) AS DOUBLE) as `interacciones_objetivos_y_metas_diarias`,\n",
+        "      TRY_CAST(MEASURE(`pct_interacciones_objetivos_y_metas_diarias`) AS DOUBLE) as `pct_interacciones_objetivos_y_metas_diarias`,\n",
+        "      TRY_CAST(MEASURE(`mes_anterior_pct_interacciones_objetivos_y_metas_diarias`) AS DOUBLE) as `mes_anterior_pct_interacciones_objetivos_y_metas_diarias`,\n",
+        "      TRY_CAST(MEASURE(`uso_herramienta_mes_anterior`) AS DOUBLE) as `uso_herramienta_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`mes_anterior_interacciones_cierre_mensual_y_reportes`) AS DOUBLE) as `mes_anterior_interacciones_cierre_mensual_y_reportes`,\n",
+        "      TRY_CAST(MEASURE(`mes_anterior_interacciones_objetivos_y_metas_diarias`) AS DOUBLE) as `mes_anterior_interacciones_objetivos_y_metas_diarias`,\n",
+        "      TRY_CAST(MEASURE(`uso_herramienta_general`) AS DOUBLE) as `uso_herramienta_general`,\n",
+        "      TRY_CAST(MEASURE(`filtro_mes_actual`) AS DOUBLE) as `filtro_mes_actual`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_cierre_semanal`) AS DOUBLE) as `interacciones_cierre_semanal`,\n",
+        "      TRY_CAST(MEASURE(`total_sesiones_ultima_semana`) AS DOUBLE) as `total_sesiones_ultima_semana`,\n",
+        "      TRY_CAST(MEASURE(`pct_interacciones_cierre_mensual_y_reportes_semanal`) AS DOUBLE) as `pct_interacciones_cierre_mensual_y_reportes_semanal`,\n",
+        "      TRY_CAST(MEASURE(`total_interacciones_ultima_semana`) AS DOUBLE) as `total_interacciones_ultima_semana`,\n",
+        "      TRY_CAST(MEASURE(`total_rutas_bodega`) AS DOUBLE) as `total_rutas_bodega`\n",
+        "    FROM migracion_pbix.couch.mv_uso_cody\n",
+        "    GROUP BY\n",
+        "      `messagetime_local`,\n",
+        "      `messageid`,\n",
+        "      `messagedate`,\n",
+        "      `messagedate_month`,\n",
+        "      `messagetime`,\n",
+        "      `userid`,\n",
+        "      `useremail`,\n",
+        "      `threadid`,\n",
+        "      `message`,\n",
+        "      `topic`,\n",
+        "      `responsetime`,\n",
+        "      `correo2`,\n",
+        "      `ruta`,\n",
+        "      `bodega`,\n",
+        "      `messagetime_local_ubicaciones`,\n",
+        "      `ruta_empleado`,\n",
+        "      `mes_año`,\n",
+        "      `mes_año_month`,\n",
+        "      `mensajesinpreposiciones`,\n",
+        "      `ingestion_date`,\n",
+        "      `ingestion_date_month`,\n",
+        "      `ingestion_timestamp`,\n",
+        "      `ingestion_timestamp_month`,\n",
+        "      `source_file`,\n",
+        "      `campo_llave`,\n",
+        "      `clave_bodega_num`,\n",
+        "      `idrutabodega`,\n",
+        "      `filtro_meses`,\n",
+        "      `ruta_usage_rank`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_warehouse",
+      "displayName": "Warehouse",
+      "queryLines": [
+        "SELECT\n",
+        "    TRY_CAST(`clave_bodega` AS STRING) as `clave_bodega`,\n",
+        "    `bodega`,\n",
+        "    `clave_territorio`,\n",
+        "    `clave_planta`,\n",
+        "    `clave_compania_of`,\n",
+        "    `clave_compania_of_11i`,\n",
+        "    `clave_uop_of_11i`,\n",
+        "    `status`,\n",
+        "    `con_venta`,\n",
+        "    `tipo_cedis`,\n",
+        "    `territorio`,\n",
+        "    `clave_region`,\n",
+        "    `region`,\n",
+        "    `fecha_vitalite`,\n",
+        "    `fecha_vitalite_month`,\n",
+        "    `clave_bodega_opm`,\n",
+        "    `grupo_bodega`,\n",
+        "    `fecha_ultima_carga`,\n",
+        "    `fecha_ultima_carga_month`,\n",
+        "    `codigo_municipio`,\n",
+        "    `tipo_operacion`,\n",
+        "    `tamano_real_bodega`,\n",
+        "    `tamano_template_bodega`,\n",
+        "    `tamano_template_territorio`,\n",
+        "    `clave_territorio_nvo`,\n",
+        "    `territorio_nvo`,\n",
+        "    `clave_region_nva`,\n",
+        "    `region_nva`,\n",
+        "    `iddepo`,\n",
+        "    `iddivn`,\n",
+        "    `coordenadax`,\n",
+        "    `coordenaday`,\n",
+        "    `bodega_fisica`,\n",
+        "    `clave_opm_anterior`,\n",
+        "    `cedex`,\n",
+        "    `clave_compania_of_12`,\n",
+        "    `compania_origen`,\n",
+        "    `h_tipo_cedi`,\n",
+        "    `h_segmento_embotellado`,\n",
+        "    `h_segmento_garrafon`,\n",
+        "    `h_volumen_cf`,\n",
+        "    `h_clientes_activos`,\n",
+        "    `h_clientes_con_compra`,\n",
+        "    `otros`,\n",
+        "    `migracion`,\n",
+        "    `historico`,\n",
+        "    `virtual`,\n",
+        "    `nombre_contab`,\n",
+        "    `region_contab`,\n",
+        "    `direccion`,\n",
+        "    `activo_contraloria`,\n",
+        "    `desc_cia`,\n",
+        "    `coment_contraloria`,\n",
+        "    `clasificacion`,\n",
+        "    `clave_ip`,\n",
+        "    `usado`,\n",
+        "    `clave_estado`,\n",
+        "    `estado`,\n",
+        "    `migracion_cdm`,\n",
+        "    `ecom_wsa`,\n",
+        "    `ultima_carga_sac`,\n",
+        "    `descripc_region_sac`,\n",
+        "    `zona_sac`,\n",
+        "    `gestion_sac`,\n",
+        "    `clave_comerc_garrafon`,\n",
+        "    `clave_bodega_opm_sac`,\n",
+        "    `clave_territorio_s7`,\n",
+        "    `clave_region_s7`,\n",
+        "    `territorio_s7`,\n",
+        "    `region_s7`,\n",
+        "    `extractiondatetime`,\n",
+        "    `extractiondatetime_month`,\n",
+        "    TRY_CAST(`incentivos_clave_ruta` AS STRING) as `incentivos_clave_ruta`,\n",
+        "    `incentivos_cumplimiento_ruta_pct`,\n",
+        "    TRY_CAST(`incentivos_fecha` AS STRING) as `incentivos_fecha`,\n",
+        "    `compensacion_compensacion_lograda`,\n",
+        "    `compensacion_objetivo_compensacion`,\n",
+        "    `compensacion_segmento`,\n",
+        "    `nombre_bodega_selecincent`,\n",
+        "    `nombre_bodega_selectcody`,\n",
+        "    `ranking_ruta_mejores_incentivos`,\n",
+        "    `ranking_ruta_peores_incentivos`,\n",
+        "    `cumplimiento_cuotas_actual_pct`,\n",
+        "    `cumplimiento_ps_actual_pct`,\n",
+        "    `cumplimiento_alpura_actual_pct`,\n",
+        "    `cumplimiento_actual_por_fecha_pct`,\n",
+        "    `cumplimiento_otras_cat_actual_pct`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `clave_bodega`,\n",
+        "      `bodega`,\n",
+        "      `clave_territorio`,\n",
+        "      `clave_planta`,\n",
+        "      `clave_compania_of`,\n",
+        "      `clave_compania_of_11i`,\n",
+        "      `clave_uop_of_11i`,\n",
+        "      `status`,\n",
+        "      `con_venta`,\n",
+        "      `tipo_cedis`,\n",
+        "      `territorio`,\n",
+        "      `clave_region`,\n",
+        "      `region`,\n",
+        "      `fecha_vitalite`,\n",
+        "      `fecha_vitalite_month`,\n",
+        "      `clave_bodega_opm`,\n",
+        "      `grupo_bodega`,\n",
+        "      `fecha_ultima_carga`,\n",
+        "      `fecha_ultima_carga_month`,\n",
+        "      `codigo_municipio`,\n",
+        "      `tipo_operacion`,\n",
+        "      `tamano_real_bodega`,\n",
+        "      `tamano_template_bodega`,\n",
+        "      `tamano_template_territorio`,\n",
+        "      `clave_territorio_nvo`,\n",
+        "      `territorio_nvo`,\n",
+        "      `clave_region_nva`,\n",
+        "      `region_nva`,\n",
+        "      `iddepo`,\n",
+        "      `iddivn`,\n",
+        "      `coordenadax`,\n",
+        "      `coordenaday`,\n",
+        "      `bodega_fisica`,\n",
+        "      `clave_opm_anterior`,\n",
+        "      `cedex`,\n",
+        "      `clave_compania_of_12`,\n",
+        "      `compania_origen`,\n",
+        "      `h_tipo_cedi`,\n",
+        "      `h_segmento_embotellado`,\n",
+        "      `h_segmento_garrafon`,\n",
+        "      `h_volumen_cf`,\n",
+        "      `h_clientes_activos`,\n",
+        "      `h_clientes_con_compra`,\n",
+        "      `otros`,\n",
+        "      `migracion`,\n",
+        "      `historico`,\n",
+        "      `virtual`,\n",
+        "      `nombre_contab`,\n",
+        "      `region_contab`,\n",
+        "      `direccion`,\n",
+        "      `activo_contraloria`,\n",
+        "      `desc_cia`,\n",
+        "      `coment_contraloria`,\n",
+        "      `clasificacion`,\n",
+        "      `clave_ip`,\n",
+        "      `usado`,\n",
+        "      `clave_estado`,\n",
+        "      `estado`,\n",
+        "      `migracion_cdm`,\n",
+        "      `ecom_wsa`,\n",
+        "      `ultima_carga_sac`,\n",
+        "      `descripc_region_sac`,\n",
+        "      `zona_sac`,\n",
+        "      `gestion_sac`,\n",
+        "      `clave_comerc_garrafon`,\n",
+        "      `clave_bodega_opm_sac`,\n",
+        "      `clave_territorio_s7`,\n",
+        "      `clave_region_s7`,\n",
+        "      `territorio_s7`,\n",
+        "      `region_s7`,\n",
+        "      `extractiondatetime`,\n",
+        "      `extractiondatetime_month`,\n",
+        "      `incentivos_clave_ruta`,\n",
+        "      `incentivos_cumplimiento_ruta_pct`,\n",
+        "      `incentivos_fecha`,\n",
+        "      `compensacion_compensacion_lograda`,\n",
+        "      `compensacion_objetivo_compensacion`,\n",
+        "      `compensacion_segmento`,\n",
+        "      TRY_CAST(MEASURE(`nombre_bodega_selecincent`) AS DOUBLE) as `nombre_bodega_selecincent`,\n",
+        "      TRY_CAST(MEASURE(`nombre_bodega_selectcody`) AS DOUBLE) as `nombre_bodega_selectcody`,\n",
+        "      TRY_CAST(MEASURE(`ranking_ruta_mejores_incentivos`) AS DOUBLE) as `ranking_ruta_mejores_incentivos`,\n",
+        "      TRY_CAST(MEASURE(`ranking_ruta_peores_incentivos`) AS DOUBLE) as `ranking_ruta_peores_incentivos`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_cuotas_actual_pct`) AS DOUBLE) as `cumplimiento_cuotas_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_ps_actual_pct`) AS DOUBLE) as `cumplimiento_ps_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_alpura_actual_pct`) AS DOUBLE) as `cumplimiento_alpura_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_por_fecha_pct`) AS DOUBLE) as `cumplimiento_actual_por_fecha_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_otras_cat_actual_pct`) AS DOUBLE) as `cumplimiento_otras_cat_actual_pct`\n",
+        "    FROM migracion_pbix.couch.mv_warehouse\n",
+        "    GROUP BY\n",
+        "      `clave_bodega`,\n",
+        "      `bodega`,\n",
+        "      `clave_territorio`,\n",
+        "      `clave_planta`,\n",
+        "      `clave_compania_of`,\n",
+        "      `clave_compania_of_11i`,\n",
+        "      `clave_uop_of_11i`,\n",
+        "      `status`,\n",
+        "      `con_venta`,\n",
+        "      `tipo_cedis`,\n",
+        "      `territorio`,\n",
+        "      `clave_region`,\n",
+        "      `region`,\n",
+        "      `fecha_vitalite`,\n",
+        "      `fecha_vitalite_month`,\n",
+        "      `clave_bodega_opm`,\n",
+        "      `grupo_bodega`,\n",
+        "      `fecha_ultima_carga`,\n",
+        "      `fecha_ultima_carga_month`,\n",
+        "      `codigo_municipio`,\n",
+        "      `tipo_operacion`,\n",
+        "      `tamano_real_bodega`,\n",
+        "      `tamano_template_bodega`,\n",
+        "      `tamano_template_territorio`,\n",
+        "      `clave_territorio_nvo`,\n",
+        "      `territorio_nvo`,\n",
+        "      `clave_region_nva`,\n",
+        "      `region_nva`,\n",
+        "      `iddepo`,\n",
+        "      `iddivn`,\n",
+        "      `coordenadax`,\n",
+        "      `coordenaday`,\n",
+        "      `bodega_fisica`,\n",
+        "      `clave_opm_anterior`,\n",
+        "      `cedex`,\n",
+        "      `clave_compania_of_12`,\n",
+        "      `compania_origen`,\n",
+        "      `h_tipo_cedi`,\n",
+        "      `h_segmento_embotellado`,\n",
+        "      `h_segmento_garrafon`,\n",
+        "      `h_volumen_cf`,\n",
+        "      `h_clientes_activos`,\n",
+        "      `h_clientes_con_compra`,\n",
+        "      `otros`,\n",
+        "      `migracion`,\n",
+        "      `historico`,\n",
+        "      `virtual`,\n",
+        "      `nombre_contab`,\n",
+        "      `region_contab`,\n",
+        "      `direccion`,\n",
+        "      `activo_contraloria`,\n",
+        "      `desc_cia`,\n",
+        "      `coment_contraloria`,\n",
+        "      `clasificacion`,\n",
+        "      `clave_ip`,\n",
+        "      `usado`,\n",
+        "      `clave_estado`,\n",
+        "      `estado`,\n",
+        "      `migracion_cdm`,\n",
+        "      `ecom_wsa`,\n",
+        "      `ultima_carga_sac`,\n",
+        "      `descripc_region_sac`,\n",
+        "      `zona_sac`,\n",
+        "      `gestion_sac`,\n",
+        "      `clave_comerc_garrafon`,\n",
+        "      `clave_bodega_opm_sac`,\n",
+        "      `clave_territorio_s7`,\n",
+        "      `clave_region_s7`,\n",
+        "      `territorio_s7`,\n",
+        "      `region_s7`,\n",
+        "      `extractiondatetime`,\n",
+        "      `extractiondatetime_month`,\n",
+        "      `incentivos_clave_ruta`,\n",
+        "      `incentivos_cumplimiento_ruta_pct`,\n",
+        "      `incentivos_fecha`,\n",
+        "      `compensacion_compensacion_lograda`,\n",
+        "      `compensacion_objetivo_compensacion`,\n",
+        "      `compensacion_segmento`\n",
+        "  )"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "compensacion_ventas_seguimientos_kpi_6meses",
+      "displayName": "Compensacion Ventas Seguimientos Kpi 6Meses",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_compensacion",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 📊 Compensación Ventas Seguimientos KPI"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_rutas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+                  "fields": [
+                    {
+                      "name": "count_clave_ruta",
+                      "expression": "COUNT(DISTINCT `clave_ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count_clave_ruta"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_rutas"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_fecha_max",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+                  "fields": [
+                    {
+                      "name": "max_fecha",
+                      "expression": "MAX(`fecha`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max_fecha"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_fecha_max"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_cumplimiento_fecha_1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "cumplimiento_actual_por_fecha_pct",
+                      "expression": "`cumplimiento_actual_por_fecha_pct`"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "fecha",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "cumplimiento_actual_por_fecha_pct",
+                  "displayName": "Cumplimiento Actual por Fecha %",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia Compensación"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_cumplimiento_fecha_2",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "cumplimiento_actual_por_fecha_pct",
+                      "expression": "`cumplimiento_actual_por_fecha_pct`"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "fecha",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "cumplimiento_actual_por_fecha_pct",
+                  "displayName": "Cumplimiento Actual por Fecha %",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia Compensación"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_cumplimiento_fecha_3",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "cumplimiento_actual_por_fecha_pct",
+                      "expression": "`cumplimiento_actual_por_fecha_pct`"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "fecha",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "cumplimiento_actual_por_fecha_pct",
+                  "displayName": "Cumplimiento Actual por Fecha %",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia Compensación"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 5,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_cumplimiento_fecha_4",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "cumplimiento_actual_por_fecha_pct",
+                      "expression": "`cumplimiento_actual_por_fecha_pct`"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "fecha",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "cumplimiento_actual_por_fecha_pct",
+                  "displayName": "Cumplimiento Actual por Fecha %",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia Compensación"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "dimrutabodega",
+      "displayName": "Dimrutabodega",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_dimrutabodega",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 🏪 Dimensión Ruta Bodega"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "table_rutabodega",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_dimrutabodega",
+                  "fields": [
+                    {
+                      "name": "idrutabodega",
+                      "expression": "`idrutabodega`"
+                    },
+                    {
+                      "name": "clave_bodega",
+                      "expression": "`clave_bodega`"
+                    },
+                    {
+                      "name": "ruta",
+                      "expression": "`ruta`"
+                    },
+                    {
+                      "name": "uso_herramienta",
+                      "expression": "`uso_herramienta`"
+                    },
+                    {
+                      "name": "pct_uso_semanal_bodega",
+                      "expression": "`pct_uso_semanal_bodega`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "idrutabodega",
+                    "displayName": "ID Ruta Bodega"
+                  },
+                  {
+                    "fieldName": "clave_bodega",
+                    "displayName": "Clave Bodega"
+                  },
+                  {
+                    "fieldName": "ruta",
+                    "displayName": "Ruta"
+                  },
+                  {
+                    "fieldName": "uso_herramienta",
+                    "displayName": "Uso Herramienta"
+                  },
+                  {
+                    "fieldName": "pct_uso_semanal_bodega",
+                    "displayName": "% Uso Semanal Bodega"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle Ruta Bodega"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 12,
+            "height": 8
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "dimrutabodega_test",
+      "displayName": "Dimrutabodega Test",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_dimrutabodega_test",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 🧪 Dimensión Ruta Bodega Test"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_rutas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_dimrutabodega_test",
+                  "fields": [
+                    {
+                      "name": "total_rutas",
+                      "expression": "SUM(`total_rutas`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "total_rutas"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_total_rutas"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "table_rutabodega_test",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_dimrutabodega_test",
+                  "fields": [
+                    {
+                      "name": "idrutabodega",
+                      "expression": "`idrutabodega`"
+                    },
+                    {
+                      "name": "clave_bodega",
+                      "expression": "`clave_bodega`"
+                    },
+                    {
+                      "name": "ruta",
+                      "expression": "`ruta`"
+                    },
+                    {
+                      "name": "uso_cody_bodega",
+                      "expression": "`uso_cody_bodega`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "idrutabodega",
+                    "displayName": "ID Ruta Bodega"
+                  },
+                  {
+                    "fieldName": "clave_bodega",
+                    "displayName": "Clave Bodega"
+                  },
+                  {
+                    "fieldName": "ruta",
+                    "displayName": "Ruta"
+                  },
+                  {
+                    "fieldName": "uso_cody_bodega",
+                    "displayName": "Uso Cody Bodega"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle Ruta Bodega Test"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 8,
+            "height": 8
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "incentivos_seguimientos_kpi",
+      "displayName": "Incentivos Seguimientos Kpi",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_incentivos",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 🎯 Incentivos Seguimientos KPI"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_rutas_incentivos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi",
+                  "fields": [
+                    {
+                      "name": "count_clave_ruta",
+                      "expression": "COUNT(DISTINCT `clave_ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count_clave_ruta"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_rutas_incentivos"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_fecha_max_incentivos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi",
+                  "fields": [
+                    {
+                      "name": "max_fecha",
+                      "expression": "MAX(`fecha`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max_fecha"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_fecha_max_incentivos"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_alcance_incentivo",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi",
+                  "fields": [
+                    {
+                      "name": "cumplimiento_mes_actual_pct",
+                      "expression": "AVG(`cumplimiento_mes_actual_pct`)"
+                    },
+                    {
+                      "name": "cumplimiento_mes_anterior_pct",
+                      "expression": "AVG(`cumplimiento_mes_anterior_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "cumplimiento_mes_actual_pct"
+                },
+                "target": {
+                  "fieldName": "cumplimiento_mes_anterior_pct",
+                  "change": {
+                    "type": "percent"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Alcance Incentivo"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_cumplimiento_ruta",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi",
+                  "fields": [
+                    {
+                      "name": "clave_ruta",
+                      "expression": "`clave_ruta`"
+                    },
+                    {
+                      "name": "cumplimiento_mes_actual_pct",
+                      "expression": "AVG(`cumplimiento_mes_actual_pct`)"
+                    },
+                    {
+                      "name": "incentivo",
+                      "expression": "`incentivo`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "clave_ruta",
+                  "displayName": "Clave Ruta",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "cumplimiento_mes_actual_pct",
+                  "displayName": "Cumplimiento Mes Actual (%)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "incentivo",
+                  "displayName": "Incentivo",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Cumplimiento por Ruta"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "incentivos_test",
+      "displayName": "Incentivos Test",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_incentivos_test",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 🧪 Incentivos Test"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_registros",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_test",
+                  "fields": [
+                    {
+                      "name": "total_registros",
+                      "expression": "SUM(`total_registros`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "total_registros"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_total_registros"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_logrados",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_test",
+                  "fields": [
+                    {
+                      "name": "logrados",
+                      "expression": "SUM(`logrados`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "logrados"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_logrados"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_grupo_avance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_test",
+                  "fields": [
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "suma_avance",
+                      "expression": "SUM(`suma_avance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "suma_avance",
+                  "displayName": "Suma Avance",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "grupo",
+                  "displayName": "Grupo",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Avance por Grupo"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "uso_cody",
+      "displayName": "Uso Cody",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_uso_cody",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 🤖 Uso Cody"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "line_topic_fecha",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "topic",
+                      "expression": "`topic`"
+                    },
+                    {
+                      "name": "messagedate",
+                      "expression": "`messagedate`"
+                    },
+                    {
+                      "name": "count_ruta",
+                      "expression": "COUNT(DISTINCT `ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "messagedate",
+                  "displayName": "Fecha Mensaje",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "count_ruta",
+                  "displayName": "Cantidad Rutas",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "topic",
+                  "displayName": "Tópico",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Uso por Tópico y Fecha"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 12,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_rutas_cody",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "count_ruta",
+                      "expression": "COUNT(DISTINCT `ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count_ruta"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_rutas_cody"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 2,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_fecha_max_cody",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "max_messagedate",
+                      "expression": "MAX(`messagedate`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max_messagedate"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "counter_fecha_max_cody"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 5,
+            "width": 2,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_sesiones_semana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "sesiones_promedio_por_dia_ultima_semana",
+                      "expression": "AVG(`sesiones_promedio_por_dia_ultima_semana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sesiones_promedio_por_dia_ultima_semana"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Promedio Sesiones Semana"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 5,
+            "width": 2,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_interacciones_sesion",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "promedio_interacciones_por_sesion_semana",
+                      "expression": "AVG(`promedio_interacciones_por_sesion_semana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "promedio_interacciones_por_sesion_semana"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Promedio Interacciones x sesión semana"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 5,
+            "width": 2,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_interacciones_cierre",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "pct_interacciones_cierre_mensual_y_reportes_semanal",
+                      "expression": "AVG(`pct_interacciones_cierre_mensual_y_reportes_semanal`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "pct_interacciones_cierre_mensual_y_reportes_semanal"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "% Interacciones Cierre Mensual Semana"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 5,
+            "width": 2,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_interacciones_objetivos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody",
+                  "fields": [
+                    {
+                      "name": "pct_interacciones_objetivos_y_metas_diarias",
+                      "expression": "AVG(`pct_interacciones_objetivos_y_metas_diarias`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "pct_interacciones_objetivos_y_metas_diarias"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "% Interacciones Objetivos Diarios Semana"
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 5,
+            "width": 2,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "warehouse",
+      "displayName": "Warehouse",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_warehouse",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 🏭 Warehouse"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "table_warehouse",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_warehouse",
+                  "fields": [
+                    {
+                      "name": "clave_bodega",
+                      "expression": "`clave_bodega`"
+                    },
+                    {
+                      "name": "bodega",
+                      "expression": "`bodega`"
+                    },
+                    {
+                      "name": "territorio",
+                      "expression": "`territorio`"
+                    },
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "tipo_cedis",
+                      "expression": "`tipo_cedis`"
+                    },
+                    {
+                      "name": "grupo_bodega",
+                      "expression": "`grupo_bodega`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "clave_bodega",
+                    "displayName": "Clave Bodega"
+                  },
+                  {
+                    "fieldName": "bodega",
+                    "displayName": "Bodega"
+                  },
+                  {
+                    "fieldName": "territorio",
+                    "displayName": "Territorio"
+                  },
+                  {
+                    "fieldName": "region",
+                    "displayName": "Región"
+                  },
+                  {
+                    "fieldName": "tipo_cedis",
+                    "displayName": "Tipo CEDIS"
+                  },
+                  {
+                    "fieldName": "grupo_bodega",
+                    "displayName": "Grupo Bodega"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle Warehouse"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 12,
+            "height": 10
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
