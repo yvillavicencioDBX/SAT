@@ -378,6 +378,11 @@ except Exception as e:
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC select * from migracion_pbix.couch.pbi_measures
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC ## Listo
 # MAGIC

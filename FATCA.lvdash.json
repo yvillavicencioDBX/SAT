@@ -1,0 +1,4120 @@
+{
+  "datasets": [
+    {
+      "name": "ds_crs__repunc",
+      "displayName": "Crs  Repunc",
+      "queryLines": [
+        "SELECT\n",
+        "      `crs_version`,\n",
+        "      `transmittingcountry`,\n",
+        "      `receivingcountry`,\n",
+        "      `messagerefid`,\n",
+        "      `messagetypeindic`,\n",
+        "      `reportingperiod`,\n",
+        "      `reportingperiod_month`,\n",
+        "      `anio_fiscal`,\n",
+        "      `timestamp_val`,\n",
+        "      `status`,\n",
+        "      `in_reportingfi`,\n",
+        "      `name_reportingfi`,\n",
+        "      `addressfree_reportingfi`,\n",
+        "      `addressfix_reportingfi`,\n",
+        "      `addressfreefix_reportingfi`,\n",
+        "      `doctypeindic_reportingfi`,\n",
+        "      `docrefid_reportingfi`,\n",
+        "      `corrdocrefid_reportingfi`,\n",
+        "      `in_sponsor`,\n",
+        "      `name_sponsor`,\n",
+        "      `addressfree_sponsor`,\n",
+        "      `addressfix_sponsor`,\n",
+        "      `addressfreefix_sponsor`,\n",
+        "      `doctypeindic_sponsor`,\n",
+        "      `docrefid_sponsor`,\n",
+        "      `corrdocrefid_sponsor`,\n",
+        "      `doctypeindic_accountreport`,\n",
+        "      `docrefid_accountreport`,\n",
+        "      `corrdocrefid_accountreport`,\n",
+        "      `accountnumber_accountreport`,\n",
+        "      `accountnumbertype`,\n",
+        "      `undocumentedaccount`,\n",
+        "      `closedaccount`,\n",
+        "      `dormantaccount`,\n",
+        "      `tin_individual`,\n",
+        "      `name_individual`,\n",
+        "      `addressfree_individual`,\n",
+        "      `addressfix_individual`,\n",
+        "      `addressfreefix_individual`,\n",
+        "      `birthdate_individual`,\n",
+        "      `city_birthinfo_individual`,\n",
+        "      `countrycode_birthinfo_individual`,\n",
+        "      `in_organisation`,\n",
+        "      `name_organisation`,\n",
+        "      `addressfree_organisation`,\n",
+        "      `addressfix_organisation`,\n",
+        "      `addressfreefix_organisation`,\n",
+        "      `tin_controllingperson`,\n",
+        "      `name_controllingperson`,\n",
+        "      `addressfree_controllingperson`,\n",
+        "      `addressfix_controllingperson`,\n",
+        "      `addressfreefix_controllingperson`,\n",
+        "      `birthdate_controllingperson`,\n",
+        "      `city_birthinfo_controllingperson`,\n",
+        "      `countrycode_birthinfo_controllingperson`,\n",
+        "      `accountbalance`,\n",
+        "      `currcode_accountbalance`,\n",
+        "      `paymenttype_crs501`,\n",
+        "      `currcode_crs501`,\n",
+        "      `paymenttype_crs502`,\n",
+        "      `currcode_crs502`,\n",
+        "      `paymenttype_crs503`,\n",
+        "      `currcode_crs503`,\n",
+        "      `paymenttype_crs504`,\n",
+        "      `currcode_crs504`,\n",
+        "      `tipodecambiousd`,\n",
+        "      `accountbalanceusd`,\n",
+        "      `tipodecambiomxn`,\n",
+        "      `accountbalancemxn`,\n",
+        "      `rfc_localizado`,\n",
+        "      `marca_rfc`,\n",
+        "      `nombre_higienizado`,\n",
+        "      `domicilio_higienizado`,\n",
+        "      `idejecucion`,\n",
+        "      `operacion`,\n",
+        "      `name`,\n",
+        "      TRY_CAST(MEASURE(`filtermenu_crs`) AS DOUBLE) as `filtermenu_crs`,\n",
+        "      TRY_CAST(MEASURE(`registros_crs_reporteunc`) AS DOUBLE) as `registros_crs_reporteunc`,\n",
+        "      TRY_CAST(MEASURE(`crs_registros_global_repunc`) AS DOUBLE) as `crs_registros_global_repunc`\n",
+        "  FROM sat_reportes.default.mv_crs__repunc\n",
+        "  GROUP BY\n",
+        "      `crs_version`,\n",
+        "      `transmittingcountry`,\n",
+        "      `receivingcountry`,\n",
+        "      `messagerefid`,\n",
+        "      `messagetypeindic`,\n",
+        "      `reportingperiod`,\n",
+        "      `reportingperiod_month`,\n",
+        "      `anio_fiscal`,\n",
+        "      `timestamp_val`,\n",
+        "      `status`,\n",
+        "      `in_reportingfi`,\n",
+        "      `name_reportingfi`,\n",
+        "      `addressfree_reportingfi`,\n",
+        "      `addressfix_reportingfi`,\n",
+        "      `addressfreefix_reportingfi`,\n",
+        "      `doctypeindic_reportingfi`,\n",
+        "      `docrefid_reportingfi`,\n",
+        "      `corrdocrefid_reportingfi`,\n",
+        "      `in_sponsor`,\n",
+        "      `name_sponsor`,\n",
+        "      `addressfree_sponsor`,\n",
+        "      `addressfix_sponsor`,\n",
+        "      `addressfreefix_sponsor`,\n",
+        "      `doctypeindic_sponsor`,\n",
+        "      `docrefid_sponsor`,\n",
+        "      `corrdocrefid_sponsor`,\n",
+        "      `doctypeindic_accountreport`,\n",
+        "      `docrefid_accountreport`,\n",
+        "      `corrdocrefid_accountreport`,\n",
+        "      `accountnumber_accountreport`,\n",
+        "      `accountnumbertype`,\n",
+        "      `undocumentedaccount`,\n",
+        "      `closedaccount`,\n",
+        "      `dormantaccount`,\n",
+        "      `tin_individual`,\n",
+        "      `name_individual`,\n",
+        "      `addressfree_individual`,\n",
+        "      `addressfix_individual`,\n",
+        "      `addressfreefix_individual`,\n",
+        "      `birthdate_individual`,\n",
+        "      `city_birthinfo_individual`,\n",
+        "      `countrycode_birthinfo_individual`,\n",
+        "      `in_organisation`,\n",
+        "      `name_organisation`,\n",
+        "      `addressfree_organisation`,\n",
+        "      `addressfix_organisation`,\n",
+        "      `addressfreefix_organisation`,\n",
+        "      `tin_controllingperson`,\n",
+        "      `name_controllingperson`,\n",
+        "      `addressfree_controllingperson`,\n",
+        "      `addressfix_controllingperson`,\n",
+        "      `addressfreefix_controllingperson`,\n",
+        "      `birthdate_controllingperson`,\n",
+        "      `city_birthinfo_controllingperson`,\n",
+        "      `countrycode_birthinfo_controllingperson`,\n",
+        "      `accountbalance`,\n",
+        "      `currcode_accountbalance`,\n",
+        "      `paymenttype_crs501`,\n",
+        "      `currcode_crs501`,\n",
+        "      `paymenttype_crs502`,\n",
+        "      `currcode_crs502`,\n",
+        "      `paymenttype_crs503`,\n",
+        "      `currcode_crs503`,\n",
+        "      `paymenttype_crs504`,\n",
+        "      `currcode_crs504`,\n",
+        "      `tipodecambiousd`,\n",
+        "      `accountbalanceusd`,\n",
+        "      `tipodecambiomxn`,\n",
+        "      `accountbalancemxn`,\n",
+        "      `rfc_localizado`,\n",
+        "      `marca_rfc`,\n",
+        "      `nombre_higienizado`,\n",
+        "      `domicilio_higienizado`,\n",
+        "      `idejecucion`,\n",
+        "      `operacion`,\n",
+        "      `name`"
+      ]
+    },
+    {
+      "name": "ds_crs_sabana",
+      "displayName": "Crs Sabana",
+      "queryLines": [
+        "SELECT\n",
+        "    `accountnumber_accountreport`,\n",
+        "    `accthholdertype_accountholder`,\n",
+        "    `anio_fiscal`,\n",
+        "    `birthdate_controllingperson`,\n",
+        "    `birthdate_individual`,\n",
+        "    `contact`,\n",
+        "    `messagerefid`,\n",
+        "    `messagetype`,\n",
+        "    `paymenttype_payment`,\n",
+        "    `receivingcountry`,\n",
+        "    `reportingperiod`,\n",
+        "    `timestamp`,\n",
+        "    `transmittingcountry`,\n",
+        "    `warning`,\n",
+        "    `fechainsercion`,\n",
+        "    `fechainsercion_month`,\n",
+        "    TRY_CAST(`idejecucion` AS STRING) as `idejecucion`,\n",
+        "    `nametype_individual`,\n",
+        "    `nametype_organisation`,\n",
+        "    `p_fechainsercion`,\n",
+        "    `p_fechainsercion_month`,\n",
+        "    `version`,\n",
+        "    `registros_crs_sabana`,\n",
+        "    `crs_registros_global_sabana`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `accountnumber_accountreport`,\n",
+        "      `accthholdertype_accountholder`,\n",
+        "      `anio_fiscal`,\n",
+        "      `birthdate_controllingperson`,\n",
+        "      `birthdate_individual`,\n",
+        "      `contact`,\n",
+        "      `messagerefid`,\n",
+        "      `messagetype`,\n",
+        "      `paymenttype_payment`,\n",
+        "      `receivingcountry`,\n",
+        "      `reportingperiod`,\n",
+        "      `timestamp`,\n",
+        "      `transmittingcountry`,\n",
+        "      `warning`,\n",
+        "      `fechainsercion`,\n",
+        "      `fechainsercion_month`,\n",
+        "      `idejecucion`,\n",
+        "      `nametype_individual`,\n",
+        "      `nametype_organisation`,\n",
+        "      `p_fechainsercion`,\n",
+        "      `p_fechainsercion_month`,\n",
+        "      `version`,\n",
+        "      TRY_CAST(MEASURE(`registros_crs_sabana`) AS DOUBLE) as `registros_crs_sabana`,\n",
+        "      TRY_CAST(MEASURE(`crs_registros_global_sabana`) AS DOUBLE) as `crs_registros_global_sabana`\n",
+        "    FROM sat_reportes.default.mv_crs_sabana\n",
+        "    GROUP BY\n",
+        "      `accountnumber_accountreport`,\n",
+        "      `accthholdertype_accountholder`,\n",
+        "      `anio_fiscal`,\n",
+        "      `birthdate_controllingperson`,\n",
+        "      `birthdate_individual`,\n",
+        "      `contact`,\n",
+        "      `messagerefid`,\n",
+        "      `messagetype`,\n",
+        "      `paymenttype_payment`,\n",
+        "      `receivingcountry`,\n",
+        "      `reportingperiod`,\n",
+        "      `timestamp`,\n",
+        "      `transmittingcountry`,\n",
+        "      `warning`,\n",
+        "      `fechainsercion`,\n",
+        "      `fechainsercion_month`,\n",
+        "      `idejecucion`,\n",
+        "      `nametype_individual`,\n",
+        "      `nametype_organisation`,\n",
+        "      `p_fechainsercion`,\n",
+        "      `p_fechainsercion_month`,\n",
+        "      `version`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_fat_repunc",
+      "displayName": "Fat Repunc",
+      "queryLines": [
+        "SELECT\n",
+        "    `accountclosed`,\n",
+        "    `accountnumber`,\n",
+        "    `accountnumbertype`,\n",
+        "    `addressfix_individual`,\n",
+        "    `addressfix_intermediary`,\n",
+        "    `addressfix_organisation`,\n",
+        "    `addressfix_reportingfi`,\n",
+        "    `addressfix_sponsor`,\n",
+        "    `addressfix_substantialowner_individual`,\n",
+        "    `addressfix_substantialowner_organisation`,\n",
+        "    `addressfreefix_individual`,\n",
+        "    `addressfreefix_intermediary`,\n",
+        "    `addressfreefix_organisation`,\n",
+        "    `addressfreefix_reportingfi`,\n",
+        "    `addressfreefix_sponsor`,\n",
+        "    `addressfreefix_substantialowner_individual`,\n",
+        "    `addressfreefix_substantialowner_organisation`,\n",
+        "    `addressfree_individual`,\n",
+        "    `addressfree_intermediary`,\n",
+        "    `addressfree_organisation`,\n",
+        "    `addressfree_reportingfi`,\n",
+        "    `addressfree_sponsor`,\n",
+        "    `addressfree_substantialowner_individual`,\n",
+        "    `addressfree_substantialowner_organisation`,\n",
+        "    `birthdate_individual`,\n",
+        "    `birthdate_substantialowner_individual`,\n",
+        "    `city_birthdate_individual`,\n",
+        "    `corrdocrefid_accountreport`,\n",
+        "    `corrdocrefid_intermediary`,\n",
+        "    `corrdocrefid_nilreport`,\n",
+        "    `corrdocrefid_reportingfi`,\n",
+        "    `corrdocrefid_sponsor`,\n",
+        "    `corrmessagerefid`,\n",
+        "    `corrmessagerefid_accountreport`,\n",
+        "    `corrmessagerefid_intermediary`,\n",
+        "    `corrmessagerefid_nilreport`,\n",
+        "    `corrmessagerefid_reportingfi`,\n",
+        "    `corrmessagerefid_sponsor`,\n",
+        "    `countrycode_countryinfo_individual`,\n",
+        "    `currcode_accountbalance`,\n",
+        "    `currcode_fatca501`,\n",
+        "    `currcode_fatca502`,\n",
+        "    `currcode_fatca503`,\n",
+        "    `currcode_fatca504`,\n",
+        "    `marca_rfc`,\n",
+        "    `messagerefid`,\n",
+        "    `name`,\n",
+        "    `name_individual`,\n",
+        "    `name_organisation`,\n",
+        "    `receivingcountry`,\n",
+        "    `reportingperiod`,\n",
+        "    `rfc_localizado`,\n",
+        "    `tin_individual`,\n",
+        "    `tin_organisation`,\n",
+        "    `timestamp`,\n",
+        "    `transmittingcountry`,\n",
+        "    TRY_CAST(`idejecucion` AS STRING) as `idejecucion`,\n",
+        "    `registros_rep_unico`,\n",
+        "    `fat_registros_global_repunc`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `accountclosed`,\n",
+        "      `accountnumber`,\n",
+        "      `accountnumbertype`,\n",
+        "      `addressfix_individual`,\n",
+        "      `addressfix_intermediary`,\n",
+        "      `addressfix_organisation`,\n",
+        "      `addressfix_reportingfi`,\n",
+        "      `addressfix_sponsor`,\n",
+        "      `addressfix_substantialowner_individual`,\n",
+        "      `addressfix_substantialowner_organisation`,\n",
+        "      `addressfreefix_individual`,\n",
+        "      `addressfreefix_intermediary`,\n",
+        "      `addressfreefix_organisation`,\n",
+        "      `addressfreefix_reportingfi`,\n",
+        "      `addressfreefix_sponsor`,\n",
+        "      `addressfreefix_substantialowner_individual`,\n",
+        "      `addressfreefix_substantialowner_organisation`,\n",
+        "      `addressfree_individual`,\n",
+        "      `addressfree_intermediary`,\n",
+        "      `addressfree_organisation`,\n",
+        "      `addressfree_reportingfi`,\n",
+        "      `addressfree_sponsor`,\n",
+        "      `addressfree_substantialowner_individual`,\n",
+        "      `addressfree_substantialowner_organisation`,\n",
+        "      `birthdate_individual`,\n",
+        "      `birthdate_substantialowner_individual`,\n",
+        "      `city_birthdate_individual`,\n",
+        "      `corrdocrefid_accountreport`,\n",
+        "      `corrdocrefid_intermediary`,\n",
+        "      `corrdocrefid_nilreport`,\n",
+        "      `corrdocrefid_reportingfi`,\n",
+        "      `corrdocrefid_sponsor`,\n",
+        "      `corrmessagerefid`,\n",
+        "      `corrmessagerefid_accountreport`,\n",
+        "      `corrmessagerefid_intermediary`,\n",
+        "      `corrmessagerefid_nilreport`,\n",
+        "      `corrmessagerefid_reportingfi`,\n",
+        "      `corrmessagerefid_sponsor`,\n",
+        "      `countrycode_countryinfo_individual`,\n",
+        "      `currcode_accountbalance`,\n",
+        "      `currcode_fatca501`,\n",
+        "      `currcode_fatca502`,\n",
+        "      `currcode_fatca503`,\n",
+        "      `currcode_fatca504`,\n",
+        "      `marca_rfc`,\n",
+        "      `messagerefid`,\n",
+        "      `name`,\n",
+        "      `name_individual`,\n",
+        "      `name_organisation`,\n",
+        "      `receivingcountry`,\n",
+        "      `reportingperiod`,\n",
+        "      `rfc_localizado`,\n",
+        "      `tin_individual`,\n",
+        "      `tin_organisation`,\n",
+        "      `timestamp`,\n",
+        "      `transmittingcountry`,\n",
+        "      `idejecucion`,\n",
+        "      TRY_CAST(MEASURE(`registros_rep_unico`) AS DOUBLE) as `registros_rep_unico`,\n",
+        "      TRY_CAST(MEASURE(`fat_registros_global_repunc`) AS DOUBLE) as `fat_registros_global_repunc`\n",
+        "    FROM sat_reportes.default.mv_fat_repunc\n",
+        "    GROUP BY\n",
+        "      `accountclosed`,\n",
+        "      `accountnumber`,\n",
+        "      `accountnumbertype`,\n",
+        "      `addressfix_individual`,\n",
+        "      `addressfix_intermediary`,\n",
+        "      `addressfix_organisation`,\n",
+        "      `addressfix_reportingfi`,\n",
+        "      `addressfix_sponsor`,\n",
+        "      `addressfix_substantialowner_individual`,\n",
+        "      `addressfix_substantialowner_organisation`,\n",
+        "      `addressfreefix_individual`,\n",
+        "      `addressfreefix_intermediary`,\n",
+        "      `addressfreefix_organisation`,\n",
+        "      `addressfreefix_reportingfi`,\n",
+        "      `addressfreefix_sponsor`,\n",
+        "      `addressfreefix_substantialowner_individual`,\n",
+        "      `addressfreefix_substantialowner_organisation`,\n",
+        "      `addressfree_individual`,\n",
+        "      `addressfree_intermediary`,\n",
+        "      `addressfree_organisation`,\n",
+        "      `addressfree_reportingfi`,\n",
+        "      `addressfree_sponsor`,\n",
+        "      `addressfree_substantialowner_individual`,\n",
+        "      `addressfree_substantialowner_organisation`,\n",
+        "      `birthdate_individual`,\n",
+        "      `birthdate_substantialowner_individual`,\n",
+        "      `city_birthdate_individual`,\n",
+        "      `corrdocrefid_accountreport`,\n",
+        "      `corrdocrefid_intermediary`,\n",
+        "      `corrdocrefid_nilreport`,\n",
+        "      `corrdocrefid_reportingfi`,\n",
+        "      `corrdocrefid_sponsor`,\n",
+        "      `corrmessagerefid`,\n",
+        "      `corrmessagerefid_accountreport`,\n",
+        "      `corrmessagerefid_intermediary`,\n",
+        "      `corrmessagerefid_nilreport`,\n",
+        "      `corrmessagerefid_reportingfi`,\n",
+        "      `corrmessagerefid_sponsor`,\n",
+        "      `countrycode_countryinfo_individual`,\n",
+        "      `currcode_accountbalance`,\n",
+        "      `currcode_fatca501`,\n",
+        "      `currcode_fatca502`,\n",
+        "      `currcode_fatca503`,\n",
+        "      `currcode_fatca504`,\n",
+        "      `marca_rfc`,\n",
+        "      `messagerefid`,\n",
+        "      `name`,\n",
+        "      `name_individual`,\n",
+        "      `name_organisation`,\n",
+        "      `receivingcountry`,\n",
+        "      `reportingperiod`,\n",
+        "      `rfc_localizado`,\n",
+        "      `tin_individual`,\n",
+        "      `tin_organisation`,\n",
+        "      `timestamp`,\n",
+        "      `transmittingcountry`,\n",
+        "      `idejecucion`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_fat_sabana",
+      "displayName": "Fat Sabana",
+      "queryLines": [
+        "SELECT\n",
+        "    `accountclosed`,\n",
+        "    `accountnumber`,\n",
+        "    `accountnumbertype`,\n",
+        "    `acctholdertype`,\n",
+        "    `birthdate_individual`,\n",
+        "    `birthdate_substantialowner_individual`,\n",
+        "    `contact`,\n",
+        "    `corrmessagerefid`,\n",
+        "    `messagerefid`,\n",
+        "    `messagetype`,\n",
+        "    `payment`,\n",
+        "    `paymenttype`,\n",
+        "    `receivingcountry`,\n",
+        "    `reportingperiod`,\n",
+        "    `timestamp`,\n",
+        "    `transmittingcountry`,\n",
+        "    `warning`,\n",
+        "    `fechainsercion`,\n",
+        "    TRY_CAST(`idejecucion` AS STRING) as `idejecucion`,\n",
+        "    `nametype_individual`,\n",
+        "    `nametype_organisation`,\n",
+        "    `p_fechainsercion`,\n",
+        "    `version`,\n",
+        "    `registros_sabana`,\n",
+        "    `fat_registros_global_sabana`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `accountclosed`,\n",
+        "      `accountnumber`,\n",
+        "      `accountnumbertype`,\n",
+        "      `acctholdertype`,\n",
+        "      `birthdate_individual`,\n",
+        "      `birthdate_substantialowner_individual`,\n",
+        "      `contact`,\n",
+        "      `corrmessagerefid`,\n",
+        "      `messagerefid`,\n",
+        "      `messagetype`,\n",
+        "      `payment`,\n",
+        "      `paymenttype`,\n",
+        "      `receivingcountry`,\n",
+        "      `reportingperiod`,\n",
+        "      `timestamp`,\n",
+        "      `transmittingcountry`,\n",
+        "      `warning`,\n",
+        "      `fechainsercion`,\n",
+        "      `idejecucion`,\n",
+        "      `nametype_individual`,\n",
+        "      `nametype_organisation`,\n",
+        "      `p_fechainsercion`,\n",
+        "      `version`,\n",
+        "      TRY_CAST(MEASURE(`registros_sabana`) AS DOUBLE) as `registros_sabana`,\n",
+        "      TRY_CAST(MEASURE(`fat_registros_global_sabana`) AS DOUBLE) as `fat_registros_global_sabana`\n",
+        "    FROM sat_reportes.default.mv_fat_sabana\n",
+        "    GROUP BY\n",
+        "      `accountclosed`,\n",
+        "      `accountnumber`,\n",
+        "      `accountnumbertype`,\n",
+        "      `acctholdertype`,\n",
+        "      `birthdate_individual`,\n",
+        "      `birthdate_substantialowner_individual`,\n",
+        "      `contact`,\n",
+        "      `corrmessagerefid`,\n",
+        "      `messagerefid`,\n",
+        "      `messagetype`,\n",
+        "      `payment`,\n",
+        "      `paymenttype`,\n",
+        "      `receivingcountry`,\n",
+        "      `reportingperiod`,\n",
+        "      `timestamp`,\n",
+        "      `transmittingcountry`,\n",
+        "      `warning`,\n",
+        "      `fechainsercion`,\n",
+        "      `idejecucion`,\n",
+        "      `nametype_individual`,\n",
+        "      `nametype_organisation`,\n",
+        "      `p_fechainsercion`,\n",
+        "      `version`\n",
+        "  )"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "crs_repunc",
+      "displayName": "Crs  Repunc",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_crs_repunc",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 📊 CRS Reporte Único"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_registros",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "sum(registros_crs_reporteunc)",
+                      "expression": "SUM(`registros_crs_reporteunc`)"
+                    },
+                    {
+                      "name": "sum(crs_registros_global_repunc)",
+                      "expression": "SUM(`crs_registros_global_repunc`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_crs_reporteunc)"
+                },
+                "target": {
+                  "fieldName": "sum(crs_registros_global_repunc)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Registros"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_contribuyentes_localizados",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "marca_rfc",
+                      "expression": "`marca_rfc`"
+                    },
+                    {
+                      "name": "sum(registros_crs_reporteunc)",
+                      "expression": "SUM(`registros_crs_reporteunc`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(registros_crs_reporteunc)",
+                  "displayName": "Registros CRS",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "marca_rfc",
+                  "displayName": "Marca RFC",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x",
+                      "direction": "descending"
+                    }
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Contribuyentes Localizados"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 7,
+            "width": 9,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detalle_registros",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "crs_version",
+                      "expression": "`crs_version`"
+                    },
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "marca_rfc",
+                      "expression": "`marca_rfc`"
+                    },
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "accountnumbertype",
+                      "expression": "`accountnumbertype`"
+                    },
+                    {
+                      "name": "anio_fiscal",
+                      "expression": "`anio_fiscal`"
+                    },
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "name_individual",
+                      "expression": "`name_individual`"
+                    },
+                    {
+                      "name": "name_organisation",
+                      "expression": "`name_organisation`"
+                    },
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "timestamp_val",
+                      "expression": "`timestamp_val`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "crs_version",
+                    "displayName": "Versión CRS"
+                  },
+                  {
+                    "fieldName": "transmittingcountry",
+                    "displayName": "País Transmisor"
+                  },
+                  {
+                    "fieldName": "receivingcountry",
+                    "displayName": "País Receptor"
+                  },
+                  {
+                    "fieldName": "marca_rfc",
+                    "displayName": "Marca RFC"
+                  },
+                  {
+                    "fieldName": "messagerefid",
+                    "displayName": "ID Mensaje"
+                  },
+                  {
+                    "fieldName": "accountnumbertype",
+                    "displayName": "Tipo de Cuenta"
+                  },
+                  {
+                    "fieldName": "anio_fiscal",
+                    "displayName": "Año Fiscal"
+                  },
+                  {
+                    "fieldName": "birthdate_individual",
+                    "displayName": "Fecha de Nacimiento"
+                  },
+                  {
+                    "fieldName": "name_individual",
+                    "displayName": "Nombre Individual"
+                  },
+                  {
+                    "fieldName": "name_organisation",
+                    "displayName": "Nombre de Organización"
+                  },
+                  {
+                    "fieldName": "reportingperiod",
+                    "displayName": "Periodo de Reporte"
+                  },
+                  {
+                    "fieldName": "timestamp_val",
+                    "displayName": "Fecha"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle de Registros"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 11,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "466b6d1c",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_transmittingcountry",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "transmittingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Transmisor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Transmisor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "transmittingcountry",
+                    "queryName": "ds_crs__repunc_transmittingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "30e30864",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_receivingcountry",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "receivingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Receptor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Receptor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "receivingcountry",
+                    "queryName": "ds_crs__repunc_receivingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "6d43da42",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_anio_fiscal",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "anio_fiscal",
+                      "expression": "`anio_fiscal`"
+                    },
+                    {
+                      "name": "anio_fiscal_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Año Fiscal",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Año Fiscal"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "anio_fiscal",
+                    "queryName": "ds_crs__repunc_anio_fiscal"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "c8ded306",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_timestamp_val",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "timestamp_val",
+                      "expression": "`timestamp_val`"
+                    },
+                    {
+                      "name": "timestamp_val_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "timestamp_val",
+                    "queryName": "ds_crs__repunc_timestamp_val"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "c6605649",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_reportingperiod",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "reportingperiod_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Periodo de Reporte",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Periodo de Reporte"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "reportingperiod",
+                    "queryName": "ds_crs__repunc_reportingperiod"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "9a21ac80",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_name",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "expression": "`name`"
+                    },
+                    {
+                      "name": "name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "name",
+                    "queryName": "ds_crs__repunc_name"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "dbe08a0f",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_messagerefid",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "messagerefid_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "ID Mensaje",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "ID Mensaje"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "messagerefid",
+                    "queryName": "ds_crs__repunc_messagerefid"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "c0272f6a",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_name_individual",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "name_individual",
+                      "expression": "`name_individual`"
+                    },
+                    {
+                      "name": "name_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "name_individual",
+                    "queryName": "ds_crs__repunc_name_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "3f0ff4dd",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_tin_individual",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "tin_individual",
+                      "expression": "`tin_individual`"
+                    },
+                    {
+                      "name": "tin_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "TIN Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "TIN Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "tin_individual",
+                    "queryName": "ds_crs__repunc_tin_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "81fddf1e",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_rfc_localizado",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "rfc_localizado",
+                      "expression": "`rfc_localizado`"
+                    },
+                    {
+                      "name": "rfc_localizado_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "RFC Localizado",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "RFC Localizado"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "rfc_localizado",
+                    "queryName": "ds_crs__repunc_rfc_localizado"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "8aeae8ad",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_birthdate_individual",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "birthdate_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha de Nacimiento Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha de Nacimiento Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "birthdate_individual",
+                    "queryName": "ds_crs__repunc_birthdate_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "e7e191b4",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_name_organisation",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "name_organisation",
+                      "expression": "`name_organisation`"
+                    },
+                    {
+                      "name": "name_organisation_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre de Organización",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre de Organización"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "name_organisation",
+                    "queryName": "ds_crs__repunc_name_organisation"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "9c53d5de",
+            "queries": [
+              {
+                "name": "ds_crs__repunc_in_organisation",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "in_organisation",
+                      "expression": "`in_organisation`"
+                    },
+                    {
+                      "name": "in_organisation_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "ID de Organización",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "ID de Organización"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "in_organisation",
+                    "queryName": "ds_crs__repunc_in_organisation"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "crs_sabana",
+      "displayName": "Crs Sabana",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_crs_sabana",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 📋 CRS Sabana"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_registros_sabana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    },
+                    {
+                      "name": "sum(crs_registros_global_sabana)",
+                      "expression": "SUM(`crs_registros_global_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_crs_sabana)"
+                },
+                "target": {
+                  "fieldName": "sum(crs_registros_global_sabana)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Registros"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_tipo_pago",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "paymenttype_payment",
+                      "expression": "`paymenttype_payment`"
+                    },
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "paymenttype_payment",
+                  "displayName": "Tipo de Pago",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros_crs_sabana)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Totales por Tipo de Pago"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 5,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_tipo_persona",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "accthholdertype_accountholder",
+                      "expression": "`accthholdertype_accountholder`"
+                    },
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "accthholdertype_accountholder",
+                  "displayName": "Tipo de Persona",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros_crs_sabana)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Totales por Tipo de Persona"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 5,
+            "width": 5,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detalle_sabana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "version",
+                      "expression": "`version`"
+                    },
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "messagetype",
+                      "expression": "`messagetype`"
+                    },
+                    {
+                      "name": "warning",
+                      "expression": "`warning`"
+                    },
+                    {
+                      "name": "contact",
+                      "expression": "`contact`"
+                    },
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "anio_fiscal",
+                      "expression": "`anio_fiscal`"
+                    },
+                    {
+                      "name": "fechainsercion",
+                      "expression": "`fechainsercion`"
+                    },
+                    {
+                      "name": "idejecucion",
+                      "expression": "`idejecucion`"
+                    },
+                    {
+                      "name": "nametype_individual",
+                      "expression": "`nametype_individual`"
+                    },
+                    {
+                      "name": "nametype_organisation",
+                      "expression": "`nametype_organisation`"
+                    },
+                    {
+                      "name": "accountnumber_accountreport",
+                      "expression": "`accountnumber_accountreport`"
+                    },
+                    {
+                      "name": "accthholdertype_accountholder",
+                      "expression": "`accthholdertype_accountholder`"
+                    },
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "p_fechainsercion",
+                      "expression": "`p_fechainsercion`"
+                    },
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "paymenttype_payment",
+                      "expression": "`paymenttype_payment`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "version",
+                    "displayName": "Versión"
+                  },
+                  {
+                    "fieldName": "receivingcountry",
+                    "displayName": "País Receptor"
+                  },
+                  {
+                    "fieldName": "messagetype",
+                    "displayName": "Tipo de Mensaje"
+                  },
+                  {
+                    "fieldName": "warning",
+                    "displayName": "Advertencia"
+                  },
+                  {
+                    "fieldName": "contact",
+                    "displayName": "Contacto"
+                  },
+                  {
+                    "fieldName": "messagerefid",
+                    "displayName": "ID Mensaje"
+                  },
+                  {
+                    "fieldName": "transmittingcountry",
+                    "displayName": "País Transmisor"
+                  },
+                  {
+                    "fieldName": "anio_fiscal",
+                    "displayName": "Año Fiscal"
+                  },
+                  {
+                    "fieldName": "fechainsercion",
+                    "displayName": "Fecha de Inserción"
+                  },
+                  {
+                    "fieldName": "idejecucion",
+                    "displayName": "ID de Ejecución"
+                  },
+                  {
+                    "fieldName": "nametype_individual",
+                    "displayName": "Tipo de Nombre Individual"
+                  },
+                  {
+                    "fieldName": "nametype_organisation",
+                    "displayName": "Tipo de Nombre de Organización"
+                  },
+                  {
+                    "fieldName": "accountnumber_accountreport",
+                    "displayName": "Número de Cuenta"
+                  },
+                  {
+                    "fieldName": "accthholdertype_accountholder",
+                    "displayName": "Tipo de Titular"
+                  },
+                  {
+                    "fieldName": "birthdate_individual",
+                    "displayName": "Fecha de Nacimiento"
+                  },
+                  {
+                    "fieldName": "p_fechainsercion",
+                    "displayName": "Fecha de Inserción (Periodo)"
+                  },
+                  {
+                    "fieldName": "reportingperiod",
+                    "displayName": "Periodo de Reporte"
+                  },
+                  {
+                    "fieldName": "timestamp",
+                    "displayName": "Fecha"
+                  },
+                  {
+                    "fieldName": "paymenttype_payment",
+                    "displayName": "Tipo de Pago"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle de Registros"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "d9a8a1bb",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_transmittingcountry",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "transmittingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Transmisor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Transmisor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "transmittingcountry",
+                    "queryName": "ds_crs_sabana_transmittingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "a2b63e1a",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_receivingcountry",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "receivingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Receptor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Receptor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "receivingcountry",
+                    "queryName": "ds_crs_sabana_receivingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "2e2e7d75",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_reportingperiod",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "reportingperiod_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Periodo de Reporte",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Periodo de Reporte"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "reportingperiod",
+                    "queryName": "ds_crs_sabana_reportingperiod"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "507ed2af",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_timestamp",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "timestamp_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "timestamp",
+                    "queryName": "ds_crs_sabana_timestamp"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "17dfbc81",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_anio_fiscal",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "anio_fiscal",
+                      "expression": "`anio_fiscal`"
+                    },
+                    {
+                      "name": "anio_fiscal_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Año Fiscal",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Año Fiscal"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "anio_fiscal",
+                    "queryName": "ds_crs_sabana_anio_fiscal"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "72ccc44c",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_nametype_individual",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "nametype_individual",
+                      "expression": "`nametype_individual`"
+                    },
+                    {
+                      "name": "nametype_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "nametype_individual",
+                    "queryName": "ds_crs_sabana_nametype_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "73336f71",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_messagerefid",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "messagerefid_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "ID Mensaje",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "ID Mensaje"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "messagerefid",
+                    "queryName": "ds_crs_sabana_messagerefid"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "899aa7f1",
+            "queries": [
+              {
+                "name": "ds_crs_sabana_birthdate_individual",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "birthdate_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha de Nacimiento Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha de Nacimiento Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "birthdate_individual",
+                    "queryName": "ds_crs_sabana_birthdate_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "fat_repunc",
+      "displayName": "Fat Repunc",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_fat_repunc",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 💼 FATCA Reporte Único"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_registros_fat",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "sum(registros_rep_unico)",
+                      "expression": "SUM(`registros_rep_unico`)"
+                    },
+                    {
+                      "name": "sum(fat_registros_global_repunc)",
+                      "expression": "SUM(`fat_registros_global_repunc`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_rep_unico)"
+                },
+                "target": {
+                  "fieldName": "sum(fat_registros_global_repunc)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Registros"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_contribuyente_localizado",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "marca_rfc",
+                      "expression": "`marca_rfc`"
+                    },
+                    {
+                      "name": "sum(registros_rep_unico)",
+                      "expression": "SUM(`registros_rep_unico`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "marca_rfc",
+                  "displayName": "Marca RFC",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros_rep_unico)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Contribuyente Localizado"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 5,
+            "width": 9,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detalle_fat_repunc",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "accountclosed",
+                      "expression": "`accountclosed`"
+                    },
+                    {
+                      "name": "accountnumber",
+                      "expression": "`accountnumber`"
+                    },
+                    {
+                      "name": "accountnumbertype",
+                      "expression": "`accountnumbertype`"
+                    },
+                    {
+                      "name": "addressfix_individual",
+                      "expression": "`addressfix_individual`"
+                    },
+                    {
+                      "name": "addressfix_intermediary",
+                      "expression": "`addressfix_intermediary`"
+                    },
+                    {
+                      "name": "addressfix_organisation",
+                      "expression": "`addressfix_organisation`"
+                    },
+                    {
+                      "name": "addressfix_reportingfi",
+                      "expression": "`addressfix_reportingfi`"
+                    },
+                    {
+                      "name": "addressfix_sponsor",
+                      "expression": "`addressfix_sponsor`"
+                    },
+                    {
+                      "name": "addressfix_substantialowner_individual",
+                      "expression": "`addressfix_substantialowner_individual`"
+                    },
+                    {
+                      "name": "addressfix_substantialowner_organisation",
+                      "expression": "`addressfix_substantialowner_organisation`"
+                    },
+                    {
+                      "name": "addressfree_individual",
+                      "expression": "`addressfree_individual`"
+                    },
+                    {
+                      "name": "addressfree_intermediary",
+                      "expression": "`addressfree_intermediary`"
+                    },
+                    {
+                      "name": "addressfree_organisation",
+                      "expression": "`addressfree_organisation`"
+                    },
+                    {
+                      "name": "addressfree_reportingfi",
+                      "expression": "`addressfree_reportingfi`"
+                    },
+                    {
+                      "name": "addressfree_sponsor",
+                      "expression": "`addressfree_sponsor`"
+                    },
+                    {
+                      "name": "addressfree_substantialowner_individual",
+                      "expression": "`addressfree_substantialowner_individual`"
+                    },
+                    {
+                      "name": "addressfree_substantialowner_organisation",
+                      "expression": "`addressfree_substantialowner_organisation`"
+                    },
+                    {
+                      "name": "addressfreefix_individual",
+                      "expression": "`addressfreefix_individual`"
+                    },
+                    {
+                      "name": "addressfreefix_intermediary",
+                      "expression": "`addressfreefix_intermediary`"
+                    },
+                    {
+                      "name": "addressfreefix_organisation",
+                      "expression": "`addressfreefix_organisation`"
+                    },
+                    {
+                      "name": "addressfreefix_reportingfi",
+                      "expression": "`addressfreefix_reportingfi`"
+                    },
+                    {
+                      "name": "addressfreefix_sponsor",
+                      "expression": "`addressfreefix_sponsor`"
+                    },
+                    {
+                      "name": "addressfreefix_substantialowner_individual",
+                      "expression": "`addressfreefix_substantialowner_individual`"
+                    },
+                    {
+                      "name": "addressfreefix_substantialowner_organisation",
+                      "expression": "`addressfreefix_substantialowner_organisation`"
+                    },
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "birthdate_substantialowner_individual",
+                      "expression": "`birthdate_substantialowner_individual`"
+                    },
+                    {
+                      "name": "city_birthdate_individual",
+                      "expression": "`city_birthdate_individual`"
+                    },
+                    {
+                      "name": "corrdocrefid_accountreport",
+                      "expression": "`corrdocrefid_accountreport`"
+                    },
+                    {
+                      "name": "corrdocrefid_intermediary",
+                      "expression": "`corrdocrefid_intermediary`"
+                    },
+                    {
+                      "name": "corrdocrefid_nilreport",
+                      "expression": "`corrdocrefid_nilreport`"
+                    },
+                    {
+                      "name": "corrdocrefid_reportingfi",
+                      "expression": "`corrdocrefid_reportingfi`"
+                    },
+                    {
+                      "name": "corrdocrefid_sponsor",
+                      "expression": "`corrdocrefid_sponsor`"
+                    },
+                    {
+                      "name": "corrmessagerefid",
+                      "expression": "`corrmessagerefid`"
+                    },
+                    {
+                      "name": "corrmessagerefid_accountreport",
+                      "expression": "`corrmessagerefid_accountreport`"
+                    },
+                    {
+                      "name": "corrmessagerefid_intermediary",
+                      "expression": "`corrmessagerefid_intermediary`"
+                    },
+                    {
+                      "name": "corrmessagerefid_nilreport",
+                      "expression": "`corrmessagerefid_nilreport`"
+                    },
+                    {
+                      "name": "corrmessagerefid_reportingfi",
+                      "expression": "`corrmessagerefid_reportingfi`"
+                    },
+                    {
+                      "name": "corrmessagerefid_sponsor",
+                      "expression": "`corrmessagerefid_sponsor`"
+                    },
+                    {
+                      "name": "countrycode_countryinfo_individual",
+                      "expression": "`countrycode_countryinfo_individual`"
+                    },
+                    {
+                      "name": "currcode_accountbalance",
+                      "expression": "`currcode_accountbalance`"
+                    },
+                    {
+                      "name": "currcode_fatca501",
+                      "expression": "`currcode_fatca501`"
+                    },
+                    {
+                      "name": "currcode_fatca502",
+                      "expression": "`currcode_fatca502`"
+                    },
+                    {
+                      "name": "currcode_fatca503",
+                      "expression": "`currcode_fatca503`"
+                    },
+                    {
+                      "name": "currcode_fatca504",
+                      "expression": "`currcode_fatca504`"
+                    },
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "accountclosed",
+                    "displayName": "Cuenta Cerrada"
+                  },
+                  {
+                    "fieldName": "accountnumber",
+                    "displayName": "Número de Cuenta"
+                  },
+                  {
+                    "fieldName": "accountnumbertype",
+                    "displayName": "Tipo de Número de Cuenta"
+                  },
+                  {
+                    "fieldName": "messagerefid",
+                    "displayName": "ID Mensaje"
+                  },
+                  {
+                    "fieldName": "receivingcountry",
+                    "displayName": "País Receptor"
+                  },
+                  {
+                    "fieldName": "reportingperiod",
+                    "displayName": "Periodo de Reporte"
+                  },
+                  {
+                    "fieldName": "transmittingcountry",
+                    "displayName": "País Transmisor"
+                  },
+                  {
+                    "fieldName": "birthdate_individual",
+                    "displayName": "Fecha de Nacimiento Individual"
+                  },
+                  {
+                    "fieldName": "currcode_accountbalance",
+                    "displayName": "Código de Moneda del Balance"
+                  },
+                  {
+                    "fieldName": "currcode_fatca501",
+                    "displayName": "Código de Moneda FATCA 501"
+                  },
+                  {
+                    "fieldName": "currcode_fatca502",
+                    "displayName": "Código de Moneda FATCA 502"
+                  },
+                  {
+                    "fieldName": "currcode_fatca503",
+                    "displayName": "Código de Moneda FATCA 503"
+                  },
+                  {
+                    "fieldName": "currcode_fatca504",
+                    "displayName": "Código de Moneda FATCA 504"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle de Registros"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "bec92ae1",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_transmittingcountry",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "transmittingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Transmisor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Transmisor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "transmittingcountry",
+                    "queryName": "ds_fat_repunc_transmittingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "77f29fba",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_receivingcountry",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "receivingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Receptor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Receptor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "receivingcountry",
+                    "queryName": "ds_fat_repunc_receivingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "da2395f7",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_reportingperiod",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "reportingperiod_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Periodo de Reporte",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Periodo de Reporte"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "reportingperiod",
+                    "queryName": "ds_fat_repunc_reportingperiod"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "910c12db",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_timestamp",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "timestamp_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "timestamp",
+                    "queryName": "ds_fat_repunc_timestamp"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "c38b048c",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_messagerefid",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "messagerefid_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "ID Mensaje",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "ID Mensaje"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "messagerefid",
+                    "queryName": "ds_fat_repunc_messagerefid"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "a03c154f",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_name",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "expression": "`name`"
+                    },
+                    {
+                      "name": "name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "name",
+                    "queryName": "ds_fat_repunc_name"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "0004d419",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_name_individual",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "name_individual",
+                      "expression": "`name_individual`"
+                    },
+                    {
+                      "name": "name_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "name_individual",
+                    "queryName": "ds_fat_repunc_name_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "212b9051",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_tin_individual",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "tin_individual",
+                      "expression": "`tin_individual`"
+                    },
+                    {
+                      "name": "tin_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "TIN Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "TIN Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "tin_individual",
+                    "queryName": "ds_fat_repunc_tin_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "85fde277",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_rfc_localizado",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "rfc_localizado",
+                      "expression": "`rfc_localizado`"
+                    },
+                    {
+                      "name": "rfc_localizado_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "RFC Localizado",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "RFC Localizado"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "rfc_localizado",
+                    "queryName": "ds_fat_repunc_rfc_localizado"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "70d5eb10",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_birthdate_individual",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "birthdate_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha de Nacimiento Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha de Nacimiento Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "birthdate_individual",
+                    "queryName": "ds_fat_repunc_birthdate_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "df2a8aa6",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_tin_organisation",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "tin_organisation",
+                      "expression": "`tin_organisation`"
+                    },
+                    {
+                      "name": "tin_organisation_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "TIN de Organización",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "TIN de Organización"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "tin_organisation",
+                    "queryName": "ds_fat_repunc_tin_organisation"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "a13b668c",
+            "queries": [
+              {
+                "name": "ds_fat_repunc_name_organisation",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "name_organisation",
+                      "expression": "`name_organisation`"
+                    },
+                    {
+                      "name": "name_organisation_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre de Organización",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre de Organización"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "name_organisation",
+                    "queryName": "ds_fat_repunc_name_organisation"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "fat_sabana",
+      "displayName": "Fat Sabana",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_fat_sabana",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 📄 FATCA Sabana"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_registros_fat_sabana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "sum(registros_sabana)",
+                      "expression": "SUM(`registros_sabana`)"
+                    },
+                    {
+                      "name": "sum(fat_registros_global_sabana)",
+                      "expression": "SUM(`fat_registros_global_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_sabana)"
+                },
+                "target": {
+                  "fieldName": "sum(fat_registros_global_sabana)"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Registros"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_tipo_pago_fat",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "paymenttype",
+                      "expression": "`paymenttype`"
+                    },
+                    {
+                      "name": "sum(registros_sabana)",
+                      "expression": "SUM(`registros_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "paymenttype",
+                  "displayName": "Tipo de Pago",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros_sabana)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Totales por Tipo de Pago"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 5,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_tipo_persona_fat",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "acctholdertype",
+                      "expression": "`acctholdertype`"
+                    },
+                    {
+                      "name": "sum(registros_sabana)",
+                      "expression": "SUM(`registros_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "acctholdertype",
+                  "displayName": "Tipo de Persona",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros_sabana)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Totales por Tipo de Persona"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 5,
+            "width": 5,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detalle_fat_sabana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "version",
+                      "expression": "`version`"
+                    },
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "messagetype",
+                      "expression": "`messagetype`"
+                    },
+                    {
+                      "name": "warning",
+                      "expression": "`warning`"
+                    },
+                    {
+                      "name": "contact",
+                      "expression": "`contact`"
+                    },
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "corrmessagerefid",
+                      "expression": "`corrmessagerefid`"
+                    },
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "payment",
+                      "expression": "`payment`"
+                    },
+                    {
+                      "name": "acctholdertype",
+                      "expression": "`acctholdertype`"
+                    },
+                    {
+                      "name": "accountclosed",
+                      "expression": "`accountclosed`"
+                    },
+                    {
+                      "name": "accountnumber",
+                      "expression": "`accountnumber`"
+                    },
+                    {
+                      "name": "accountnumbertype",
+                      "expression": "`accountnumbertype`"
+                    },
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "fechainsercion",
+                      "expression": "`fechainsercion`"
+                    },
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "nametype_individual",
+                      "expression": "`nametype_individual`"
+                    },
+                    {
+                      "name": "nametype_organisation",
+                      "expression": "`nametype_organisation`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "version",
+                    "displayName": "Versión"
+                  },
+                  {
+                    "fieldName": "receivingcountry",
+                    "displayName": "País Receptor"
+                  },
+                  {
+                    "fieldName": "messagetype",
+                    "displayName": "Tipo de Mensaje"
+                  },
+                  {
+                    "fieldName": "warning",
+                    "displayName": "Advertencia"
+                  },
+                  {
+                    "fieldName": "contact",
+                    "displayName": "Contacto"
+                  },
+                  {
+                    "fieldName": "messagerefid",
+                    "displayName": "ID Mensaje"
+                  },
+                  {
+                    "fieldName": "corrmessagerefid",
+                    "displayName": "ID de Mensaje de Correlación"
+                  },
+                  {
+                    "fieldName": "transmittingcountry",
+                    "displayName": "País Transmisor"
+                  },
+                  {
+                    "fieldName": "payment",
+                    "displayName": "Pago"
+                  },
+                  {
+                    "fieldName": "acctholdertype",
+                    "displayName": "Tipo de Titular"
+                  },
+                  {
+                    "fieldName": "accountclosed",
+                    "displayName": "Cuenta Cerrada"
+                  },
+                  {
+                    "fieldName": "accountnumber",
+                    "displayName": "Número de Cuenta"
+                  },
+                  {
+                    "fieldName": "accountnumbertype",
+                    "displayName": "Tipo de Número de Cuenta"
+                  },
+                  {
+                    "fieldName": "birthdate_individual",
+                    "displayName": "Fecha de Nacimiento"
+                  },
+                  {
+                    "fieldName": "fechainsercion",
+                    "displayName": "Fecha de Inserción"
+                  },
+                  {
+                    "fieldName": "timestamp",
+                    "displayName": "Fecha"
+                  },
+                  {
+                    "fieldName": "nametype_individual",
+                    "displayName": "Tipo de Nombre Individual"
+                  },
+                  {
+                    "fieldName": "nametype_organisation",
+                    "displayName": "Tipo de Nombre de Organización"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Detalle de Registros"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "c8cf4e26",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_transmittingcountry",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "transmittingcountry",
+                      "expression": "`transmittingcountry`"
+                    },
+                    {
+                      "name": "transmittingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Transmisor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Transmisor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "transmittingcountry",
+                    "queryName": "ds_fat_sabana_transmittingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "983628a5",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_receivingcountry",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    },
+                    {
+                      "name": "receivingcountry_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "País Receptor",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "País Receptor"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "receivingcountry",
+                    "queryName": "ds_fat_sabana_receivingcountry"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "453edbb0",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_reportingperiod",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "reportingperiod",
+                      "expression": "`reportingperiod`"
+                    },
+                    {
+                      "name": "reportingperiod_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Periodo de Reporte",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Periodo de Reporte"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "reportingperiod",
+                    "queryName": "ds_fat_sabana_reportingperiod"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "e32e96b9",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_timestamp",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "timestamp_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "timestamp",
+                    "queryName": "ds_fat_sabana_timestamp"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "a75c821b",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_messagerefid",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "messagerefid",
+                      "expression": "`messagerefid`"
+                    },
+                    {
+                      "name": "messagerefid_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "ID Mensaje",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "ID Mensaje"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "messagerefid",
+                    "queryName": "ds_fat_sabana_messagerefid"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "6e9267c0",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_nametype_individual",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "nametype_individual",
+                      "expression": "`nametype_individual`"
+                    },
+                    {
+                      "name": "nametype_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Nombre",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Nombre"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "nametype_individual",
+                    "queryName": "ds_fat_sabana_nametype_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "9f2c6a75",
+            "queries": [
+              {
+                "name": "ds_fat_sabana_birthdate_individual",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "birthdate_individual",
+                      "expression": "`birthdate_individual`"
+                    },
+                    {
+                      "name": "birthdate_individual_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha de Nacimiento Individual",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha de Nacimiento Individual"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "birthdate_individual",
+                    "queryName": "ds_fat_sabana_birthdate_individual"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

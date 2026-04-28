@@ -231,22 +231,32 @@ print(f"\n✓ {len(generated_tables)} tablas generadas en memoria")
 
 # COMMAND ----------
 
+import unicodedata
+
+def remove_accents(input_str):
+    return ''.join(
+        c for c in unicodedata.normalize('NFKD', input_str)
+        if not unicodedata.combining(c)
+    )
+
 results = []
 
 for table_name, df in generated_tables.items():
-    # Limpiar nombre para UC (snake_case, sin espacios ni caracteres especiales)
-    safe_name = table_name.lower().replace(' ', '_').replace('-', '_').replace('.', '_')
-    safe_name = ''.join(c if c.isalnum() or c == '_' else '_' for c in safe_name)
+    # Limpiar nombre para UC (snake_case, sin espacios ni caracteres especiales, sin acentos)
+    safe_name = table_name.lower().replace(' ', '').replace('-', '').replace('.', '_')
+    safe_name = remove_accents(safe_name)
+    safe_name = ''.join(c if c.isalnum() or c == '' else '' for c in safe_name)
     safe_name = safe_name.strip('_')
 
     full_name = f"{CATALOG}.{SCHEMA}.{safe_name}"
 
-    # Limpiar nombres de columnas
+    # Limpiar nombres de columnas (sin acentos)
     clean_df = df.copy()
     clean_cols = {}
     for c in clean_df.columns:
-        clean = c.lower().replace(' ', '_').replace('-', '_').replace('.', '_')
-        clean = ''.join(ch if ch.isalnum() or ch == '_' else '_' for ch in clean)
+        clean = c.lower().replace(' ', '').replace('-', '').replace('.', '_')
+        clean = remove_accents(clean)
+        clean = ''.join(ch if ch.isalnum() or ch == '' else '' for ch in clean)
         clean = clean.strip('_')
         clean_cols[c] = clean
     clean_df = clean_df.rename(columns=clean_cols)
@@ -275,6 +285,7 @@ for table_name, df in generated_tables.items():
     except Exception as e:
         print(f"  ✗ {full_name}: {str(e)[:150]}")
         results.append({"table": full_name, "pbi_name": table_name, "status": f"FAIL: {str(e)[:100]}", "rows": 0})
+
 
 # COMMAND ----------
 

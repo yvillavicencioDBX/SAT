@@ -19,6 +19,11 @@ dbutils.widgets.text("dashboard_path", "/Users/yolanda.villavicencioibanez@datab
 dbutils.widgets.text("llm_endpoint", "databricks-claude-sonnet-4", "Endpoint del LLM")
 #dbutils.widgets.text("module_path", "/Workspace/Users/yolanda.villavicencioibanez@databricks.com/powerbi-model-analyzer", "Path de módulos Python")
 
+
+# COMMAND ----------
+
+
+
 PBIX_PATH = dbutils.widgets.get("pbix_path")
 CATALOG = dbutils.widgets.get("catalog")
 SCHEMA = dbutils.widgets.get("schema")
@@ -187,23 +192,6 @@ dbutils.notebook.run(
         "schema": SCHEMA,
         "dashboard_path": DASHBOARD_PATH,
         "llm_endpoint": LLM_ENDPOINT,
-    }
-)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ### Paso 5b — Refinar dashboard (validar queries, limpiar counters)
-
-# COMMAND ----------
-
-dbutils.notebook.run(
-    f"{BASE}/5b. refine_dashboard",
-    timeout_seconds=600,
-    arguments={
-        "catalog": CATALOG,
-        "schema": SCHEMA,
-        "dashboard_path": DASHBOARD_PATH,
     }
 )
 
