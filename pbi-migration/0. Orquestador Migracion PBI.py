@@ -17,7 +17,7 @@ dbutils.widgets.text("catalog", "sar_reportes", "Catálogo destino en Unity Cata
 dbutils.widgets.text("schema", "default", "Schema destino")
 dbutils.widgets.text("dashboard_path", "/Users/yolanda.villavicencioibanez@databricks.com/SAT/DashboardFACT.lvdash.json", "Path del dashboard .lvdash.json")
 dbutils.widgets.text("llm_endpoint", "databricks-claude-sonnet-4", "Endpoint del LLM")
-#dbutils.widgets.text("module_path", "/Workspace/Users/yolanda.villavicencioibanez@databricks.com/powerbi-model-analyzer", "Path de módulos Python")
+dbutils.widgets.text("module_path", "/Workspace/Users/yolanda.villavicencioibanez@databricks.com/powerbi-model-analyzer", "Path de módulos Python")
 
 
 # COMMAND ----------

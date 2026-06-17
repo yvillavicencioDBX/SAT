@@ -1,0 +1,4663 @@
+{
+  "datasets": [
+    {
+      "name": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+      "displayName": "Compensacion Ventas Seguimientos Kpi 6Meses Yoli V100",
+      "queryLines": [
+        "SELECT\n",
+        "    `clave_bodega`,\n",
+        "    `clave_ruta`,\n",
+        "    `grupo`,\n",
+        "    `orden`,\n",
+        "    `segmento`,\n",
+        "    `real_cajas_fisicas`,\n",
+        "    `actual_cajas_fisicas`,\n",
+        "    `objetivo_cajas_fisicas`,\n",
+        "    `porcentaje_cumplimiento`,\n",
+        "    `compensacion_lograda`,\n",
+        "    `diferencia_compensacion`,\n",
+        "    `objetivo_compensacion`,\n",
+        "    `fecha_ejecucion`,\n",
+        "    `fecha_ejecucion_month`,\n",
+        "    `campo_llave_base`,\n",
+        "    `fecha`,\n",
+        "    `fecha_month`,\n",
+        "    TRY_CAST(`ano_col` AS STRING) as `ano_col`,\n",
+        "    TRY_CAST(`mes_col` AS STRING) as `mes_col`,\n",
+        "    `max_fecha_global`,\n",
+        "    `inicio_mes_anterior`,\n",
+        "    `fin_mes_anterior`,\n",
+        "    TRY_CAST(`is_max_fecha` AS STRING) as `is_max_fecha`,\n",
+        "    TRY_CAST(`is_prev_month` AS STRING) as `is_prev_month`,\n",
+        "    `compensacion_lograda_ruta_fecha_seg`,\n",
+        "    `objetivo_compensacion_ruta_fecha_seg`,\n",
+        "    `campo_llave`,\n",
+        "    TRY_CAST(`ano` AS STRING) as `ano`,\n",
+        "    TRY_CAST(`mes` AS STRING) as `mes`,\n",
+        "    `route_grupo`,\n",
+        "    `route_ruta_activa`,\n",
+        "    `route_desc_ruta`,\n",
+        "    `route_clasificacion_ruta`,\n",
+        "    `route_tipo_ruta`,\n",
+        "    `route_categoria_ruta`,\n",
+        "    `warehouse_bodega`,\n",
+        "    `warehouse_territorio`,\n",
+        "    `warehouse_region`,\n",
+        "    `warehouse_clave_territorio`,\n",
+        "    `warehouse_clave_region`,\n",
+        "    `warehouse_tipo_cedis`,\n",
+        "    `warehouse_status`,\n",
+        "    `warehouse_grupo_bodega`,\n",
+        "    `warehouse_estado`,\n",
+        "    `warehouse_territorio_nvo`,\n",
+        "    `warehouse_region_nva`,\n",
+        "    `cumplimiento_cuotas_actual_pct`,\n",
+        "    `cumplimiento_cuotas_mes_anterior_pct`,\n",
+        "    `compensacion_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_actual_pct`,\n",
+        "    `cumplimiento_ps_actual_pct`,\n",
+        "    `cumplimiento_ps_mes_anterior_pct`,\n",
+        "    `compensacion_ps_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_ps_actual_pct`,\n",
+        "    `cumplimiento_alpura_actual_pct`,\n",
+        "    `cumplimiento_alpura_mes_anterior_pct`,\n",
+        "    `compensacion_alpura_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_alpura_actual_pct`,\n",
+        "    `cumplimiento_actual_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_por_seg_pct`,\n",
+        "    `cumplimiento_actual_por_fecha_pct`,\n",
+        "    `cumplimiento_mes_anterior_ruta_dynamic`,\n",
+        "    `cumplimiento_actual_cuotas_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_cuotas_por_seg_pct`,\n",
+        "    `cumplimiento_actual_ps_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_ps_por_seg_pct`,\n",
+        "    `cumplimiento_seg_pct`,\n",
+        "    `cumplimiento_actual_alpura_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_alpura_por_seg_pct`,\n",
+        "    `icono_rojo`,\n",
+        "    `cumplimiento_otras_cat_mes_anterior_pct`,\n",
+        "    `cumplimiento_otras_cat_actual_pct`,\n",
+        "    `compensacion_otras_cat_mes_actual_pct`,\n",
+        "    `objetivo_compensacion_otras_cat_actual_pct`,\n",
+        "    `cumplimiento_actual_otras_cat_por_seg_pct`,\n",
+        "    `cumplimiento_anterior_otras_cat_por_seg_pct`,\n",
+        "    `cumplimiento_pct_grafica`,\n",
+        "    `color_diferencia`,\n",
+        "    `color_cuota_pct`,\n",
+        "    `color_compensacion_pct`,\n",
+        "    `color_diferencia_comp_cuotas`,\n",
+        "    `color_compensacion_ps_pct`,\n",
+        "    `cumplimiento_mes_act_alpura_para_tarjeta`,\n",
+        "    `color_diferencia_alpura`,\n",
+        "    `color_alpura_pct`,\n",
+        "    `color_diferencia_ps`,\n",
+        "    `diferencia_comp_alpura_actual_vs_obj`,\n",
+        "    `variacion_y_diferencia_comp_alpura`,\n",
+        "    `compen_mes_act_alpura_para_tarjeta`,\n",
+        "    `delta_vs_alcance_comp_alpura_mes_anterior`,\n",
+        "    `color_compensacion_alpura_pct`,\n",
+        "    `color_diferencia_comp_alpura`,\n",
+        "    `color_ps_pct`,\n",
+        "    `cumplimiento_mes_act_otras_cat_para_tarjeta`,\n",
+        "    `color_diferencia_otras_cat`,\n",
+        "    `diferencia_comp_otras_cat_actual_vs_obj`,\n",
+        "    `color_otras_cat_pct`,\n",
+        "    `compen_mes_act_otras_cat_para_tarjeta`,\n",
+        "    `diferencia_cumplimiento_seg_pct`,\n",
+        "    `variacion_pct_mes_vs_mes_anterior_ruta`,\n",
+        "    `diferencia_cumplimiento_cuota_seg_pct`,\n",
+        "    `diferencia_cumplimiento_ps_seg_pct`,\n",
+        "    `diferencia_cumplimiento_alpura_seg_pct`,\n",
+        "    `diferencia_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_nominal`,\n",
+        "    `compen_mes_act_para_tarjeta`,\n",
+        "    `diferencia_comp_actual_vs_obj`,\n",
+        "    `variacion_y_diferencia_comp`,\n",
+        "    `diferencia_ps_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_ps`,\n",
+        "    `diferencia_comp_ps_actual_vs_obj`,\n",
+        "    `variacion_y_diferencia_comp_ps`,\n",
+        "    `compen_mes_act_ps_para_tarjeta`,\n",
+        "    `diferencia_alpura_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_alpura`,\n",
+        "    `diferencia_otras_cat_actual_vs_mes_anterior`,\n",
+        "    `variacion_y_diferencia_otras_cat`,\n",
+        "    `variacion_y_diferencia_comp_otras_cat`,\n",
+        "    `diferencia_cumplimiento_otras_cat_seg_pct`,\n",
+        "    `delta_vs_alcance_mes_anterior`,\n",
+        "    `icono_segun_variacion`,\n",
+        "    `delta_vs_alcance_comp_mes_anterior`,\n",
+        "    `delta_vs_alcance_comp_ps_mes_anterior`,\n",
+        "    `icono_segun_alpura_variacion`,\n",
+        "    `icono_segun_comp_alpura_variacion`,\n",
+        "    `icono_segun_otras_cat_variacion`,\n",
+        "    `delta_vs_alcance_comp_otras_cat_mes_anterior`,\n",
+        "    `icono_segun_comp_variacion`,\n",
+        "    `icono_segun_comp_ps_variacion`,\n",
+        "    `icono_verde`,\n",
+        "    `color_diferencia_comp_otras_cat`,\n",
+        "    `color_compensacion_otras_cat_pct`,\n",
+        "    `cumplimiento_mes_act_para_tarjeta`,\n",
+        "    `cumplimiento_ps_mes_act_para_tarjeta`,\n",
+        "    `icono_segun_ps_variacion`,\n",
+        "    `icono_segun_comp_otras_cat_variacion`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `grupo`,\n",
+        "      `orden`,\n",
+        "      `segmento`,\n",
+        "      `real_cajas_fisicas`,\n",
+        "      `actual_cajas_fisicas`,\n",
+        "      `objetivo_cajas_fisicas`,\n",
+        "      `porcentaje_cumplimiento`,\n",
+        "      `compensacion_lograda`,\n",
+        "      `diferencia_compensacion`,\n",
+        "      `objetivo_compensacion`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `fecha_ejecucion_month`,\n",
+        "      `campo_llave_base`,\n",
+        "      `fecha`,\n",
+        "      `fecha_month`,\n",
+        "      `ano_col`,\n",
+        "      `mes_col`,\n",
+        "      `max_fecha_global`,\n",
+        "      `inicio_mes_anterior`,\n",
+        "      `fin_mes_anterior`,\n",
+        "      `is_max_fecha`,\n",
+        "      `is_prev_month`,\n",
+        "      `compensacion_lograda_ruta_fecha_seg`,\n",
+        "      `objetivo_compensacion_ruta_fecha_seg`,\n",
+        "      `campo_llave`,\n",
+        "      `ano`,\n",
+        "      `mes`,\n",
+        "      `route_grupo`,\n",
+        "      `route_ruta_activa`,\n",
+        "      `route_desc_ruta`,\n",
+        "      `route_clasificacion_ruta`,\n",
+        "      `route_tipo_ruta`,\n",
+        "      `route_categoria_ruta`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_clave_territorio`,\n",
+        "      `warehouse_clave_region`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_status`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_estado`,\n",
+        "      `warehouse_territorio_nvo`,\n",
+        "      `warehouse_region_nva`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_cuotas_actual_pct`) AS DOUBLE) as `cumplimiento_cuotas_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_cuotas_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_cuotas_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_mes_actual_pct`) AS DOUBLE) as `compensacion_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_actual_pct`) AS DOUBLE) as `objetivo_compensacion_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_ps_actual_pct`) AS DOUBLE) as `cumplimiento_ps_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_ps_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_ps_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_ps_mes_actual_pct`) AS DOUBLE) as `compensacion_ps_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_ps_actual_pct`) AS DOUBLE) as `objetivo_compensacion_ps_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_alpura_actual_pct`) AS DOUBLE) as `cumplimiento_alpura_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_alpura_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_alpura_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_alpura_mes_actual_pct`) AS DOUBLE) as `compensacion_alpura_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_alpura_actual_pct`) AS DOUBLE) as `objetivo_compensacion_alpura_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_por_fecha_pct`) AS DOUBLE) as `cumplimiento_actual_por_fecha_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_anterior_ruta_dynamic`) AS DOUBLE) as `cumplimiento_mes_anterior_ruta_dynamic`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_cuotas_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_cuotas_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_cuotas_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_cuotas_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_ps_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_ps_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_ps_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_ps_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_seg_pct`) AS DOUBLE) as `cumplimiento_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_alpura_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_alpura_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_alpura_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_alpura_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`icono_rojo`) AS DOUBLE) as `icono_rojo`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_otras_cat_mes_anterior_pct`) AS DOUBLE) as `cumplimiento_otras_cat_mes_anterior_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_otras_cat_actual_pct`) AS DOUBLE) as `cumplimiento_otras_cat_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`compensacion_otras_cat_mes_actual_pct`) AS DOUBLE) as `compensacion_otras_cat_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`objetivo_compensacion_otras_cat_actual_pct`) AS DOUBLE) as `objetivo_compensacion_otras_cat_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_actual_otras_cat_por_seg_pct`) AS DOUBLE) as `cumplimiento_actual_otras_cat_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_anterior_otras_cat_por_seg_pct`) AS DOUBLE) as `cumplimiento_anterior_otras_cat_por_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_pct_grafica`) AS DOUBLE) as `cumplimiento_pct_grafica`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia`) AS DOUBLE) as `color_diferencia`,\n",
+        "      TRY_CAST(MEASURE(`color_cuota_pct`) AS DOUBLE) as `color_cuota_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_pct`) AS DOUBLE) as `color_compensacion_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_comp_cuotas`) AS DOUBLE) as `color_diferencia_comp_cuotas`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_ps_pct`) AS DOUBLE) as `color_compensacion_ps_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_act_alpura_para_tarjeta`) AS DOUBLE) as `cumplimiento_mes_act_alpura_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_alpura`) AS DOUBLE) as `color_diferencia_alpura`,\n",
+        "      TRY_CAST(MEASURE(`color_alpura_pct`) AS DOUBLE) as `color_alpura_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_ps`) AS DOUBLE) as `color_diferencia_ps`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_alpura_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_alpura_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp_alpura`) AS DOUBLE) as `variacion_y_diferencia_comp_alpura`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_alpura_para_tarjeta`) AS DOUBLE) as `compen_mes_act_alpura_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_alpura_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_alpura_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_alpura_pct`) AS DOUBLE) as `color_compensacion_alpura_pct`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_comp_alpura`) AS DOUBLE) as `color_diferencia_comp_alpura`,\n",
+        "      TRY_CAST(MEASURE(`color_ps_pct`) AS DOUBLE) as `color_ps_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_act_otras_cat_para_tarjeta`) AS DOUBLE) as `cumplimiento_mes_act_otras_cat_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_otras_cat`) AS DOUBLE) as `color_diferencia_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_otras_cat_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_otras_cat_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`color_otras_cat_pct`) AS DOUBLE) as `color_otras_cat_pct`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_otras_cat_para_tarjeta`) AS DOUBLE) as `compen_mes_act_otras_cat_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`variacion_pct_mes_vs_mes_anterior_ruta`) AS DOUBLE) as `variacion_pct_mes_vs_mes_anterior_ruta`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_cuota_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_cuota_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_ps_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_ps_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_alpura_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_alpura_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_nominal`) AS DOUBLE) as `variacion_y_diferencia_nominal`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_para_tarjeta`) AS DOUBLE) as `compen_mes_act_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp`) AS DOUBLE) as `variacion_y_diferencia_comp`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_ps_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_ps_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_ps`) AS DOUBLE) as `variacion_y_diferencia_ps`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_comp_ps_actual_vs_obj`) AS DOUBLE) as `diferencia_comp_ps_actual_vs_obj`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp_ps`) AS DOUBLE) as `variacion_y_diferencia_comp_ps`,\n",
+        "      TRY_CAST(MEASURE(`compen_mes_act_ps_para_tarjeta`) AS DOUBLE) as `compen_mes_act_ps_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_alpura_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_alpura_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_alpura`) AS DOUBLE) as `variacion_y_diferencia_alpura`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_otras_cat_actual_vs_mes_anterior`) AS DOUBLE) as `diferencia_otras_cat_actual_vs_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_otras_cat`) AS DOUBLE) as `variacion_y_diferencia_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`variacion_y_diferencia_comp_otras_cat`) AS DOUBLE) as `variacion_y_diferencia_comp_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`diferencia_cumplimiento_otras_cat_seg_pct`) AS DOUBLE) as `diferencia_cumplimiento_otras_cat_seg_pct`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_variacion`) AS DOUBLE) as `icono_segun_variacion`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_ps_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_ps_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_alpura_variacion`) AS DOUBLE) as `icono_segun_alpura_variacion`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_alpura_variacion`) AS DOUBLE) as `icono_segun_comp_alpura_variacion`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_otras_cat_variacion`) AS DOUBLE) as `icono_segun_otras_cat_variacion`,\n",
+        "      TRY_CAST(MEASURE(`delta_vs_alcance_comp_otras_cat_mes_anterior`) AS DOUBLE) as `delta_vs_alcance_comp_otras_cat_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_variacion`) AS DOUBLE) as `icono_segun_comp_variacion`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_ps_variacion`) AS DOUBLE) as `icono_segun_comp_ps_variacion`,\n",
+        "      TRY_CAST(MEASURE(`icono_verde`) AS DOUBLE) as `icono_verde`,\n",
+        "      TRY_CAST(MEASURE(`color_diferencia_comp_otras_cat`) AS DOUBLE) as `color_diferencia_comp_otras_cat`,\n",
+        "      TRY_CAST(MEASURE(`color_compensacion_otras_cat_pct`) AS DOUBLE) as `color_compensacion_otras_cat_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_act_para_tarjeta`) AS DOUBLE) as `cumplimiento_mes_act_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_ps_mes_act_para_tarjeta`) AS DOUBLE) as `cumplimiento_ps_mes_act_para_tarjeta`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_ps_variacion`) AS DOUBLE) as `icono_segun_ps_variacion`,\n",
+        "      TRY_CAST(MEASURE(`icono_segun_comp_otras_cat_variacion`) AS DOUBLE) as `icono_segun_comp_otras_cat_variacion`\n",
+        "    FROM sat_reportes.default.mv_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100\n",
+        "    GROUP BY\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `grupo`,\n",
+        "      `orden`,\n",
+        "      `segmento`,\n",
+        "      `real_cajas_fisicas`,\n",
+        "      `actual_cajas_fisicas`,\n",
+        "      `objetivo_cajas_fisicas`,\n",
+        "      `porcentaje_cumplimiento`,\n",
+        "      `compensacion_lograda`,\n",
+        "      `diferencia_compensacion`,\n",
+        "      `objetivo_compensacion`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `fecha_ejecucion_month`,\n",
+        "      `campo_llave_base`,\n",
+        "      `fecha`,\n",
+        "      `fecha_month`,\n",
+        "      `ano_col`,\n",
+        "      `mes_col`,\n",
+        "      `max_fecha_global`,\n",
+        "      `inicio_mes_anterior`,\n",
+        "      `fin_mes_anterior`,\n",
+        "      `is_max_fecha`,\n",
+        "      `is_prev_month`,\n",
+        "      `compensacion_lograda_ruta_fecha_seg`,\n",
+        "      `objetivo_compensacion_ruta_fecha_seg`,\n",
+        "      `campo_llave`,\n",
+        "      `ano`,\n",
+        "      `mes`,\n",
+        "      `route_grupo`,\n",
+        "      `route_ruta_activa`,\n",
+        "      `route_desc_ruta`,\n",
+        "      `route_clasificacion_ruta`,\n",
+        "      `route_tipo_ruta`,\n",
+        "      `route_categoria_ruta`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_clave_territorio`,\n",
+        "      `warehouse_clave_region`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_status`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_estado`,\n",
+        "      `warehouse_territorio_nvo`,\n",
+        "      `warehouse_region_nva`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_dimrutabodega_yoli_v100",
+      "displayName": "Dimrutabodega Yoli V100",
+      "queryLines": [
+        "SELECT\n",
+        "      `idrutabodega`,\n",
+        "      `clave_bodega`,\n",
+        "      `ruta`,\n",
+        "      `uso_cody_messagedate`,\n",
+        "      `uso_cody_messagedate_month`,\n",
+        "      `uso_cody_threadid`,\n",
+        "      `uso_cody_mensajesinpreposiciones`,\n",
+        "      TRY_CAST(MEASURE(`pct_uso_semanal_bodega`) AS DOUBLE) as `pct_uso_semanal_bodega`,\n",
+        "      TRY_CAST(MEASURE(`pct_uso_semanal_cierre_bodega`) AS DOUBLE) as `pct_uso_semanal_cierre_bodega`\n",
+        "  FROM sat_reportes.default.mv_dimrutabodega_yoli_v100\n",
+        "  GROUP BY\n",
+        "      `idrutabodega`,\n",
+        "      `clave_bodega`,\n",
+        "      `ruta`,\n",
+        "      `uso_cody_messagedate`,\n",
+        "      `uso_cody_messagedate_month`,\n",
+        "      `uso_cody_threadid`,\n",
+        "      `uso_cody_mensajesinpreposiciones`"
+      ]
+    },
+    {
+      "name": "ds_incentivos_seguimientos_kpi_yoli_v100",
+      "displayName": "Incentivos Seguimientos Kpi Yoli V100",
+      "queryLines": [
+        "SELECT\n",
+        "    TRY_CAST(`id_incentivo` AS STRING) as `id_incentivo`,\n",
+        "    TRY_CAST(`clave_bodega` AS STRING) as `clave_bodega`,\n",
+        "    TRY_CAST(`clave_ruta` AS STRING) as `clave_ruta`,\n",
+        "    TRY_CAST(`anio` AS STRING) as `anio`,\n",
+        "    TRY_CAST(`mes` AS STRING) as `mes`,\n",
+        "    `nombre`,\n",
+        "    TRY_CAST(`grupo` AS STRING) as `grupo`,\n",
+        "    `incentivo`,\n",
+        "    `objetivo`,\n",
+        "    TRY_CAST(`avance` AS STRING) as `avance`,\n",
+        "    `logrado_volumen`,\n",
+        "    TRY_CAST(`monto_obtenido` AS STRING) as `monto_obtenido`,\n",
+        "    TRY_CAST(`vigencia_dias` AS STRING) as `vigencia_dias`,\n",
+        "    `premio`,\n",
+        "    TRY_CAST(`fecha` AS STRING) as `fecha`,\n",
+        "    TRY_CAST(`fecha_ejecucion` AS STRING) as `fecha_ejecucion`,\n",
+        "    `rango_cumplimiento_incentivos`,\n",
+        "    `cumplimiento_ruta_pct`,\n",
+        "    `warehouse_bodega`,\n",
+        "    `warehouse_clave_territorio`,\n",
+        "    `warehouse_territorio`,\n",
+        "    `warehouse_clave_region`,\n",
+        "    `warehouse_region`,\n",
+        "    `warehouse_clave_planta`,\n",
+        "    `warehouse_status`,\n",
+        "    `warehouse_tipo_cedis`,\n",
+        "    `warehouse_grupo_bodega`,\n",
+        "    `warehouse_tipo_operacion`,\n",
+        "    `warehouse_tamano_real_bodega`,\n",
+        "    `warehouse_territorio_nvo`,\n",
+        "    `warehouse_region_nva`,\n",
+        "    `warehouse_estado`,\n",
+        "    `warehouse_clave_estado`,\n",
+        "    `warehouse_clasificacion`,\n",
+        "    `warehouse_zona_sac`,\n",
+        "    `nombre_ruta_seleccincent`,\n",
+        "    `premio_asignado`,\n",
+        "    `pct_cumplimiento_logro`,\n",
+        "    `cumplimiento_mes_actual_pct`,\n",
+        "    `cumplimiento_mes_actual_incentivos_pct`,\n",
+        "    `promedio_mes_actual_avance`,\n",
+        "    `variacion_pct_incentivos`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `id_incentivo`,\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `anio`,\n",
+        "      `mes`,\n",
+        "      `nombre`,\n",
+        "      `grupo`,\n",
+        "      `incentivo`,\n",
+        "      `objetivo`,\n",
+        "      `avance`,\n",
+        "      `logrado_volumen`,\n",
+        "      `monto_obtenido`,\n",
+        "      `vigencia_dias`,\n",
+        "      `premio`,\n",
+        "      `fecha`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `rango_cumplimiento_incentivos`,\n",
+        "      `cumplimiento_ruta_pct`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_clave_territorio`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_clave_region`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_clave_planta`,\n",
+        "      `warehouse_status`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_tipo_operacion`,\n",
+        "      `warehouse_tamano_real_bodega`,\n",
+        "      `warehouse_territorio_nvo`,\n",
+        "      `warehouse_region_nva`,\n",
+        "      `warehouse_estado`,\n",
+        "      `warehouse_clave_estado`,\n",
+        "      `warehouse_clasificacion`,\n",
+        "      `warehouse_zona_sac`,\n",
+        "      TRY_CAST(MEASURE(`nombre_ruta_seleccincent`) AS DOUBLE) as `nombre_ruta_seleccincent`,\n",
+        "      TRY_CAST(MEASURE(`premio_asignado`) AS DOUBLE) as `premio_asignado`,\n",
+        "      TRY_CAST(MEASURE(`pct_cumplimiento_logro`) AS DOUBLE) as `pct_cumplimiento_logro`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_actual_pct`) AS DOUBLE) as `cumplimiento_mes_actual_pct`,\n",
+        "      TRY_CAST(MEASURE(`cumplimiento_mes_actual_incentivos_pct`) AS DOUBLE) as `cumplimiento_mes_actual_incentivos_pct`,\n",
+        "      TRY_CAST(MEASURE(`promedio_mes_actual_avance`) AS DOUBLE) as `promedio_mes_actual_avance`,\n",
+        "      TRY_CAST(MEASURE(`variacion_pct_incentivos`) AS DOUBLE) as `variacion_pct_incentivos`\n",
+        "    FROM sat_reportes.default.mv_incentivos_seguimientos_kpi_yoli_v100\n",
+        "    GROUP BY\n",
+        "      `id_incentivo`,\n",
+        "      `clave_bodega`,\n",
+        "      `clave_ruta`,\n",
+        "      `anio`,\n",
+        "      `mes`,\n",
+        "      `nombre`,\n",
+        "      `grupo`,\n",
+        "      `incentivo`,\n",
+        "      `objetivo`,\n",
+        "      `avance`,\n",
+        "      `logrado_volumen`,\n",
+        "      `monto_obtenido`,\n",
+        "      `vigencia_dias`,\n",
+        "      `premio`,\n",
+        "      `fecha`,\n",
+        "      `fecha_ejecucion`,\n",
+        "      `rango_cumplimiento_incentivos`,\n",
+        "      `cumplimiento_ruta_pct`,\n",
+        "      `warehouse_bodega`,\n",
+        "      `warehouse_clave_territorio`,\n",
+        "      `warehouse_territorio`,\n",
+        "      `warehouse_clave_region`,\n",
+        "      `warehouse_region`,\n",
+        "      `warehouse_clave_planta`,\n",
+        "      `warehouse_status`,\n",
+        "      `warehouse_tipo_cedis`,\n",
+        "      `warehouse_grupo_bodega`,\n",
+        "      `warehouse_tipo_operacion`,\n",
+        "      `warehouse_tamano_real_bodega`,\n",
+        "      `warehouse_territorio_nvo`,\n",
+        "      `warehouse_region_nva`,\n",
+        "      `warehouse_estado`,\n",
+        "      `warehouse_clave_estado`,\n",
+        "      `warehouse_clasificacion`,\n",
+        "      `warehouse_zona_sac`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_uso_cody_yoli_v100",
+      "displayName": "Uso Cody Yoli V100",
+      "queryLines": [
+        "SELECT\n",
+        "    `message_time_local_raw`,\n",
+        "    `message_id`,\n",
+        "    `message_date`,\n",
+        "    `message_month`,\n",
+        "    `message_time`,\n",
+        "    `user_id`,\n",
+        "    `user_email`,\n",
+        "    `thread_id`,\n",
+        "    `message`,\n",
+        "    `topic`,\n",
+        "    `response_time`,\n",
+        "    `correo2`,\n",
+        "    `ruta`,\n",
+        "    `bodega`,\n",
+        "    `message_time_local_ubicaciones_raw`,\n",
+        "    `ruta_empleado_raw`,\n",
+        "    `mes_ano_raw`,\n",
+        "    `mes_ano_month`,\n",
+        "    `mensaje_sin_preposiciones_raw`,\n",
+        "    `ingestion_date`,\n",
+        "    `source_file`,\n",
+        "    `campo_llave_raw`,\n",
+        "    `clave_bodega_num_raw`,\n",
+        "    `id_ruta_bodega_raw`,\n",
+        "    TRY_CAST(`filtro_meses_raw` AS STRING) as `filtro_meses_raw`,\n",
+        "    `message_time_local`,\n",
+        "    `message_time_local_ubicaciones`,\n",
+        "    `ruta_empleado`,\n",
+        "    `mes_ano`,\n",
+        "    `mensaje_sin_preposiciones`,\n",
+        "    `campo_llave`,\n",
+        "    `clave_bodega_num`,\n",
+        "    `id_ruta_bodega`,\n",
+        "    TRY_CAST(`filtro_meses` AS STRING) as `filtro_meses`,\n",
+        "    `nombre_ruta_select_cody`,\n",
+        "    `cont_preguntas`,\n",
+        "    `uso_herramienta`,\n",
+        "    `interacciones_mes_anterior`,\n",
+        "    `sesiones_por_usuario`,\n",
+        "    `sesiones_promedio_por_dia_ultima_semana`,\n",
+        "    `total_interacciones_ultimo_mes`,\n",
+        "    `total_sesiones_ultimo_mes`,\n",
+        "    `promedio_interacciones_por_sesion_semana`,\n",
+        "    `interacciones_cierre_mensual_y_reportes`,\n",
+        "    `interacciones_objetivos_y_metas_diarias`,\n",
+        "    `uso_herramienta_mes_anterior`,\n",
+        "    `total_interacciones_mes_anterior`,\n",
+        "    `uso_herramienta_general`,\n",
+        "    `filtro_mes_actual`,\n",
+        "    `interacciones_cierre_semanal`,\n",
+        "    `total_sesiones_ultima_semana`,\n",
+        "    `total_interacciones_ultima_semana`,\n",
+        "    `total_rutas_bodega`,\n",
+        "    `mes_ant_interacciones_cierre_mensual_y_reportes`,\n",
+        "    `mes_ant_interacciones_objetivos_y_metas_diarias`,\n",
+        "    `interacciones_cierre_mensual_y_reportes_pct`,\n",
+        "    `mes_anterior_interacciones_cierre_mensual_y_reportes_pct`,\n",
+        "    `interacciones_objetivos_y_metas_diarias_pct`,\n",
+        "    `mes_anterior_interacciones_objetivos_y_metas_diarias_pct`,\n",
+        "    `interacciones_cierre_mensual_y_reportes_semanal_pct`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `message_time_local_raw`,\n",
+        "      `message_id`,\n",
+        "      `message_date`,\n",
+        "      `message_month`,\n",
+        "      `message_time`,\n",
+        "      `user_id`,\n",
+        "      `user_email`,\n",
+        "      `thread_id`,\n",
+        "      `message`,\n",
+        "      `topic`,\n",
+        "      `response_time`,\n",
+        "      `correo2`,\n",
+        "      `ruta`,\n",
+        "      `bodega`,\n",
+        "      `message_time_local_ubicaciones_raw`,\n",
+        "      `ruta_empleado_raw`,\n",
+        "      `mes_ano_raw`,\n",
+        "      `mes_ano_month`,\n",
+        "      `mensaje_sin_preposiciones_raw`,\n",
+        "      `ingestion_date`,\n",
+        "      `source_file`,\n",
+        "      `campo_llave_raw`,\n",
+        "      `clave_bodega_num_raw`,\n",
+        "      `id_ruta_bodega_raw`,\n",
+        "      `filtro_meses_raw`,\n",
+        "      `message_time_local`,\n",
+        "      `message_time_local_ubicaciones`,\n",
+        "      `ruta_empleado`,\n",
+        "      `mes_ano`,\n",
+        "      `mensaje_sin_preposiciones`,\n",
+        "      `campo_llave`,\n",
+        "      `clave_bodega_num`,\n",
+        "      `id_ruta_bodega`,\n",
+        "      `filtro_meses`,\n",
+        "      TRY_CAST(MEASURE(`nombre_ruta_select_cody`) AS DOUBLE) as `nombre_ruta_select_cody`,\n",
+        "      TRY_CAST(MEASURE(`cont_preguntas`) AS DOUBLE) as `cont_preguntas`,\n",
+        "      TRY_CAST(MEASURE(`uso_herramienta`) AS DOUBLE) as `uso_herramienta`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_mes_anterior`) AS DOUBLE) as `interacciones_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`sesiones_por_usuario`) AS DOUBLE) as `sesiones_por_usuario`,\n",
+        "      TRY_CAST(MEASURE(`sesiones_promedio_por_dia_ultima_semana`) AS DOUBLE) as `sesiones_promedio_por_dia_ultima_semana`,\n",
+        "      TRY_CAST(MEASURE(`total_interacciones_ultimo_mes`) AS DOUBLE) as `total_interacciones_ultimo_mes`,\n",
+        "      TRY_CAST(MEASURE(`total_sesiones_ultimo_mes`) AS DOUBLE) as `total_sesiones_ultimo_mes`,\n",
+        "      TRY_CAST(MEASURE(`promedio_interacciones_por_sesion_semana`) AS DOUBLE) as `promedio_interacciones_por_sesion_semana`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_cierre_mensual_y_reportes`) AS DOUBLE) as `interacciones_cierre_mensual_y_reportes`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_objetivos_y_metas_diarias`) AS DOUBLE) as `interacciones_objetivos_y_metas_diarias`,\n",
+        "      TRY_CAST(MEASURE(`uso_herramienta_mes_anterior`) AS DOUBLE) as `uso_herramienta_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`total_interacciones_mes_anterior`) AS DOUBLE) as `total_interacciones_mes_anterior`,\n",
+        "      TRY_CAST(MEASURE(`uso_herramienta_general`) AS DOUBLE) as `uso_herramienta_general`,\n",
+        "      TRY_CAST(MEASURE(`filtro_mes_actual`) AS DOUBLE) as `filtro_mes_actual`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_cierre_semanal`) AS DOUBLE) as `interacciones_cierre_semanal`,\n",
+        "      TRY_CAST(MEASURE(`total_sesiones_ultima_semana`) AS DOUBLE) as `total_sesiones_ultima_semana`,\n",
+        "      TRY_CAST(MEASURE(`total_interacciones_ultima_semana`) AS DOUBLE) as `total_interacciones_ultima_semana`,\n",
+        "      TRY_CAST(MEASURE(`total_rutas_bodega`) AS DOUBLE) as `total_rutas_bodega`,\n",
+        "      TRY_CAST(MEASURE(`mes_ant_interacciones_cierre_mensual_y_reportes`) AS DOUBLE) as `mes_ant_interacciones_cierre_mensual_y_reportes`,\n",
+        "      TRY_CAST(MEASURE(`mes_ant_interacciones_objetivos_y_metas_diarias`) AS DOUBLE) as `mes_ant_interacciones_objetivos_y_metas_diarias`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_cierre_mensual_y_reportes_pct`) AS DOUBLE) as `interacciones_cierre_mensual_y_reportes_pct`,\n",
+        "      TRY_CAST(MEASURE(`mes_anterior_interacciones_cierre_mensual_y_reportes_pct`) AS DOUBLE) as `mes_anterior_interacciones_cierre_mensual_y_reportes_pct`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_objetivos_y_metas_diarias_pct`) AS DOUBLE) as `interacciones_objetivos_y_metas_diarias_pct`,\n",
+        "      TRY_CAST(MEASURE(`mes_anterior_interacciones_objetivos_y_metas_diarias_pct`) AS DOUBLE) as `mes_anterior_interacciones_objetivos_y_metas_diarias_pct`,\n",
+        "      TRY_CAST(MEASURE(`interacciones_cierre_mensual_y_reportes_semanal_pct`) AS DOUBLE) as `interacciones_cierre_mensual_y_reportes_semanal_pct`\n",
+        "    FROM sat_reportes.default.mv_uso_cody_yoli_v100\n",
+        "    GROUP BY\n",
+        "      `message_time_local_raw`,\n",
+        "      `message_id`,\n",
+        "      `message_date`,\n",
+        "      `message_month`,\n",
+        "      `message_time`,\n",
+        "      `user_id`,\n",
+        "      `user_email`,\n",
+        "      `thread_id`,\n",
+        "      `message`,\n",
+        "      `topic`,\n",
+        "      `response_time`,\n",
+        "      `correo2`,\n",
+        "      `ruta`,\n",
+        "      `bodega`,\n",
+        "      `message_time_local_ubicaciones_raw`,\n",
+        "      `ruta_empleado_raw`,\n",
+        "      `mes_ano_raw`,\n",
+        "      `mes_ano_month`,\n",
+        "      `mensaje_sin_preposiciones_raw`,\n",
+        "      `ingestion_date`,\n",
+        "      `source_file`,\n",
+        "      `campo_llave_raw`,\n",
+        "      `clave_bodega_num_raw`,\n",
+        "      `id_ruta_bodega_raw`,\n",
+        "      `filtro_meses_raw`,\n",
+        "      `message_time_local`,\n",
+        "      `message_time_local_ubicaciones`,\n",
+        "      `ruta_empleado`,\n",
+        "      `mes_ano`,\n",
+        "      `mensaje_sin_preposiciones`,\n",
+        "      `campo_llave`,\n",
+        "      `clave_bodega_num`,\n",
+        "      `id_ruta_bodega`,\n",
+        "      `filtro_meses`\n",
+        "  )"
+      ]
+    },
+    {
+      "name": "ds_warehouse_yoli_v100",
+      "displayName": "Warehouse Yoli V100",
+      "queryLines": [
+        "SELECT\n",
+        "    TRY_CAST(`clave_bodega` AS STRING) as `clave_bodega`,\n",
+        "    `bodega`,\n",
+        "    `clave_territorio`,\n",
+        "    `clave_planta`,\n",
+        "    `clave_compania_of`,\n",
+        "    `clave_compania_of_11i`,\n",
+        "    `clave_uop_of_11i`,\n",
+        "    `status`,\n",
+        "    `con_venta`,\n",
+        "    `tipo_cedis`,\n",
+        "    `territorio`,\n",
+        "    `clave_region`,\n",
+        "    `region`,\n",
+        "    `fecha_vitalite`,\n",
+        "    `fecha_vitalite_month`,\n",
+        "    `clave_bodega_opm`,\n",
+        "    `grupo_bodega`,\n",
+        "    `fecha_ultima_carga`,\n",
+        "    `fecha_ultima_carga_month`,\n",
+        "    `codigo_municipio`,\n",
+        "    `tipo_operacion`,\n",
+        "    `tamano_real_bodega`,\n",
+        "    `tamano_template_bodega`,\n",
+        "    `tamano_template_territorio`,\n",
+        "    `clave_territorio_nvo`,\n",
+        "    `territorio_nvo`,\n",
+        "    `clave_region_nva`,\n",
+        "    `region_nva`,\n",
+        "    `iddepo`,\n",
+        "    `iddivn`,\n",
+        "    `bodega_fisica`,\n",
+        "    `clave_opm_anterior`,\n",
+        "    `cedex`,\n",
+        "    `clave_compania_of_12`,\n",
+        "    `compania_origen`,\n",
+        "    `h_tipo_cedi`,\n",
+        "    `h_segmento_embotellado`,\n",
+        "    `h_segmento_garrafon`,\n",
+        "    `h_clientes_activos`,\n",
+        "    `h_clientes_con_compra`,\n",
+        "    `otros`,\n",
+        "    `migracion`,\n",
+        "    `historico`,\n",
+        "    `virtual`,\n",
+        "    `nombre_contab`,\n",
+        "    `region_contab`,\n",
+        "    `activo_contraloria`,\n",
+        "    `desc_cia`,\n",
+        "    `clasificacion`,\n",
+        "    `clave_ip`,\n",
+        "    `usado`,\n",
+        "    `clave_estado`,\n",
+        "    `estado`,\n",
+        "    `migracion_cdm`,\n",
+        "    `ecom_wsa`,\n",
+        "    `descripc_region_sac`,\n",
+        "    `zona_sac`,\n",
+        "    `gestion_sac`,\n",
+        "    `clave_comerc_garrafon`,\n",
+        "    `clave_bodega_opm_sac`,\n",
+        "    `clave_territorio_s7`,\n",
+        "    `clave_region_s7`,\n",
+        "    `territorio_s7`,\n",
+        "    `region_s7`,\n",
+        "    TRY_CAST(`incentivos_id_incentivo` AS STRING) as `incentivos_id_incentivo`,\n",
+        "    TRY_CAST(`incentivos_clave_ruta` AS STRING) as `incentivos_clave_ruta`,\n",
+        "    TRY_CAST(`incentivos_anio` AS STRING) as `incentivos_anio`,\n",
+        "    TRY_CAST(`incentivos_mes` AS STRING) as `incentivos_mes`,\n",
+        "    `incentivos_nombre`,\n",
+        "    TRY_CAST(`incentivos_grupo` AS STRING) as `incentivos_grupo`,\n",
+        "    `incentivos_incentivo`,\n",
+        "    `incentivos_objetivo`,\n",
+        "    TRY_CAST(`incentivos_avance` AS STRING) as `incentivos_avance`,\n",
+        "    `incentivos_logrado_volumen`,\n",
+        "    TRY_CAST(`incentivos_monto_obtenido` AS STRING) as `incentivos_monto_obtenido`,\n",
+        "    TRY_CAST(`incentivos_vigencia_dias` AS STRING) as `incentivos_vigencia_dias`,\n",
+        "    `incentivos_premio`,\n",
+        "    `incentivos_rango_cumplimiento`,\n",
+        "    `incentivos_cumplimiento_ruta_pct`,\n",
+        "    `compensacion_clave_ruta`,\n",
+        "    `compensacion_grupo`,\n",
+        "    `compensacion_orden`,\n",
+        "    `compensacion_segmento`,\n",
+        "    `compensacion_real_cajas_fisicas`,\n",
+        "    `nombre_bodega_selec_incent`,\n",
+        "    `nombre_bodega_select_cody`\n",
+        "  FROM (\n",
+        "    SELECT\n",
+        "      `clave_bodega`,\n",
+        "      `bodega`,\n",
+        "      `clave_territorio`,\n",
+        "      `clave_planta`,\n",
+        "      `clave_compania_of`,\n",
+        "      `clave_compania_of_11i`,\n",
+        "      `clave_uop_of_11i`,\n",
+        "      `status`,\n",
+        "      `con_venta`,\n",
+        "      `tipo_cedis`,\n",
+        "      `territorio`,\n",
+        "      `clave_region`,\n",
+        "      `region`,\n",
+        "      `fecha_vitalite`,\n",
+        "      `fecha_vitalite_month`,\n",
+        "      `clave_bodega_opm`,\n",
+        "      `grupo_bodega`,\n",
+        "      `fecha_ultima_carga`,\n",
+        "      `fecha_ultima_carga_month`,\n",
+        "      `codigo_municipio`,\n",
+        "      `tipo_operacion`,\n",
+        "      `tamano_real_bodega`,\n",
+        "      `tamano_template_bodega`,\n",
+        "      `tamano_template_territorio`,\n",
+        "      `clave_territorio_nvo`,\n",
+        "      `territorio_nvo`,\n",
+        "      `clave_region_nva`,\n",
+        "      `region_nva`,\n",
+        "      `iddepo`,\n",
+        "      `iddivn`,\n",
+        "      `bodega_fisica`,\n",
+        "      `clave_opm_anterior`,\n",
+        "      `cedex`,\n",
+        "      `clave_compania_of_12`,\n",
+        "      `compania_origen`,\n",
+        "      `h_tipo_cedi`,\n",
+        "      `h_segmento_embotellado`,\n",
+        "      `h_segmento_garrafon`,\n",
+        "      `h_clientes_activos`,\n",
+        "      `h_clientes_con_compra`,\n",
+        "      `otros`,\n",
+        "      `migracion`,\n",
+        "      `historico`,\n",
+        "      `virtual`,\n",
+        "      `nombre_contab`,\n",
+        "      `region_contab`,\n",
+        "      `activo_contraloria`,\n",
+        "      `desc_cia`,\n",
+        "      `clasificacion`,\n",
+        "      `clave_ip`,\n",
+        "      `usado`,\n",
+        "      `clave_estado`,\n",
+        "      `estado`,\n",
+        "      `migracion_cdm`,\n",
+        "      `ecom_wsa`,\n",
+        "      `descripc_region_sac`,\n",
+        "      `zona_sac`,\n",
+        "      `gestion_sac`,\n",
+        "      `clave_comerc_garrafon`,\n",
+        "      `clave_bodega_opm_sac`,\n",
+        "      `clave_territorio_s7`,\n",
+        "      `clave_region_s7`,\n",
+        "      `territorio_s7`,\n",
+        "      `region_s7`,\n",
+        "      `incentivos_id_incentivo`,\n",
+        "      `incentivos_clave_ruta`,\n",
+        "      `incentivos_anio`,\n",
+        "      `incentivos_mes`,\n",
+        "      `incentivos_nombre`,\n",
+        "      `incentivos_grupo`,\n",
+        "      `incentivos_incentivo`,\n",
+        "      `incentivos_objetivo`,\n",
+        "      `incentivos_avance`,\n",
+        "      `incentivos_logrado_volumen`,\n",
+        "      `incentivos_monto_obtenido`,\n",
+        "      `incentivos_vigencia_dias`,\n",
+        "      `incentivos_premio`,\n",
+        "      `incentivos_rango_cumplimiento`,\n",
+        "      `incentivos_cumplimiento_ruta_pct`,\n",
+        "      `compensacion_clave_ruta`,\n",
+        "      `compensacion_grupo`,\n",
+        "      `compensacion_orden`,\n",
+        "      `compensacion_segmento`,\n",
+        "      `compensacion_real_cajas_fisicas`,\n",
+        "      TRY_CAST(MEASURE(`nombre_bodega_selec_incent`) AS DOUBLE) as `nombre_bodega_selec_incent`,\n",
+        "      TRY_CAST(MEASURE(`nombre_bodega_select_cody`) AS DOUBLE) as `nombre_bodega_select_cody`\n",
+        "    FROM sat_reportes.default.mv_warehouse_yoli_v100\n",
+        "    GROUP BY\n",
+        "      `clave_bodega`,\n",
+        "      `bodega`,\n",
+        "      `clave_territorio`,\n",
+        "      `clave_planta`,\n",
+        "      `clave_compania_of`,\n",
+        "      `clave_compania_of_11i`,\n",
+        "      `clave_uop_of_11i`,\n",
+        "      `status`,\n",
+        "      `con_venta`,\n",
+        "      `tipo_cedis`,\n",
+        "      `territorio`,\n",
+        "      `clave_region`,\n",
+        "      `region`,\n",
+        "      `fecha_vitalite`,\n",
+        "      `fecha_vitalite_month`,\n",
+        "      `clave_bodega_opm`,\n",
+        "      `grupo_bodega`,\n",
+        "      `fecha_ultima_carga`,\n",
+        "      `fecha_ultima_carga_month`,\n",
+        "      `codigo_municipio`,\n",
+        "      `tipo_operacion`,\n",
+        "      `tamano_real_bodega`,\n",
+        "      `tamano_template_bodega`,\n",
+        "      `tamano_template_territorio`,\n",
+        "      `clave_territorio_nvo`,\n",
+        "      `territorio_nvo`,\n",
+        "      `clave_region_nva`,\n",
+        "      `region_nva`,\n",
+        "      `iddepo`,\n",
+        "      `iddivn`,\n",
+        "      `bodega_fisica`,\n",
+        "      `clave_opm_anterior`,\n",
+        "      `cedex`,\n",
+        "      `clave_compania_of_12`,\n",
+        "      `compania_origen`,\n",
+        "      `h_tipo_cedi`,\n",
+        "      `h_segmento_embotellado`,\n",
+        "      `h_segmento_garrafon`,\n",
+        "      `h_clientes_activos`,\n",
+        "      `h_clientes_con_compra`,\n",
+        "      `otros`,\n",
+        "      `migracion`,\n",
+        "      `historico`,\n",
+        "      `virtual`,\n",
+        "      `nombre_contab`,\n",
+        "      `region_contab`,\n",
+        "      `activo_contraloria`,\n",
+        "      `desc_cia`,\n",
+        "      `clasificacion`,\n",
+        "      `clave_ip`,\n",
+        "      `usado`,\n",
+        "      `clave_estado`,\n",
+        "      `estado`,\n",
+        "      `migracion_cdm`,\n",
+        "      `ecom_wsa`,\n",
+        "      `descripc_region_sac`,\n",
+        "      `zona_sac`,\n",
+        "      `gestion_sac`,\n",
+        "      `clave_comerc_garrafon`,\n",
+        "      `clave_bodega_opm_sac`,\n",
+        "      `clave_territorio_s7`,\n",
+        "      `clave_region_s7`,\n",
+        "      `territorio_s7`,\n",
+        "      `region_s7`,\n",
+        "      `incentivos_id_incentivo`,\n",
+        "      `incentivos_clave_ruta`,\n",
+        "      `incentivos_anio`,\n",
+        "      `incentivos_mes`,\n",
+        "      `incentivos_nombre`,\n",
+        "      `incentivos_grupo`,\n",
+        "      `incentivos_incentivo`,\n",
+        "      `incentivos_objetivo`,\n",
+        "      `incentivos_avance`,\n",
+        "      `incentivos_logrado_volumen`,\n",
+        "      `incentivos_monto_obtenido`,\n",
+        "      `incentivos_vigencia_dias`,\n",
+        "      `incentivos_premio`,\n",
+        "      `incentivos_rango_cumplimiento`,\n",
+        "      `incentivos_cumplimiento_ruta_pct`,\n",
+        "      `compensacion_clave_ruta`,\n",
+        "      `compensacion_grupo`,\n",
+        "      `compensacion_orden`,\n",
+        "      `compensacion_segmento`,\n",
+        "      `compensacion_real_cajas_fisicas`\n",
+        "  )"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "compensaci_n",
+      "displayName": "Compensación",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_compensacion",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Compensación"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "title_kpis_generales",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Indicadores Generales"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_rutas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "count(clave_ruta)",
+                      "expression": "COUNT(`clave_ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(clave_ruta)",
+                  "displayName": "Total de Rutas",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Rutas"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_max_fecha",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "max(fecha)",
+                      "expression": "MAX(`fecha`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max(fecha)",
+                  "displayName": "Última Fecha",
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM-dd"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Última Fecha"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 4,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_alcance_cuotas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_nominal)",
+                      "expression": "SUM(`variacion_y_diferencia_nominal`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_nominal)",
+                  "displayName": "Alcance Esquema de Pago de Cuotas",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_nominal)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_nominal)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Alcance Esquema de Pago de Cuotas"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 4,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_comp_cuotas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_comp)",
+                      "expression": "SUM(`variacion_y_diferencia_comp`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_comp)",
+                  "displayName": "Compensación por Cuotas",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "MXN",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Compensación por Cuotas"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 4,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_alcance_ps",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_ps)",
+                      "expression": "SUM(`variacion_y_diferencia_ps`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_ps)",
+                  "displayName": "Alcance Pedido Sugerido",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_ps)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_ps)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Alcance Pedido Sugerido"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_comp_ps",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_comp_ps)",
+                      "expression": "SUM(`variacion_y_diferencia_comp_ps`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_comp_ps)",
+                  "displayName": "Compensación Pedido Sugerido",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "MXN",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp_ps)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp_ps)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Compensación Pedido Sugerido"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_alcance_alpura",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_alpura)",
+                      "expression": "SUM(`variacion_y_diferencia_alpura`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_alpura)",
+                  "displayName": "Alcance Alpura",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_alpura)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_alpura)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Alcance Alpura"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 6,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_comp_alpura",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_comp_alpura)",
+                      "expression": "SUM(`variacion_y_diferencia_comp_alpura`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_comp_alpura)",
+                  "displayName": "Compensación Alpura",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "MXN",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp_alpura)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp_alpura)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Compensación Alpura"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 6,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_alcance_otras",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_otras_cat)",
+                      "expression": "SUM(`variacion_y_diferencia_otras_cat`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_otras_cat)",
+                  "displayName": "Alcance Otras Categorías",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_otras_cat)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_otras_cat)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Alcance Otras Categorías"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_comp_otras",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(variacion_y_diferencia_comp_otras_cat)",
+                      "expression": "SUM(`variacion_y_diferencia_comp_otras_cat`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(variacion_y_diferencia_comp_otras_cat)",
+                  "displayName": "Compensación Otras Categorías",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "MXN",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp_otras_cat)",
+                          "operator": "<",
+                          "value": 0
+                        },
+                        "color": "#E74C3C"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(variacion_y_diferencia_comp_otras_cat)",
+                          "operator": ">=",
+                          "value": 0
+                        },
+                        "color": "#2ECC71"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Compensación Otras Categorías"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 8,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "title_evolucion",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Evolución del Cumplimiento por Segmento"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "line_dif_compensacion_1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "monthly(fecha)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `fecha`)"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_por_fecha_pct)",
+                      "expression": "SUM(`cumplimiento_actual_por_fecha_pct`)"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(fecha)",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(cumplimiento_actual_por_fecha_pct)",
+                  "displayName": "% Cumplimiento Actual",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia de Compensación — Cuotas"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 11,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_dif_compensacion_2",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "monthly(fecha)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `fecha`)"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_por_fecha_pct)",
+                      "expression": "SUM(`cumplimiento_actual_por_fecha_pct`)"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(fecha)",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(cumplimiento_actual_por_fecha_pct)",
+                  "displayName": "% Cumplimiento Actual",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia de Compensación — Pedido Sugerido"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 11,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_dif_compensacion_3",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "monthly(fecha)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `fecha`)"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_por_fecha_pct)",
+                      "expression": "SUM(`cumplimiento_actual_por_fecha_pct`)"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(fecha)",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(cumplimiento_actual_por_fecha_pct)",
+                  "displayName": "% Cumplimiento Actual",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia de Compensación — Alpura"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 15,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "line_dif_compensacion_4",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "monthly(fecha)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `fecha`)"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_por_fecha_pct)",
+                      "expression": "SUM(`cumplimiento_actual_por_fecha_pct`)"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(fecha)",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(cumplimiento_actual_por_fecha_pct)",
+                  "displayName": "% Cumplimiento Actual",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "segmento",
+                  "displayName": "Segmento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Diferencia de Compensación — Otras Categorías"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 15,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "title_detalle_ruta",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Detalle por Ruta"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_general",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "clave_ruta",
+                      "expression": "`clave_ruta`"
+                    },
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    },
+                    {
+                      "name": "monthly(fecha)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `fecha`)"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_por_fecha_pct)",
+                      "expression": "SUM(`cumplimiento_actual_por_fecha_pct`)"
+                    },
+                    {
+                      "name": "sum(variacion_pct_mes_vs_mes_anterior_ruta)",
+                      "expression": "SUM(`variacion_pct_mes_vs_mes_anterior_ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  },
+                  {
+                    "fieldName": "clave_ruta",
+                    "displayName": "Clave de Ruta"
+                  },
+                  {
+                    "fieldName": "segmento",
+                    "displayName": "Segmento"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "monthly(fecha)",
+                    "displayName": "Fecha",
+                    "format": {
+                      "type": "date-time",
+                      "dateTimeFormat": "yyyy-MM"
+                    }
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_actual_por_fecha_pct)",
+                    "displayName": "% Cumplimiento Actual",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    }
+                  },
+                  {
+                    "fieldName": "sum(variacion_pct_mes_vs_mes_anterior_ruta)",
+                    "displayName": "% Variación Mes vs Mes Anterior",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Cumplimiento por Ruta y Fecha"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 20,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "title_grupo_coach",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Grupo con Coach Digital por Segmento"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 25,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_grupo_general",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    },
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_por_seg_pct)",
+                      "expression": "SUM(`cumplimiento_actual_por_seg_pct`)"
+                    },
+                    {
+                      "name": "sum(diferencia_cumplimiento_seg_pct)",
+                      "expression": "SUM(`diferencia_cumplimiento_seg_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "segmento",
+                    "displayName": "Segmento"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_actual_por_seg_pct)",
+                    "displayName": "% Cumplimiento Actual",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.7
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.9
+                          },
+                          "color": "#F1C40F"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_por_seg_pct)",
+                            "operator": ">=",
+                            "value": 0.9
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "sum(diferencia_cumplimiento_seg_pct)",
+                    "displayName": "% Diferencia de Cumplimiento",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_seg_pct)",
+                            "operator": "<",
+                            "value": 0
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_seg_pct)",
+                            "operator": ">=",
+                            "value": 0
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Coach Digital — General"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 28,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_grupo_cuotas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    },
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_cuotas_por_seg_pct)",
+                      "expression": "SUM(`cumplimiento_actual_cuotas_por_seg_pct`)"
+                    },
+                    {
+                      "name": "sum(diferencia_cumplimiento_cuota_seg_pct)",
+                      "expression": "SUM(`diferencia_cumplimiento_cuota_seg_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "segmento",
+                    "displayName": "Segmento"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_actual_cuotas_por_seg_pct)",
+                    "displayName": "% Cumplimiento de Cuotas",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_cuotas_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.7
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_cuotas_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.9
+                          },
+                          "color": "#F1C40F"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_cuotas_por_seg_pct)",
+                            "operator": ">=",
+                            "value": 0.9
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "sum(diferencia_cumplimiento_cuota_seg_pct)",
+                    "displayName": "% Diferencia de Cuota",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_cuota_seg_pct)",
+                            "operator": "<",
+                            "value": 0
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_cuota_seg_pct)",
+                            "operator": ">=",
+                            "value": 0
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Coach Digital — Cuotas"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 28,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_grupo_ps",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    },
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_ps_por_seg_pct)",
+                      "expression": "SUM(`cumplimiento_actual_ps_por_seg_pct`)"
+                    },
+                    {
+                      "name": "sum(diferencia_cumplimiento_ps_seg_pct)",
+                      "expression": "SUM(`diferencia_cumplimiento_ps_seg_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "segmento",
+                    "displayName": "Segmento"
+                  },
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_actual_ps_por_seg_pct)",
+                    "displayName": "% Cumplimiento Pedido Sugerido",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_ps_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.7
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_ps_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.9
+                          },
+                          "color": "#F1C40F"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_ps_por_seg_pct)",
+                            "operator": ">=",
+                            "value": 0.9
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "sum(diferencia_cumplimiento_ps_seg_pct)",
+                    "displayName": "% Diferencia Pedido Sugerido",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_ps_seg_pct)",
+                            "operator": "<",
+                            "value": 0
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_ps_seg_pct)",
+                            "operator": ">=",
+                            "value": 0
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Coach Digital — Pedido Sugerido"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 33,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_grupo_alpura",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    },
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_alpura_por_seg_pct)",
+                      "expression": "SUM(`cumplimiento_actual_alpura_por_seg_pct`)"
+                    },
+                    {
+                      "name": "sum(diferencia_cumplimiento_alpura_seg_pct)",
+                      "expression": "SUM(`diferencia_cumplimiento_alpura_seg_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "segmento",
+                    "displayName": "Segmento"
+                  },
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_actual_alpura_por_seg_pct)",
+                    "displayName": "% Cumplimiento Alpura",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_alpura_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.7
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_alpura_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.9
+                          },
+                          "color": "#F1C40F"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_alpura_por_seg_pct)",
+                            "operator": ">=",
+                            "value": 0.9
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "sum(diferencia_cumplimiento_alpura_seg_pct)",
+                    "displayName": "% Diferencia Alpura",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_alpura_seg_pct)",
+                            "operator": "<",
+                            "value": 0
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_alpura_seg_pct)",
+                            "operator": ">=",
+                            "value": 0
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Coach Digital — Alpura"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 33,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_grupo_otras",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "segmento",
+                      "expression": "`segmento`"
+                    },
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_actual_otras_cat_por_seg_pct)",
+                      "expression": "SUM(`cumplimiento_actual_otras_cat_por_seg_pct`)"
+                    },
+                    {
+                      "name": "sum(diferencia_cumplimiento_otras_cat_seg_pct)",
+                      "expression": "SUM(`diferencia_cumplimiento_otras_cat_seg_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "segmento",
+                    "displayName": "Segmento"
+                  },
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_actual_otras_cat_por_seg_pct)",
+                    "displayName": "% Cumplimiento Otras Categorías",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_otras_cat_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.7
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_otras_cat_por_seg_pct)",
+                            "operator": "<",
+                            "value": 0.9
+                          },
+                          "color": "#F1C40F"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_actual_otras_cat_por_seg_pct)",
+                            "operator": ">=",
+                            "value": 0.9
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "sum(diferencia_cumplimiento_otras_cat_seg_pct)",
+                    "displayName": "% Diferencia Otras Categorías",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_otras_cat_seg_pct)",
+                            "operator": "<",
+                            "value": 0
+                          },
+                          "color": "#E74C3C"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(diferencia_cumplimiento_otras_cat_seg_pct)",
+                            "operator": ">=",
+                            "value": 0
+                          },
+                          "color": "#2ECC71"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Coach Digital — Otras Categorías"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 38,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "aad7cbd8",
+            "queries": [
+              {
+                "name": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_fecha",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "fecha_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "fecha",
+                    "queryName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_fecha"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "b233f476",
+            "queries": [
+              {
+                "name": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_clave_bodega",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "clave_bodega",
+                      "expression": "`clave_bodega`"
+                    },
+                    {
+                      "name": "clave_bodega_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Bodega",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Bodega"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "clave_bodega",
+                    "queryName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_clave_bodega"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "fea90e50",
+            "queries": [
+              {
+                "name": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_grupo",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "grupo_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Grupo",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Grupo"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "grupo",
+                    "queryName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_grupo"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "90bad5ed",
+            "queries": [
+              {
+                "name": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_warehouse_region",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "warehouse_region",
+                      "expression": "`warehouse_region`"
+                    },
+                    {
+                      "name": "warehouse_region_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Región",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Región"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "warehouse_region",
+                    "queryName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_warehouse_region"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "69c29d70",
+            "queries": [
+              {
+                "name": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_clave_ruta",
+                "query": {
+                  "datasetName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "clave_ruta",
+                      "expression": "`clave_ruta`"
+                    },
+                    {
+                      "name": "clave_ruta_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Clave de Ruta",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Clave de Ruta"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "clave_ruta",
+                    "queryName": "ds_compensacion_ventas_seguimientos_kpi_6meses_yoli_v100_clave_ruta"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "incentivos",
+      "displayName": "Incentivos",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_incentivos",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Incentivos"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_clave_ruta",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "count(clave_ruta)",
+                      "expression": "COUNT(`clave_ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(clave_ruta)",
+                  "displayName": "Total de Rutas",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Rutas"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_max_fecha",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "max(fecha)",
+                      "expression": "MAX(`fecha`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max(fecha)",
+                  "displayName": "Última Fecha",
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM-dd"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Última Fecha"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 3,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_alcance_incentivo",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "cumplimiento_mes_actual_pct",
+                      "expression": "`cumplimiento_mes_actual_pct`"
+                    },
+                    {
+                      "name": "cumplimiento_mes_actual_incentivos_pct",
+                      "expression": "`cumplimiento_mes_actual_incentivos_pct`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "cumplimiento_mes_actual_pct",
+                  "displayName": "Cumplimiento Mes Actual",
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "cumplimiento_mes_actual_pct",
+                          "operator": "<",
+                          "value": 0.7
+                        },
+                        "color": "#E8443A"
+                      },
+                      {
+                        "if": {
+                          "field": "cumplimiento_mes_actual_pct",
+                          "operator": "<",
+                          "value": 0.9
+                        },
+                        "color": "#F2A93B"
+                      },
+                      {
+                        "if": {
+                          "field": "cumplimiento_mes_actual_pct",
+                          "operator": ">=",
+                          "value": 0.9
+                        },
+                        "color": "#3BA776"
+                      }
+                    ]
+                  }
+                },
+                "target": {
+                  "fieldName": "cumplimiento_mes_actual_incentivos_pct",
+                  "displayName": "Meta de Incentivo",
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Alcance de Incentivo"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 6,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_incentivos_detalle",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "clave_ruta",
+                      "expression": "`clave_ruta`"
+                    },
+                    {
+                      "name": "nombre",
+                      "expression": "`nombre`"
+                    },
+                    {
+                      "name": "incentivo",
+                      "expression": "`incentivo`"
+                    },
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "sum(monto_obtenido)",
+                      "expression": "SUM(`monto_obtenido`)"
+                    },
+                    {
+                      "name": "sum(premio_asignado)",
+                      "expression": "SUM(`premio_asignado`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "grupo",
+                    "displayName": "Grupo"
+                  },
+                  {
+                    "fieldName": "clave_ruta",
+                    "displayName": "Clave de Ruta"
+                  },
+                  {
+                    "fieldName": "nombre",
+                    "displayName": "Nombre"
+                  },
+                  {
+                    "fieldName": "incentivo",
+                    "displayName": "Incentivo"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "fecha",
+                    "displayName": "Fecha",
+                    "format": {
+                      "type": "date-time",
+                      "dateTimeFormat": "yyyy-MM-dd"
+                    }
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(monto_obtenido)",
+                    "displayName": "Monto Obtenido",
+                    "format": {
+                      "type": "number-currency",
+                      "currencyCode": "MXN",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 0
+                      },
+                      "abbreviation": "compact"
+                    }
+                  },
+                  {
+                    "fieldName": "sum(premio_asignado)",
+                    "displayName": "Premio Asignado",
+                    "format": {
+                      "type": "number-currency",
+                      "currencyCode": "MXN",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 0
+                      },
+                      "abbreviation": "compact"
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Incentivos por Ruta y Fecha"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_avance_incentivo",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "nombre",
+                      "expression": "`nombre`"
+                    },
+                    {
+                      "name": "incentivo",
+                      "expression": "`incentivo`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_mes_actual_incentivos_pct)",
+                      "expression": "SUM(`cumplimiento_mes_actual_incentivos_pct`)"
+                    },
+                    {
+                      "name": "sum(promedio_mes_actual_avance)",
+                      "expression": "SUM(`promedio_mes_actual_avance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "nombre",
+                    "displayName": "Nombre"
+                  },
+                  {
+                    "fieldName": "incentivo",
+                    "displayName": "Incentivo"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(cumplimiento_mes_actual_incentivos_pct)",
+                    "displayName": "% Cumplimiento Mes Actual",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    },
+                    "style": {
+                      "rules": [
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_mes_actual_incentivos_pct)",
+                            "operator": "<",
+                            "value": 0.7
+                          },
+                          "color": "#E8443A"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_mes_actual_incentivos_pct)",
+                            "operator": "<",
+                            "value": 0.9
+                          },
+                          "color": "#F2A93B"
+                        },
+                        {
+                          "if": {
+                            "field": "sum(cumplimiento_mes_actual_incentivos_pct)",
+                            "operator": ">=",
+                            "value": 0.9
+                          },
+                          "color": "#3BA776"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "sum(promedio_mes_actual_avance)",
+                    "displayName": "Avance Promedio Mes Actual",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Avance por Incentivo"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "line_cumplimiento_ruta",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "clave_ruta",
+                      "expression": "`clave_ruta`"
+                    },
+                    {
+                      "name": "sum(cumplimiento_mes_actual_pct)",
+                      "expression": "SUM(`cumplimiento_mes_actual_pct`)"
+                    },
+                    {
+                      "name": "incentivo",
+                      "expression": "`incentivo`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "clave_ruta",
+                  "displayName": "Clave de Ruta",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(cumplimiento_mes_actual_pct)",
+                  "displayName": "% Cumplimiento Mes Actual",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "incentivo",
+                  "displayName": "Incentivo",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Cumplimiento por Ruta e Incentivo"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 12,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "7b8ad007",
+            "queries": [
+              {
+                "name": "ds_incentivos_seguimientos_kpi_yoli_v100_fecha",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "fecha",
+                      "expression": "`fecha`"
+                    },
+                    {
+                      "name": "fecha_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Fecha",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Fecha"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "fecha",
+                    "queryName": "ds_incentivos_seguimientos_kpi_yoli_v100_fecha"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "e54fbbe7",
+            "queries": [
+              {
+                "name": "ds_incentivos_seguimientos_kpi_yoli_v100_clave_bodega",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "clave_bodega",
+                      "expression": "`clave_bodega`"
+                    },
+                    {
+                      "name": "clave_bodega_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Bodega",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Bodega"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "clave_bodega",
+                    "queryName": "ds_incentivos_seguimientos_kpi_yoli_v100_clave_bodega"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "ff7cd770",
+            "queries": [
+              {
+                "name": "ds_incentivos_seguimientos_kpi_yoli_v100_clave_ruta",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "clave_ruta",
+                      "expression": "`clave_ruta`"
+                    },
+                    {
+                      "name": "clave_ruta_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Clave de Ruta",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Clave de Ruta"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "clave_ruta",
+                    "queryName": "ds_incentivos_seguimientos_kpi_yoli_v100_clave_ruta"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "6dde5c41",
+            "queries": [
+              {
+                "name": "ds_incentivos_seguimientos_kpi_yoli_v100_grupo",
+                "query": {
+                  "datasetName": "ds_incentivos_seguimientos_kpi_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "grupo",
+                      "expression": "`grupo`"
+                    },
+                    {
+                      "name": "grupo_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Grupo",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Grupo"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "grupo",
+                    "queryName": "ds_incentivos_seguimientos_kpi_yoli_v100_grupo"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "uso_cody",
+      "displayName": "Uso cody",
+      "layout": [
+        {
+          "widget": {
+            "name": "title",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# Uso de Cody"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_total_rutas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "count(ruta)",
+                      "expression": "COUNT(`ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(ruta)",
+                  "displayName": "Total de Interacciones",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Interacciones"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_max_fecha",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "max(message_date)",
+                      "expression": "MAX(`message_date`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max(message_date)",
+                  "displayName": "Última Fecha de Mensaje",
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM-dd"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Última Fecha de Mensaje"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 3,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_sesiones_promedio",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(sesiones_promedio_por_dia_ultima_semana)",
+                      "expression": "SUM(`sesiones_promedio_por_dia_ultima_semana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(sesiones_promedio_por_dia_ultima_semana)",
+                  "displayName": "Promedio de Sesiones por Día (Última Semana)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Promedio de Sesiones por Día"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_prom_interacciones",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(promedio_interacciones_por_sesion_semana)",
+                      "expression": "SUM(`promedio_interacciones_por_sesion_semana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(promedio_interacciones_por_sesion_semana)",
+                  "displayName": "Promedio de Interacciones por Sesión",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Promedio de Interacciones por Sesión"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 3,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_uso_semanal_cierre",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_dimrutabodega_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(pct_uso_semanal_cierre_bodega)",
+                      "expression": "SUM(`pct_uso_semanal_cierre_bodega`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(pct_uso_semanal_cierre_bodega)",
+                  "displayName": "% Uso Semanal en Cierre Mensual",
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(pct_uso_semanal_cierre_bodega)",
+                          "operator": "<",
+                          "value": 0.7
+                        },
+                        "color": "#E92828"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(pct_uso_semanal_cierre_bodega)",
+                          "operator": "<",
+                          "value": 0.9
+                        },
+                        "color": "#FFAB00"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(pct_uso_semanal_cierre_bodega)",
+                          "operator": ">=",
+                          "value": 0.9
+                        },
+                        "color": "#3BD23D"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "% Uso Semanal en Cierre Mensual"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 6,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_uso_semanal_bodega",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_dimrutabodega_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "sum(pct_uso_semanal_bodega)",
+                      "expression": "SUM(`pct_uso_semanal_bodega`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(pct_uso_semanal_bodega)",
+                  "displayName": "% Uso Semanal en Objetivos Diarios",
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 1
+                    }
+                  },
+                  "style": {
+                    "rules": [
+                      {
+                        "if": {
+                          "field": "sum(pct_uso_semanal_bodega)",
+                          "operator": "<",
+                          "value": 0.7
+                        },
+                        "color": "#E92828"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(pct_uso_semanal_bodega)",
+                          "operator": "<",
+                          "value": 0.9
+                        },
+                        "color": "#FFAB00"
+                      },
+                      {
+                        "if": {
+                          "field": "sum(pct_uso_semanal_bodega)",
+                          "operator": ">=",
+                          "value": 0.9
+                        },
+                        "color": "#3BD23D"
+                      }
+                    ]
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "% Uso Semanal en Objetivos Diarios"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 5,
+            "width": 6,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "line_topic_fecha",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "daily(message_date)",
+                      "expression": "DATE_TRUNC(\"DAY\", `message_date`)"
+                    },
+                    {
+                      "name": "topic",
+                      "expression": "`topic`"
+                    },
+                    {
+                      "name": "count(ruta)",
+                      "expression": "COUNT(`ruta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "displayName": "Fecha",
+                  "fieldName": "daily(message_date)",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "format": {
+                    "type": "date-time",
+                    "dateTimeFormat": "yyyy-MM-dd"
+                  }
+                },
+                "y": {
+                  "displayName": "Interacciones",
+                  "fieldName": "count(ruta)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact"
+                  }
+                },
+                "color": {
+                  "displayName": "Tópico",
+                  "fieldName": "topic",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Interacciones por Tópico y Fecha"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#12239E",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9",
+                  "#F472D0",
+                  "#B5A1FF",
+                  "#C4A200",
+                  "#FF8080",
+                  "#00DBBC",
+                  "#5BD667",
+                  "#E66C37",
+                  "#0091D5",
+                  "#4668C5",
+                  "#FF6300",
+                  "#99008A",
+                  "#EC008C",
+                  "#533285",
+                  "#99700A",
+                  "#FF4141",
+                  "#1F9A85",
+                  "#25891C",
+                  "#6B007B",
+                  "#0057A2",
+                  "#002050",
+                  "#C94F0F",
+                  "#450F54",
+                  "#B60064",
+                  "#34124F",
+                  "#6A5A29",
+                  "#1AAB40",
+                  "#BA141A",
+                  "#0C3D37",
+                  "#E044A7",
+                  "#0B511F",
+                  "#744EC2",
+                  "#D9B300",
+                  "#D64550",
+                  "#197278",
+                  "#1AAB40"
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_uso_herramienta",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "bodega",
+                      "expression": "`bodega`"
+                    },
+                    {
+                      "name": "ruta",
+                      "expression": "`ruta`"
+                    },
+                    {
+                      "name": "sum(uso_herramienta)",
+                      "expression": "SUM(`uso_herramienta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "bodega",
+                    "displayName": "Bodega"
+                  },
+                  {
+                    "fieldName": "ruta",
+                    "displayName": "Ruta"
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "sum(uso_herramienta)",
+                    "displayName": "Uso de la Herramienta",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact"
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Uso de la Herramienta por Bodega y Ruta"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_threads_anio",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "bodega",
+                      "expression": "`bodega`"
+                    },
+                    {
+                      "name": "ruta",
+                      "expression": "`ruta`"
+                    },
+                    {
+                      "name": "yearly(message_date)",
+                      "expression": "DATE_TRUNC(\"YEAR\", `message_date`)"
+                    },
+                    {
+                      "name": "countdistinct(thread_id)",
+                      "expression": "COUNT(DISTINCT `thread_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "bodega",
+                    "displayName": "Bodega"
+                  },
+                  {
+                    "fieldName": "ruta",
+                    "displayName": "Ruta"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "yearly(message_date)",
+                    "displayName": "Año",
+                    "format": {
+                      "type": "date-time",
+                      "dateTimeFormat": "yyyy"
+                    }
+                  }
+                ],
+                "values": [
+                  {
+                    "fieldName": "countdistinct(thread_id)",
+                    "displayName": "Sesiones",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact"
+                    }
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Sesiones Distintas por Año"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 13,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "fe0d2b89",
+            "queries": [
+              {
+                "name": "ds_uso_cody_yoli_v100_bodega",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "bodega",
+                      "expression": "`bodega`"
+                    },
+                    {
+                      "name": "bodega_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Bodega",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Bodega"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "bodega",
+                    "queryName": "ds_uso_cody_yoli_v100_bodega"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "97ea0eba",
+            "queries": [
+              {
+                "name": "ds_uso_cody_yoli_v100_ruta",
+                "query": {
+                  "datasetName": "ds_uso_cody_yoli_v100",
+                  "fields": [
+                    {
+                      "name": "ruta",
+                      "expression": "`ruta`"
+                    },
+                    {
+                      "name": "ruta_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Ruta",
+                "showTitle": false,
+                "showDescription": true,
+                "description": "Ruta"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "ruta",
+                    "queryName": "ds_uso_cody_yoli_v100_ruta"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

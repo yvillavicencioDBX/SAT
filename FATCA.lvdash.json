@@ -517,9 +517,459 @@
         "      `version`\n",
         "  )"
       ]
+    },
+    {
+      "name": "ds_resumen_ejecutivo",
+      "displayName": "Resumen Ejecutivo",
+      "queryLines": [
+        "SELECT\n",
+        "  'CRS Reporte Único' as fuente,\n",
+        "  `receivingcountry`,\n",
+        "  `anio_fiscal`,\n",
+        "  `reportingperiod`,\n",
+        "  TRY_CAST(MEASURE(`registros_crs_reporteunc`) AS DOUBLE) as registros\n",
+        "FROM\n",
+        "  sat_reportes.default.mv_crs__repunc\n",
+        "GROUP BY\n",
+        "  `receivingcountry`,\n",
+        "  `anio_fiscal`,\n",
+        "  `reportingperiod`\n",
+        "UNION ALL\n",
+        "SELECT\n",
+        "  'CRS Sabana' as fuente,\n",
+        "  `receivingcountry`,\n",
+        "  `anio_fiscal`,\n",
+        "  `reportingperiod`,\n",
+        "  TRY_CAST(MEASURE(`registros_crs_sabana`) AS DOUBLE) as registros\n",
+        "FROM\n",
+        "  sat_reportes.default.mv_crs_sabana\n",
+        "GROUP BY\n",
+        "  `receivingcountry`,\n",
+        "  `anio_fiscal`,\n",
+        "  `reportingperiod`\n",
+        "UNION ALL\n",
+        "SELECT\n",
+        "  'FATCA Reporte Único' as fuente,\n",
+        "  `receivingcountry`,\n",
+        "  CAST(YEAR(TO_DATE(`reportingperiod`, 'yyyy-MM-dd')) AS STRING) as anio_fiscal,\n",
+        "  `reportingperiod`,\n",
+        "  TRY_CAST(MEASURE(`registros_rep_unico`) AS DOUBLE) as registros\n",
+        "FROM\n",
+        "  sat_reportes.default.mv_fat_repunc\n",
+        "GROUP BY\n",
+        "  `receivingcountry`,\n",
+        "  `reportingperiod`\n",
+        "UNION ALL\n",
+        "SELECT\n",
+        "  'FATCA Sabana' as fuente,\n",
+        "  `receivingcountry`,\n",
+        "  CAST(YEAR(TO_DATE(`reportingperiod`, 'yyyy-MM-dd')) AS STRING) as anio_fiscal,\n",
+        "  `reportingperiod`,\n",
+        "  TRY_CAST(MEASURE(`registros_sabana`) AS DOUBLE) as registros\n",
+        "FROM\n",
+        "  sat_reportes.default.mv_fat_sabana\n",
+        "GROUP BY\n",
+        "  `receivingcountry`,\n",
+        "  `reportingperiod`"
+      ]
     }
   ],
   "pages": [
+    {
+      "name": "c387088b",
+      "displayName": "Resumen Ejecutivo",
+      "layout": [
+        {
+          "widget": {
+            "name": "title_resumen",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# 📈 Resumen Ejecutivo"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_crs_repunc",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "sum(registros_crs_reporteunc)",
+                      "expression": "SUM(`registros_crs_reporteunc`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "CRS Reporte Único",
+                "contentAlignment": "center"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_crs_reporteunc)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_crs_sabana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "CRS Sabana",
+                "contentAlignment": "center"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_crs_sabana)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_fat_repunc",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_repunc",
+                  "fields": [
+                    {
+                      "name": "sum(registros_rep_unico)",
+                      "expression": "SUM(`registros_rep_unico`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "FATCA Reporte Único",
+                "contentAlignment": "center"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_rep_unico)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "counter_fat_sabana",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_fat_sabana",
+                  "fields": [
+                    {
+                      "name": "sum(registros_sabana)",
+                      "expression": "SUM(`registros_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "FATCA Sabana",
+                "contentAlignment": "center"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(registros_sabana)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 1,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_por_fuente",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_resumen_ejecutivo",
+                  "fields": [
+                    {
+                      "name": "sum(registros)",
+                      "expression": "SUM(`registros`)"
+                    },
+                    {
+                      "name": "fuente",
+                      "expression": "`fuente`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Registros por Fuente"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#15C6F4",
+                  "#00DBBC",
+                  "#5BD667"
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(registros)",
+                  "displayName": "Total Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "fuente",
+                  "displayName": "Fuente",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pie_pais_receptor",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_resumen_ejecutivo",
+                  "fields": [
+                    {
+                      "name": "sum(registros)",
+                      "expression": "SUM(`registros`)"
+                    },
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Top Países Receptores"
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(registros)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Registros"
+                },
+                "color": {
+                  "fieldName": "receivingcountry",
+                  "displayName": "País Receptor",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "angle"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 4,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_anio_fuente",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_resumen_ejecutivo",
+                  "fields": [
+                    {
+                      "name": "fuente",
+                      "expression": "`fuente`"
+                    },
+                    {
+                      "name": "anio_fiscal",
+                      "expression": "`anio_fiscal`"
+                    },
+                    {
+                      "name": "sum(registros)",
+                      "expression": "SUM(`registros`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Evolución por Año Fiscal"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#15C6F4",
+                  "#00DBBC",
+                  "#5BD667"
+                ],
+                "layout": "group"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "anio_fiscal",
+                  "displayName": "Año Fiscal",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "natural-order"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "fuente",
+                  "legend": {
+                    "position": "top"
+                  },
+                  "displayName": "Fuente",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
     {
       "name": "crs_repunc",
       "displayName": "Crs  Repunc",
@@ -1482,12 +1932,12 @@
                   "datasetName": "ds_crs_sabana",
                   "fields": [
                     {
-                      "name": "sum(registros_crs_sabana)",
-                      "expression": "SUM(`registros_crs_sabana`)"
-                    },
-                    {
                       "name": "sum(crs_registros_global_sabana)",
                       "expression": "SUM(`crs_registros_global_sabana`)"
+                    },
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
                     }
                   ],
                   "disaggregated": false
@@ -1496,23 +1946,21 @@
             ],
             "spec": {
               "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Registros"
+              },
               "widgetType": "counter",
               "encodings": {
                 "value": {
                   "fieldName": "sum(registros_crs_sabana)"
                 },
                 "target": {
-                  "fieldName": "sum(crs_registros_global_sabana)"
+                  "fieldName": "sum(crs_registros_global_sabana)",
+                  "change": {
+                    "type": "percent"
+                  }
                 }
-              },
-              "frame": {
-                "showTitle": true,
-                "title": "Total de Registros"
-              },
-              "mark": {
-                "colors": [
-                  "#118DFF"
-                ]
               }
             }
           },
@@ -1520,7 +1968,7 @@
             "x": 0,
             "y": 5,
             "width": 3,
-            "height": 4
+            "height": 8
           }
         },
         {
@@ -1547,13 +1995,29 @@
             ],
             "spec": {
               "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Totales por Tipo de Pago"
+              },
+              "mark": {
+                "colors": [
+                  "#118DFF",
+                  "#15C6F4",
+                  "#4092FF",
+                  "#FFA058",
+                  "#BE5DC9"
+                ]
+              },
               "widgetType": "bar",
               "encodings": {
                 "x": {
                   "fieldName": "paymenttype_payment",
                   "displayName": "Tipo de Pago",
                   "scale": {
-                    "type": "categorical"
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y"
+                    }
                   }
                 },
                 "y": {
@@ -1562,64 +2026,18 @@
                   "scale": {
                     "type": "quantitative"
                   }
+                },
+                "label": {
+                  "show": true
                 }
-              },
-              "frame": {
-                "showTitle": true,
-                "title": "Totales por Tipo de Pago"
-              },
-              "mark": {
-                "colors": [
-                  "#118DFF",
-                  "#12239E",
-                  "#15C6F4",
-                  "#4092FF",
-                  "#FFA058",
-                  "#BE5DC9",
-                  "#F472D0",
-                  "#B5A1FF",
-                  "#C4A200",
-                  "#FF8080",
-                  "#00DBBC",
-                  "#5BD667",
-                  "#E66C37",
-                  "#0091D5",
-                  "#4668C5",
-                  "#FF6300",
-                  "#99008A",
-                  "#EC008C",
-                  "#533285",
-                  "#99700A",
-                  "#FF4141",
-                  "#1F9A85",
-                  "#25891C",
-                  "#6B007B",
-                  "#0057A2",
-                  "#002050",
-                  "#C94F0F",
-                  "#450F54",
-                  "#B60064",
-                  "#34124F",
-                  "#6A5A29",
-                  "#1AAB40",
-                  "#BA141A",
-                  "#0C3D37",
-                  "#E044A7",
-                  "#0B511F",
-                  "#744EC2",
-                  "#D9B300",
-                  "#D64550",
-                  "#197278",
-                  "#1AAB40"
-                ]
               }
             }
           },
           "position": {
-            "x": 3,
-            "y": 5,
-            "width": 4,
-            "height": 4
+            "x": 0,
+            "y": 13,
+            "width": 6,
+            "height": 8
           }
         },
         {
@@ -1632,12 +2050,12 @@
                   "datasetName": "ds_crs_sabana",
                   "fields": [
                     {
-                      "name": "accthholdertype_accountholder",
-                      "expression": "`accthholdertype_accountholder`"
-                    },
-                    {
                       "name": "sum(registros_crs_sabana)",
                       "expression": "SUM(`registros_crs_sabana`)"
+                    },
+                    {
+                      "name": "accthholdertype_accountholder",
+                      "expression": "`accthholdertype_accountholder`"
                     }
                   ],
                   "disaggregated": false
@@ -1646,78 +2064,47 @@
             ],
             "spec": {
               "version": 3,
-              "widgetType": "bar",
-              "encodings": {
-                "x": {
-                  "fieldName": "accthholdertype_accountholder",
-                  "displayName": "Tipo de Persona",
-                  "scale": {
-                    "type": "categorical"
-                  }
-                },
-                "y": {
-                  "fieldName": "sum(registros_crs_sabana)",
-                  "displayName": "Registros",
-                  "scale": {
-                    "type": "quantitative"
-                  }
-                }
-              },
               "frame": {
                 "showTitle": true,
                 "title": "Totales por Tipo de Persona"
               },
               "mark": {
                 "colors": [
-                  "#118DFF",
-                  "#12239E",
-                  "#15C6F4",
                   "#4092FF",
-                  "#FFA058",
-                  "#BE5DC9",
-                  "#F472D0",
-                  "#B5A1FF",
-                  "#C4A200",
-                  "#FF8080",
-                  "#00DBBC",
-                  "#5BD667",
-                  "#E66C37",
-                  "#0091D5",
-                  "#4668C5",
-                  "#FF6300",
-                  "#99008A",
-                  "#EC008C",
-                  "#533285",
-                  "#99700A",
-                  "#FF4141",
-                  "#1F9A85",
-                  "#25891C",
-                  "#6B007B",
-                  "#0057A2",
-                  "#002050",
-                  "#C94F0F",
-                  "#450F54",
-                  "#B60064",
-                  "#34124F",
-                  "#6A5A29",
-                  "#1AAB40",
-                  "#BA141A",
-                  "#0C3D37",
-                  "#E044A7",
-                  "#0B511F",
-                  "#744EC2",
-                  "#D9B300",
-                  "#D64550",
-                  "#197278",
-                  "#1AAB40"
+                  "#15C6F4",
+                  "#118DFF",
+                  "#12239E"
                 ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(registros_crs_sabana)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "accthholdertype_accountholder",
+                  "displayName": "Tipo de Persona",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
               }
             }
           },
           "position": {
-            "x": 7,
-            "y": 5,
-            "width": 5,
+            "x": 6,
+            "y": 13,
+            "width": 6,
             "height": 4
           }
         },
@@ -1902,7 +2289,7 @@
           },
           "position": {
             "x": 0,
-            "y": 9,
+            "y": 21,
             "width": 12,
             "height": 8
           }
@@ -2290,6 +2677,133 @@
             "width": 2,
             "height": 2
           }
+        },
+        {
+          "widget": {
+            "name": "pie_pais_receptor",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    },
+                    {
+                      "name": "receivingcountry",
+                      "expression": "`receivingcountry`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Distribución por País Receptor"
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(registros_crs_sabana)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Registros"
+                },
+                "color": {
+                  "fieldName": "receivingcountry",
+                  "displayName": "País Receptor",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "angle"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 5,
+            "width": 9,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_anio_fiscal",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs_sabana",
+                  "fields": [
+                    {
+                      "name": "anio_fiscal",
+                      "expression": "`anio_fiscal`"
+                    },
+                    {
+                      "name": "sum(registros_crs_sabana)",
+                      "expression": "SUM(`registros_crs_sabana`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Registros por Año Fiscal"
+              },
+              "mark": {
+                "colors": [
+                  "#00DBBC",
+                  "#5BD667",
+                  "#1F9A85"
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "anio_fiscal",
+                  "displayName": "Año Fiscal",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "natural-order"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(registros_crs_sabana)",
+                  "displayName": "Registros",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 17,
+            "width": 6,
+            "height": 4
+          }
         }
       ],
       "pageType": "PAGE_TYPE_CANVAS",
@@ -2325,12 +2839,12 @@
                   "datasetName": "ds_fat_repunc",
                   "fields": [
                     {
-                      "name": "sum(registros_rep_unico)",
-                      "expression": "SUM(`registros_rep_unico`)"
-                    },
-                    {
                       "name": "sum(fat_registros_global_repunc)",
                       "expression": "SUM(`fat_registros_global_repunc`)"
+                    },
+                    {
+                      "name": "sum(registros_rep_unico)",
+                      "expression": "SUM(`registros_rep_unico`)"
                     }
                   ],
                   "disaggregated": false
@@ -2339,23 +2853,21 @@
             ],
             "spec": {
               "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Total de Registros"
+              },
               "widgetType": "counter",
               "encodings": {
                 "value": {
                   "fieldName": "sum(registros_rep_unico)"
                 },
                 "target": {
-                  "fieldName": "sum(fat_registros_global_repunc)"
+                  "fieldName": "sum(fat_registros_global_repunc)",
+                  "change": {
+                    "type": "percent"
+                  }
                 }
-              },
-              "frame": {
-                "showTitle": true,
-                "title": "Total de Registros"
-              },
-              "mark": {
-                "colors": [
-                  "#118DFF"
-                ]
               }
             }
           },
@@ -4104,6 +4616,84 @@
             "y": 3,
             "width": 2,
             "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "759c23c2",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "test",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ds_crs__repunc",
+                  "fields": [
+                    {
+                      "name": "registros_crs_reporteunc",
+                      "expression": "`registros_crs_reporteunc`"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "registros_crs_reporteunc"
+                        ]
+                      },
+                      {
+                        "fieldNames": [
+                          "registros_crs_reporteunc"
+                        ]
+                      }
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`registros_crs_reporteunc`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`registros_crs_reporteunc`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "test"
+              },
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "registros_crs_reporteunc"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "registros_crs_reporteunc"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 4,
+            "width": 6,
+            "height": 6
           }
         }
       ],

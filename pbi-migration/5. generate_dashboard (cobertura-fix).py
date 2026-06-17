@@ -7,24 +7,11 @@
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
-
-
-# COMMAND ----------
-
-
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC ## 1. Parámetros
 
 # COMMAND ----------
 
-# DBTITLE 1,dhljtlrkktgvhvhej
 import json, re, requests, base64
 
 # Detecta el usuario actual para construir defaults dinámicos (no hardcoded)
@@ -37,12 +24,26 @@ dbutils.widgets.text("catalog", "sat_reportes", "Catálogo")
 dbutils.widgets.text("run_id", "", "Sufijo identificador de corrida (vacío = sin sufijo)")
 dbutils.widgets.text("schema", "default", "Schema")
 dbutils.widgets.text("dashboard_path", "", "Path del dashboard (vacío = derivar del usuario actual)")
-dbutils.widgets.text("llm_endpoint", "databricks-claude-sonnet-4", "Endpoint LLM")
+# Modelo de Claude vía Databricks Model Serving (Foundation Model APIs).
+# Disponibles READY en este workspace (verificado):
+#   databricks-claude-opus-4-7      ← más capaz (mejor para tareas complejas)
+#   databricks-claude-opus-4-6
+#   databricks-claude-opus-4-5
+#   databricks-claude-opus-4-1
+#   databricks-claude-sonnet-4-6    ← balance capacidad / velocidad
+#   databricks-claude-sonnet-4-5
+#   databricks-claude-sonnet-4
+#   databricks-claude-haiku-4-5     ← más rápido / barato
+dbutils.widgets.text("llm_endpoint", "databricks-claude-opus-4-7", "Endpoint LLM")
+dbutils.widgets.text("max_tokens", "16000", "max_tokens del modelo")
+dbutils.widgets.text("temperature", "0.1", "temperature del modelo")
 
 CATALOG = dbutils.widgets.get("catalog")
 SCHEMA = dbutils.widgets.get("schema")
 DASHBOARD_PATH = dbutils.widgets.get("dashboard_path").strip() or f"/Users/{_CURRENT_USER}/SAT/Dashboard.lvdash.json"
-LLM_ENDPOINT = dbutils.widgets.get("llm_endpoint").strip() or "databricks-claude-sonnet-4"
+LLM_ENDPOINT = dbutils.widgets.get("llm_endpoint").strip() or "databricks-claude-opus-4-7"
+MAX_TOKENS = int(dbutils.widgets.get("max_tokens") or "16000")
+TEMPERATURE = float(dbutils.widgets.get("temperature") or "0.1")
 
 
 RUN_ID = dbutils.widgets.get("run_id").strip()
@@ -52,6 +53,7 @@ def _t(name):
     return f"{name}{SUFFIX}"
 print(f"Catálogo: {CATALOG}.{SCHEMA}")
 print(f"Dashboard: {DASHBOARD_PATH}")
+print(f"Modelo:    {LLM_ENDPOINT}  (max_tokens={MAX_TOKENS}, temperature={TEMPERATURE})")
 
 # COMMAND ----------
 
@@ -439,11 +441,22 @@ encodings: {
 
 --- 17. PIVOT ---
 widgetType: "pivot"
+version: 3
+disaggregated: false  ← ALWAYS false for pivot
+fields: dimensions go as `col` (raw); measures go as SUM(`col`) (aggregated)
 encodings: {
-  "rows": [{"fieldName": "row_field"}],
-  "columns": [{"fieldName": "col_field"}],
-  "values": [{"fieldName": "sum(metric)"}]
+  "rows":    [{"fieldName": "dim_row", "displayName": "Row Label"}],
+  "columns": [{"fieldName": "dim_col", "displayName": "Col Label"}],
+  "values":  [{"fieldName": "sum(measure_a)", "displayName": "Value A"},
+              {"fieldName": "sum(measure_b)", "displayName": "Value B"}]
 }
+
+⚠ ABSOLUTE RULES FOR PIVOT (do not violate):
+  1. disaggregated MUST be false.
+  2. Every measure used in encodings.values MUST appear in query.fields with expression="SUM(`measure_name`)" (or AVG/MIN/MAX/COUNT). NEVER use `measure_name` bare in values.
+  3. The fieldName in encodings.values MUST exactly match the field name in query.fields (typically "sum(measure_name)").
+  4. Dimensions in rows/columns appear in query.fields with expression="`col_name`" (no aggregation).
+  5. If you forget SUM(), the dashboard renders "Visualization has no fields selected" and is broken.
 
 --- 18. SANKEY ---
 widgetType: "sankey"
@@ -482,6 +495,10 @@ NOTE: Counter has NO "frame", NO "displayName" in encodings, uses "target" not "
 
 --- TABLE (real) ---
 {"widget": {"name": "eae78e00", "queries": [{"name": "main_query", "query": {"datasetName": "25bad225", "fields": [{"name": "grupo", "expression": "`grupo`"}, {"name": "rubro", "expression": "`rubro`"}, {"name": "valor_2025", "expression": "`valor_2025`"}], "disaggregated": true}}], "spec": {"version": 2, "widgetType": "table", "encodings": {"columns": [{"fieldName": "grupo", "displayName": "Sección"}, {"fieldName": "rubro", "displayName": "Rubro"}, {"fieldName": "valor_2025", "displayName": "2025"}]}, "frame": {"showTitle": true, "title": "Estado de Resultados"}}}, "position": {"x": 0, "y": 3, "width": 6, "height": 12}}
+
+--- PIVOT (real, working — copy this pattern for any pivotTable/matrix) ---
+{"widget": {"name": "pivot_example", "queries": [{"name": "main_query", "query": {"datasetName": "ds_compensacion", "fields": [{"name": "grupo", "expression": "`grupo`"}, {"name": "segmento", "expression": "`segmento`"}, {"name": "sum(cumplimiento_actual_por_seg_pct)", "expression": "SUM(`cumplimiento_actual_por_seg_pct`)"}, {"name": "sum(diferencia_cumplimiento_seg_pct)", "expression": "SUM(`diferencia_cumplimiento_seg_pct`)"}], "disaggregated": false}}], "spec": {"version": 3, "widgetType": "pivot", "encodings": {"rows": [{"fieldName": "segmento", "displayName": "Segmento"}], "columns": [{"fieldName": "grupo", "displayName": "Grupo"}], "values": [{"fieldName": "sum(cumplimiento_actual_por_seg_pct)", "displayName": "Cumplimiento Actual"}, {"fieldName": "sum(diferencia_cumplimiento_seg_pct)", "displayName": "Diferencia"}]}, "frame": {"showTitle": true, "title": "Cumplimiento por Grupo y Segmento"}}}, "position": {"x": 0, "y": 0, "width": 6, "height": 6}}
+NOTE: PIVOT MUST use disaggregated:false, version:3, and EVERY measure in encodings.values MUST be SUM(`col`) in query.fields. If you skip SUM(), Lakeview shows "Visualization has no fields selected".
 """
 print(f"✓ Catálogo completo de 19 tipos de widgets + 5 ejemplos reales cargados")
 
@@ -518,6 +535,7 @@ CRITICAL STRUCTURE RULES:
 - counter: version 2, disaggregated false, fields use SUM(`col`), fieldName uses sum(col). Use "target" (not "comparison") for the second measure.
 - bar: version 3, disaggregated false, fields use aggregation expressions like COUNT() or SUM(). Use scale type "categorical" for category axis, "quantitative" for value axis.
 - table: version 2, disaggregated true, fields use `col`, encodings use "columns" array.
+- pivot: version 3, disaggregated FALSE, fields with dimensions as `col` and measures as SUM(`col`). encodings.values fieldName MUST be the aggregated name (e.g. "sum(my_measure)") and MUST appear in fields with expression="SUM(`my_measure`)". DO NOT put bare measure names in values — that renders "Visualization has no fields selected".
 - Each page must have "pageType": "PAGE_TYPE_CANVAS" and "layoutVersion": "GRID_V1".
 - DO NOT create slicer/filter widgets — those go in a separate PAGE_TYPE_GLOBAL_FILTERS page.
 - ONLY use these widgetType values: counter, bar, line, area, pie, table, scatter, heatmap, histogram, box, combo, funnel, waterfall, choropleth, pointMap, pivot, sankey.
@@ -571,12 +589,12 @@ def call_claude(prompt):
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt},
         ],
-        "max_tokens": 16000,
+        "max_tokens": MAX_TOKENS,
     }
     if LLM_ENDPOINT not in _MODELS_NO_TEMPERATURE:
-        payload["temperature"] = 0.1
+        payload["temperature"] = TEMPERATURE
     resp = _post_with_retry(url, headers, payload, 180)
-    # Fallback: si el modelo rechaza temperature dinámicamente
+    # Fallback: si el endpoint rechaza temperature dinámicamente
     if resp.status_code == 400 and 'temperature' in resp.text.lower():
         payload.pop('temperature', None)
         resp = _post_with_retry(url, headers, payload, 180)
@@ -663,12 +681,9 @@ for pbi, dash in pbi_to_dash.items():
 
 def _build_visuals_text_for_page(pbi_page, page_visuals):
     text = f"=== PBI PAGE: {pbi_page} ===\n"
-    slicers = [v for v in page_visuals if v['databricks_type'] == 'SLICER']
+    # Slicers se omiten por completo del prompt: los maneja el notebook 6 (add_dashboard_filters)
+    # como filter-multi-select widgets. Si los mencionamos, Claude se inspira y crea counters falsos.
     charts = [v for v in page_visuals if v['databricks_type'] != 'SLICER']
-    if slicers:
-        text += f"\nSlicers ({len(slicers)}) -- DO NOT generate widgets for these (skip):\n"
-        for s in slicers:
-            text += f"  - {', '.join(s['fields'])}\n"
     if charts:
         text += f"\nCharts/Tables ({len(charts)}):\n"
         for c in charts:
@@ -693,15 +708,25 @@ ORIGINAL POWER BI PAGE: "{pbi_page}"
 AVAILABLE DATASETS (use these exact "name" values in datasetName; pick the best match per widget):
 {datasets_info}
 
-POWER BI VISUALS TO REPLICATE (this page only — replicate ALL non-slicer visuals):
+POWER BI VISUALS TO REPLICATE (this page only — replicate ALL visuals listed):
 {visuals_text}
 
 RULES:
 - Output ONLY a JSON array of widget objects. NO outer object, NO page wrapping. Just the array.
 - First widget MUST be a text title widget (multilineTextboxSpec) with "# {pbi_page}" as content.
-- Replicate EVERY non-slicer visual listed. Do NOT skip any chart/table/counter/etc.
-- Map Power BI: gauge -> counter, columnChart/barChart -> bar, tableEx -> table, lineChart -> line, pieChart -> pie, multiRowCard/kpi -> counter.
-- Skip slicers, image, textbox, shape, actionButton (they are not widgets here).
+- Replicate EVERY visual listed. Do NOT skip any chart/table/counter/etc. Do NOT invent extra widgets.
+- DO NOT create any counter, filter, slicer, KPI or table for date/route/region/store fields unless it is EXPLICITLY listed above. The slicers (filters) of this dashboard are added by a separate process — never anticipate them here.
+- Map Power BI types STRICTLY (use the type indicated in [brackets] for each visual — do NOT decide on your own to make it a counter when it's a pivot):
+    gauge -> counter
+    columnChart / clusteredColumnChart / stackedColumnChart / barChart / clusteredBarChart / stackedBarChart / funnel / waterfallChart -> bar
+    lineChart -> line
+    pieChart / donutChart / treemap -> pie
+    tableEx / table / tableExUnordered -> table
+    pivotTable / matrix -> pivot   (NEVER counter for these — even if there's only one value, use pivot widget)
+    card / cardVisual / kpi / multiRowCard -> counter
+    map / azureMap -> pointMap
+    filledMap / shapeMap -> choropleth
+    scatterChart -> scatter
 - Use the EXACT snake_case column names from the DATASETS, never PBI CamelCase.
 - query nesting: widget.queries[].query.{{datasetName, fields, disaggregated}}.
 - Each widget needs spec.version, spec.widgetType, spec.frame.title, spec.encodings.
@@ -831,6 +856,117 @@ for page_name, widgets in page_widgets.items():
     page_widgets[page_name] = valid_widgets
     print(f"  Page {page_name}: {len(valid_widgets)} valid widgets")
 
+
+def relayout_no_overlap(widgets, grid_width=12):
+    """Reasigna posiciones para que ningún widget se enciese (Claude a veces repite y).
+    Preserva el widget de título en y=0 si existe. Mantiene el orden visual original."""
+    if not widgets:
+        return widgets
+    title = None
+    others = []
+    for w in widgets:
+        widget = w.get('widget', {})
+        if 'multilineTextboxSpec' in widget and not title:
+            title = w
+        else:
+            others.append(w)
+    others.sort(key=lambda w: (w.get('position', {}).get('y', 0),
+                               w.get('position', {}).get('x', 0)))
+    occupied = set()
+    if title:
+        tp = title.setdefault('position', {})
+        tp['x'] = 0; tp['y'] = 0; tp['width'] = grid_width
+        tp['height'] = max(1, tp.get('height', 1))
+        for dy in range(tp['height']):
+            for dx in range(grid_width):
+                occupied.add((dx, dy))
+        start_y = tp['height']
+    else:
+        start_y = 0
+    for w in others:
+        pos = w.setdefault('position', {})
+        ww = min(max(1, pos.get('width', 6)), grid_width)
+        wh = max(1, pos.get('height', 4))
+        pos['width'] = ww; pos['height'] = wh
+        placed = False; y = start_y
+        while not placed:
+            for x in range(0, grid_width - ww + 1):
+                free = all((x+dx, y+dy) not in occupied
+                           for dx in range(ww) for dy in range(wh))
+                if free:
+                    pos['x'] = x; pos['y'] = y
+                    for dx in range(ww):
+                        for dy in range(wh):
+                            occupied.add((x+dx, y+dy))
+                    placed = True; break
+            y += 1
+    return ([title] if title else []) + others
+
+print("\nRelayout sin overlaps por página:")
+for page_name in list(page_widgets.keys()):
+    before = len(page_widgets[page_name])
+    page_widgets[page_name] = relayout_no_overlap(page_widgets[page_name])
+    print(f"  {page_name}: {before} widgets recolocados")
+
+
+def fix_broken_pivots(widgets):
+    """Auto-fix pivots con disaggregated:true o values sin SUM().
+    Esto pasa cuando Claude olvida wrapear measures en SUM() — Lakeview muestra
+    'Visualization has no fields selected'. Aquí lo arreglamos forzando disaggregated:false
+    y reemplazando expression=`col` por SUM(`col`) para cualquier field referenciado en values."""
+    import re as _re
+    fixes = 0
+    for w in widgets:
+        widget = w.get('widget', {})
+        spec = widget.get('spec', {})
+        if spec.get('widgetType') != 'pivot':
+            continue
+        qs = widget.get('queries', [])
+        if not qs:
+            continue
+        q = qs[0].get('query', {})
+        fields = q.get('fields', [])
+        enc = spec.get('encodings', {})
+        values = enc.get('values', [])
+        if not isinstance(values, list):
+            continue
+        # set de fieldNames referenciados como value
+        value_field_names = {v.get('fieldName') for v in values if isinstance(v, dict) and v.get('fieldName')}
+        # Para cada field referenciado como value, si su expression no tiene agregación, agregarle SUM()
+        changed = False
+        for f in fields:
+            fname = f.get('name', '')
+            fexpr = f.get('expression', '')
+            if fname not in value_field_names:
+                continue
+            has_agg = bool(_re.search(r'(SUM|AVG|COUNT|MIN|MAX|MEDIAN|MEASURE)\s*\(', fexpr.upper()))
+            if has_agg:
+                continue
+            # No tiene agregación → wrappear con SUM. fname permanece igual para no romper encoding.
+            # Pero si fname == nombre raw del col, lo renombramos a "sum(col)" y actualizamos encoding.
+            col_match = _re.match(r'^`(.+)`$', fexpr.strip())
+            raw_col = col_match.group(1) if col_match else fname
+            new_name = f"sum({raw_col})"
+            new_expr = f"SUM(`{raw_col}`)"
+            f['name'] = new_name
+            f['expression'] = new_expr
+            # actualizar encoding values referencias
+            for v in values:
+                if isinstance(v, dict) and v.get('fieldName') == fname:
+                    v['fieldName'] = new_name
+            changed = True
+        if changed:
+            q['disaggregated'] = False
+            spec['version'] = 3
+            fixes += 1
+    return fixes
+
+print("\nAuto-fix pivots rotos (disaggregated:true / sin SUM en values):")
+for page_name in list(page_widgets.keys()):
+    n = fix_broken_pivots(page_widgets[page_name])
+    if n:
+        print(f"  {page_name}: {n} pivot(s) reparados")
+
 # Inyectar widgets en el dashboard existente
 for p in existing_dashboard.get('pages', []):
     pname = p.get('name', '')
@@ -899,7 +1035,7 @@ import pandas as pd
 
 dashboard = json.loads(dashboard_json_str)
 
-# Widgets generados por página
+# Widgets generados por página (incluye dataset y field names para matching de cobertura)
 generated_widgets = []
 for p in dashboard.get('pages', []):
     page_name = p.get('displayName', '?')
@@ -908,11 +1044,21 @@ for p in dashboard.get('pages', []):
         spec = widget.get('spec', {})
         wtype = spec.get('widgetType', 'text' if 'multilineTextboxSpec' in widget else '?')
         title = spec.get('frame', {}).get('title', '')
+        # Extraer dataset + field names del primer query
+        qs = widget.get('queries', []) or []
+        ds_name = ''
+        field_names = []
+        if qs:
+            q = qs[0].get('query', {}) if isinstance(qs[0], dict) else {}
+            ds_name = q.get('datasetName', '')
+            field_names = [f.get('name', '') for f in q.get('fields', []) if isinstance(f, dict)]
         generated_widgets.append({
             'page': page_name,
             'widget_type': wtype,
             'title': title,
             'name': widget.get('name', ''),
+            'dataset': ds_name,
+            'fields': field_names,
         })
 
 print(f"{'='*60}")
@@ -946,6 +1092,24 @@ for p in dashboard.get('pages', []):
 
 # COMMAND ----------
 
+
+
+# COMMAND ----------
+
+
+
+# COMMAND ----------
+
+
+
+# COMMAND ----------
+
+
+
+# COMMAND ----------
+
+import re
+
 # Visuales de Power BI con datos (excluir decorativos)
 # Filtro INVERSO: excluir solo los que no se pueden traducir automáticamente.
 excluded_types = ['image', 'textbox', 'shape', 'actionButton', 'unknown']
@@ -956,69 +1120,242 @@ pbi_data_visuals = visuals_df[
     & ~visuals_df['visual_type'].apply(_is_custom_visual)
 ].copy()
 
-# Mapeo PBI page → dashboard page (fuzzy)
-dashboard_pages = {p.get('displayName', '').lower(): p.get('displayName', '') for p in dashboard.get('pages', [])}
+# ── Helpers ──────────────────────────────────────────────────────────────
 
-coverage_rows = []
+def _norm(s):
+    """Lowercase y solo alfanuméricos + _ (quita %, paréntesis, espacios, acentos básicos)."""
+    if not s: return ''
+    s = str(s).lower().strip()
+    s = (s.replace('á','a').replace('é','e').replace('í','i')
+           .replace('ó','o').replace('ú','u').replace('ñ','n'))
+    s = re.sub(r'[^a-z0-9_]+', '_', s)
+    return s.strip('_')
+
+def _measure_candidates(measure_str, table_hint=''):
+    """Variantes a buscar para una measure PBI (original, traducida, normalizada)."""
+    cands = set()
+    if not measure_str:
+        return cands
+    for raw in str(measure_str).split(','):
+        m = raw.strip()
+        if not m:
+            continue
+        cands.add(_norm(m))
+        # Aplicar traductor PBI → Databricks (definido en sección 2)
+        try:
+            translated = _translate(table_hint or '', m)
+            if translated and translated != m:
+                cands.add(_norm(translated))
+        except Exception:
+            pass
+    return {c for c in cands if c}
+
+def _column_candidates(columns_str):
+    """Variantes para columnas (formato 'tabla.columna, tabla.columna')."""
+    cands = set()
+    if not columns_str:
+        return cands
+    for raw in str(columns_str).split(','):
+        c = raw.strip()
+        if not c:
+            continue
+        # Si viene como 'tabla.columna', tomar solo la columna
+        parts = c.split('.', 1)
+        table_part = parts[0] if len(parts) == 2 else ''
+        col_part = parts[1] if len(parts) == 2 else parts[0]
+        cands.add(_norm(col_part))
+        try:
+            translated = _translate(table_part, col_part)
+            if translated:
+                cands.add(_norm(translated))
+        except Exception:
+            pass
+    return {c for c in cands if c}
+
+def _widget_haystack(gw):
+    """Texto donde buscar matches: title + name + dataset + field names."""
+    parts = [gw.get('title',''), gw.get('name',''), gw.get('dataset','')]
+    parts.extend(gw.get('fields', []) or [])
+    return _norm(' '.join(str(p) for p in parts if p))
+
+_PAGE_TOKEN_STOPWORDS = {'de', 'del', 'la', 'el', 'los', 'las', 'y', 'a', 'un', 'una',
+                          'unico', 'reporte', 'page', 'pagina'}
+
+def _page_tokens(s):
+    """Tokens significativos de un nombre de página (sin stopwords)."""
+    n = _norm(s)
+    toks = [t for t in n.split('_') if t and t not in _PAGE_TOKEN_STOPWORDS and len(t) >= 2]
+    return set(toks)
+
+def _page_match(pbi_page, gw_page):
+    """Match de página: por substring O por tokens significativos compartidos."""
+    np, ng = _norm(pbi_page), _norm(gw_page)
+    if not np or not ng:
+        return False
+    if np in ng or ng in np:
+        return True
+    # Tokens compartidos no-stopword (ej. 'fat' compartido entre 'fat_reporte_unico' y 'fat_repunc')
+    return bool(_page_tokens(pbi_page) & _page_tokens(gw_page))
+
+# ── Detectar decorativos: sin measures Y sin columnas ────────────────────
+def _is_decorative(row):
+    m = (row.get('measures_used') or '').strip()
+    c = (row.get('columns_used') or '').strip()
+    return not m and not c
+
+pbi_data_visuals['_is_decorative'] = pbi_data_visuals.apply(_is_decorative, axis=1)
+
+# ── Deduplicar visuales PBI idénticos en la misma página ─────────────────
+# Firma: page+type+title+measures+columns. Si hay duplicados, contar 1 con multiplicidad.
+def _signature(row):
+    return (row['page'], row['visual_type'], (row.get('title') or '').strip(),
+            (row.get('measures_used') or '').strip(),
+            (row.get('columns_used') or '').strip())
+
+dedup = {}
 for _, v in pbi_data_visuals.iterrows():
+    sig = _signature(v)
+    if sig not in dedup:
+        dedup[sig] = {'row': v, 'count': 1}
+    else:
+        dedup[sig]['count'] += 1
+
+# ── Match ────────────────────────────────────────────────────────────────
+coverage_rows = []
+for sig, info in dedup.items():
+    v = info['row']
+    multiplicity = info['count']
     pbi_page = v['page']
     pbi_type = v['visual_type']
-    pbi_title = v['title']
-    pbi_measures = v['measures_used']
-    pbi_columns = v['columns_used']
-
-    # Buscar si hay un widget equivalente generado
-    matched = False
-    match_widget = ""
+    pbi_title = (v.get('title') or '').strip()
+    pbi_measures = v.get('measures_used') or ''
+    pbi_columns = v.get('columns_used') or ''
+    decorative = bool(v.get('_is_decorative', False))
     db_type = PBI_TO_DATABRICKS.get(pbi_type, pbi_type)
 
-    for gw in generated_widgets:
-        page_match = pbi_page.lower().replace(' ', '_').replace('_', '') in gw['page'].lower().replace(' ', '_').replace('_', '')
-        if not page_match:
-            continue
-        # Match por título
-        if pbi_title and pbi_title.lower() in gw['title'].lower():
-            matched = True
-            match_widget = f"[{gw['widget_type']}] {gw['title']}"
-            break
-        # Match por measures
-        if pbi_measures and any(m.lower().replace(' ', '_') in gw['title'].lower().replace(' ', '_') for m in pbi_measures.split(', ') if m):
-            matched = True
-            match_widget = f"[{gw['widget_type']}] {gw['title']}"
-            break
-        # Match por tipo de widget (para tablas sin título)
-        if db_type == gw['widget_type'] and db_type in ('table', 'pivot'):
-            matched = True
-            match_widget = f"[{gw['widget_type']}] {gw['title']}"
-            break
+    # Candidatos a buscar
+    title_cand = _norm(pbi_title)
+    # Inferir table_hint de columns ('tabla.columna' → 'tabla')
+    table_hint = ''
+    if pbi_columns:
+        first = pbi_columns.split(',')[0].strip()
+        if '.' in first:
+            table_hint = first.split('.', 1)[0]
+    measure_cands = _measure_candidates(pbi_measures, table_hint)
+    column_cands = _column_candidates(pbi_columns)
+
+    # Slicers no se generan aquí — el notebook 6 los crea como filter-multi-select widgets.
+    # Se marcan aparte para no contarlos como missing.
+    is_slicer = pbi_type == 'slicer'
+
+    matches = []
+    if not decorative and not is_slicer:
+        for gw in generated_widgets:
+            if not _page_match(pbi_page, gw['page']):
+                continue
+            hay = _widget_haystack(gw)
+            hit_reason = None
+            # 1. Match por título no vacío
+            if title_cand and len(title_cand) >= 3 and title_cand in hay:
+                hit_reason = 'title'
+            # 2. Match por measure traducida/normalizada
+            elif measure_cands and any(c in hay for c in measure_cands if len(c) >= 3):
+                hit_reason = 'measure'
+            # 3. Match por columna usada (útil para visuales sin measures)
+            elif column_cands and any(c in hay for c in column_cands if len(c) >= 3):
+                hit_reason = 'column'
+            # 4. Match débil por tipo + page (último recurso para table/pivot/counter sin más señales)
+            elif db_type == gw['widget_type'] and db_type in ('table', 'pivot'):
+                hit_reason = 'type'
+            if hit_reason:
+                matches.append((gw, hit_reason))
+
+    # Ordenar matches: PRIMERO los del mismo widget_type que se esperaba (db_type).
+    # Sin esto, un pivotTable se reporta matched contra un counter aunque hay un pivot disponible.
+    if matches:
+        _reason_priority = {'title': 0, 'measure': 1, 'column': 2, 'type': 3}
+        matches.sort(key=lambda m: (
+            0 if m[0]['widget_type'] == db_type else 1,   # same type primero
+            _reason_priority.get(m[1], 99),               # luego mejor reason
+        ))
+
+    # Estado
+    if decorative:
+        status = 'decorative'
+    elif is_slicer:
+        status = 'delegated'
+    elif matches:
+        status = 'matched'
+    else:
+        status = 'missing'
+
+    match_widget = ''
+    if matches:
+        # Mostrar primer match con razón
+        gw, reason = matches[0]
+        match_widget = f"[{gw['widget_type']}] {gw['title'] or gw['name']}  (by {reason})"
+        if len(matches) > 1:
+            match_widget += f"  + {len(matches)-1} más"
+
+    if status == 'decorative':
+        match_str = '— (decorativo, sin datos)'
+    elif status == 'delegated':
+        match_str = '→ notebook 6 (filter widget)'
+    elif matches:
+        match_str = match_widget
+    else:
+        match_str = 'NO GENERADO'
 
     coverage_rows.append({
         'PBI Page': pbi_page,
         'PBI Type': pbi_type,
         'PBI Title': pbi_title or '(sin título)',
         'PBI Measures': pbi_measures or '(ninguna)',
-        'PBI Columns': pbi_columns[:50] if pbi_columns else '',
-        'Generated': '✓' if matched else '✗',
-        'Match': match_widget if matched else 'NO GENERADO',
+        'PBI Columns': (pbi_columns[:50] + '…') if pbi_columns and len(pbi_columns) > 50 else pbi_columns,
+        'Mult.': multiplicity,
+        'Status': {
+            'matched':'✓ matched',
+            'missing':'✗ missing',
+            'decorative':'· decorative',
+            'delegated':'→ delegado',
+        }[status],
+        'Match': match_str,
     })
 
 coverage_df = pd.DataFrame(coverage_rows)
 
-total_pbi = len(coverage_df)
-total_generated = sum(1 for r in coverage_rows if r['Generated'] == '✓')
-total_missing = total_pbi - total_generated
+total_pbi_raw       = len(pbi_data_visuals)
+total_unique        = len(coverage_rows)
+total_decorative    = sum(1 for r in coverage_rows if 'decorative' in r['Status'])
+total_delegated     = sum(1 for r in coverage_rows if 'delegado'   in r['Status'])
+total_data          = total_unique - total_decorative - total_delegated
+total_matched       = sum(1 for r in coverage_rows if 'matched' in r['Status'])
+total_missing       = total_data - total_matched
 
 print(f"\n{'='*60}")
 print(f"COBERTURA: Power BI → Databricks Dashboard")
 print(f"{'='*60}")
-print(f"\nVisuales Power BI con datos: {total_pbi}")
-print(f"Generados en dashboard:      {total_generated} ✓")
-print(f"No generados:                {total_missing} ✗")
+print(f"Visuales PBI brutos:      {total_pbi_raw}")
+print(f"  Tras deduplicar firma:  {total_unique}")
+print(f"  Decorativos (sin datos):                {total_decorative}")
+print(f"  Slicers (delegados a notebook 6):       {total_delegated}")
+print(f"")
+print(f"Visuales con datos para este paso (denominador): {total_data}")
+print(f"  Matched:   {total_matched} ✓")
+print(f"  Missing:   {total_missing} ✗")
 
 if total_missing > 0:
     print(f"\nVisuales NO generados:")
-    missing = [r for r in coverage_rows if r['Generated'] == '✗']
-    for r in missing:
-        print(f"  ✗ [{r['PBI Type']}] {r['PBI Title']} — page: {r['PBI Page']} — measures: {r['PBI Measures']}")
+    for r in coverage_rows:
+        if 'missing' in r['Status']:
+            mult = f" (x{r['Mult.']})" if r['Mult.'] > 1 else ''
+            print(f"  ✗ [{r['PBI Type']}] {r['PBI Title']}{mult} — page: {r['PBI Page']} — measures: {r['PBI Measures']}")
+
+if total_decorative > 0:
+    print(f"\nVisuales decorativos (no cuentan):")
+    for r in coverage_rows:
+        if 'decorative' in r['Status']:
+            mult = f" (x{r['Mult.']})" if r['Mult.'] > 1 else ''
+            print(f"  · [{r['PBI Type']}] {r['PBI Title']}{mult} — page: {r['PBI Page']}")
 
 display(coverage_df)
